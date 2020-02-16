@@ -24,7 +24,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			setStage(primaryStage);
-			primaryStage.setTitle("Login Interface");
+			primaryStage.setTitle("Ajouter classe");
 			
  			Parent root = (AnchorPane)FXMLLoader.load(getClass()
  					.getResource("/view/classe.fxml"));
