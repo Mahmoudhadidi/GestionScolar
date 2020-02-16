@@ -12,6 +12,7 @@ import java.util.List;
 /**
  *
  * @author House
+ * @param <T>
  */
 public interface IService<T> {
     void ajouter(T t) throws SQLException;
