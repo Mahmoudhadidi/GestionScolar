@@ -22,8 +22,26 @@ public class User {
    private String adresse;
    private int cin;
    private String niveau;
+
 //dfdfgdf
+
+
+    public User(String logine, String mdp) {
+        this.logine = logine;
+        this.mdp = mdp;
+    }
+   
+//String nom, String prenom, String date, int cin, String adresse
+
     public User() {
+    }
+
+    public User(String nom, String prenom, String date_N, String adresse, int cin) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.date_N = date_N;
+        this.adresse = adresse;
+        this.cin = cin;
     }
 
     public User(int id) {
