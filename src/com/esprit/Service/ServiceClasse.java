@@ -10,6 +10,8 @@ import com.esprit.Entite.Matiere;
 import com.esprit.Entite.Salle;
 import com.esprit.IService.IService;
 import com.esprit.Utils.DataBase;
+import com.esprit.test.Main;
+import java.io.IOException;
 import javafx.event.ActionEvent;
 import java.net.URL;
 import java.sql.Connection;
@@ -26,7 +28,12 @@ import javafx.scene.control.TextField;
 import javafx.fxml.FXML;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.AnchorPane;
 
 /**
  *
@@ -56,9 +63,17 @@ public class ServiceClasse implements IService<Classe>,Initializable{
 
     @FXML
     private TextField nomClasse;
-
+Parent root;
     @FXML
-    public void fannuler(ActionEvent event) {
+    public void fannuler(ActionEvent event) throws IOException {
+        
+    		root = (AnchorPane)FXMLLoader.load(getClass()
+  				.getResource("/com/esprit/gui/matiere.fxml"));
+
+        	    	Main.getStage().getScene().setRoot(root);
+        	    	Main.getStage().setTitle("Manipulation Interface");
+ 		Main.getStage().getScene().getStylesheets().add(getClass().getResource("/view/MainStyle.css").toExternalForm());
+           	
 
     }
  
@@ -75,9 +90,14 @@ public class ServiceClasse implements IService<Classe>,Initializable{
     public void fajouter(ActionEvent event) {
        ServiceClasse serC= new ServiceClasse();
        Classe c1=new Classe(nomClasse.getText(),Integer.valueOf(nbrEtudiant.getText()),specialite.getText());
-        try{
+        Alert alert = new Alert(AlertType.WARNING);
+        		alert.setContentText("username or password not available");
+        		alert.show();	 
+       try{
+           
         serC.ajouter(c1);
         }
+        
         catch(Exception e){
                 System.out.println(e);
                 }
