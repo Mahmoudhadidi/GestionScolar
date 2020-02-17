@@ -19,7 +19,7 @@ import static sun.security.jgss.GSSUtil.login;
  */
 public class ServiceUser {
     private Connection con;
-    private Statement ste,stee;
+    private Statement ste;
 
     public ServiceUser() {
         con = DataBase.getInstance().getConnection();

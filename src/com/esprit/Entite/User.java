@@ -22,9 +22,9 @@ public class User {
    private String adresse;
    private int cin;
    private String niveau;
-<<<<<<< HEAD
+
 //dfdfgdf
-=======
+
 
     public User(String logine, String mdp) {
         this.logine = logine;
@@ -32,7 +32,7 @@ public class User {
     }
    
 //String nom, String prenom, String date, int cin, String adresse
->>>>>>> 1a1236a2cf26bf965c7f0c7f5934cc9d72c822e9
+
     public User() {
     }
 
