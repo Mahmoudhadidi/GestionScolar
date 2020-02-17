@@ -27,7 +27,7 @@ public class Main extends Application {
 			primaryStage.setTitle("Ajouter classe");
 			
  			Parent root = (AnchorPane)FXMLLoader.load(getClass()
- 					.getResource("/com/esprit/gui/classe.fxml"));
+ 					.getResource("/com/esprit/gui/login.fxml"));
 			Scene scene = new Scene(root);
 			//scene.getStylesheets().add(getClass().getResource("/view/MainStyle.css").toExternalForm());
 			primaryStage.setScene(scene);
