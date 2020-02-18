@@ -13,26 +13,31 @@ import java.util.Objects;
  */
 public class absence {
      private int id_absence;
-    private int id_etudiant;
-    private int id_seance;
+    private User id_etudiant;
+    private Seance id_seance;
     private String type_absence;
 
-    public absence(int id_absence, int id_etudiant, int id_seance, String type_absence) {
+    public absence(int id_absence, User id_etudiant, Seance id_seance, String type_absence) {
         this.id_absence = id_absence;
         this.id_etudiant = id_etudiant;
         this.id_seance = id_seance;
         this.type_absence = type_absence;
     }
 
-    public absence(int id_etudiant, int id_seance, String type_absence) {
+    public absence(User id_etudiant, Seance id_seance, String type_absence) {
         this.id_etudiant = id_etudiant;
         this.id_seance = id_seance;
         this.type_absence = type_absence;
     }
 
     public absence() {
+    }
+
+    public absence(int id_absence, Seance s, User u, String type_absence) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+   
 
    
 
@@ -44,11 +49,11 @@ public class absence {
         this.type_absence = type_absence;
     }
 
-    public void setId_etudiant(int id_etudiant) {
+    public void setId_etudiant(User id_etudiant) {
         this.id_etudiant = id_etudiant;
     }
 
-    public void setId_seance(int id_seance) {
+    public void setId_seance(Seance id_seance) {
         this.id_seance = id_seance;
     }
 
@@ -60,11 +65,11 @@ public class absence {
         return type_absence;
     }
 
-    public int getId_etudiant() {
+    public User getId_etudiant() {
         return id_etudiant;
     }
 
-    public int getId_seance() {
+    public Seance getId_seance() {
         return id_seance;
     }
 
@@ -72,14 +77,6 @@ public class absence {
     public String toString() {
         return "absence{" + "id_absence=" + id_absence + ", id_etudiant=" + id_etudiant + ", id_seance=" + id_seance + ", type_absence=" + type_absence + '}';
     }
-
-    public String getType_absence(String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    
-
-   
-    
+ 
     
 }

@@ -22,8 +22,25 @@ public class User {
    private String adresse;
    private int cin;
    private String niveau;
+   private double salair;
+   private double salair2;
+
+    public void setSalair(double salair) {
+        this.salair = salair;
+    }
 
 //dfdfgdf
+    public void setSalair2(double salair2) {
+        this.salair2 = salair2;
+    }
+
+    public double getSalair() {
+        return salair;
+    }
+
+    public double getSalair2() {
+        return salair2;
+    }
 
 
     public User(String logine, String mdp) {
@@ -60,6 +77,22 @@ public class User {
         this.adresse = adresse;
         this.cin = cin;
         this.niveau = niveau;
+    }
+
+    public User(String logine, String mdp, String role, int id_classe, String nom, String prenom, String mail, String date_N, String adresse, int cin, String niveau, int salair) {
+        this.logine = logine;
+        this.mdp = mdp;
+        this.role = role;
+        this.id_classe = id_classe;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.mail = mail;
+        this.date_N = date_N;
+        this.adresse = adresse;
+        this.cin = cin;
+        this.niveau = niveau;
+        this.salair = salair;
+        this.salair2 = salair;
     }
 
     public User(int id, String logine, String mdp, String role, int id_classe, String nom, String prenom, String mail, String date_N, String adresse, int cin, String niveau) {
@@ -175,8 +208,10 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", logine=" + logine + ", mdp=" + mdp + ", role=" + role + ", id_classe=" + id_classe + ", nom=" + nom + ", prenom=" + prenom + ", mail=" + mail + ", date_N=" + date_N + ", adresse=" + adresse + ", cin=" + cin + ", niveau=" + niveau + "}\n";
+        return "User{" + "id=" + id + ", logine=" + logine + ", mdp=" + mdp + ", role=" + role + ", id_classe=" + id_classe + ", nom=" + nom + ", prenom=" + prenom + ", mail=" + mail + ", date_N=" + date_N + ", adresse=" + adresse + ", cin=" + cin + ", niveau=" + niveau + ", salair=" + salair + ", salair2=" + salair2 + '}';
     }
+
+
 
     public User(int id, String logine, String mdp, String role, String nom, String prenom, String mail, String date_N, String adresse, int cin, String niveau) {
         this.id = id;
@@ -203,6 +238,43 @@ public class User {
         this.adresse = adresse;
         this.cin = cin;
         this.niveau = niveau;
+    }
+
+    public User(int id, String logine, String mdp, String role, int id_classe, String nom, String prenom, String mail, String date_N, String adresse, int cin, String niveau, int salair, int salair2) {
+        this.id = id;
+        this.logine = logine;
+        this.mdp = mdp;
+        this.role = role;
+        this.id_classe = id_classe;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.mail = mail;
+        this.date_N = date_N;
+        this.adresse = adresse;
+        this.cin = cin;
+        this.niveau = niveau;
+        this.salair = salair;
+        this.salair2 = salair2;
+    }
+
+    public User(String logine, String mdp, String role, int id_classe, String nom, String prenom, String mail, String date_N, String adresse, int cin, String niveau, int salair, int salair2) {
+        this.logine = logine;
+        this.mdp = mdp;
+        this.role = role;
+        this.id_classe = id_classe;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.mail = mail;
+        this.date_N = date_N;
+        this.adresse = adresse;
+        this.cin = cin;
+        this.niveau = niveau;
+        this.salair = salair;
+        this.salair2 = salair2;
+    }
+
+    public void setId(User u) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

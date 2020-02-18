@@ -18,6 +18,7 @@ public class SendEmail {
 
         Session session = Session.getInstance(properties,
                 new javax.mail.Authenticator() {
+                    @Override
                     protected PasswordAuthentication getPasswordAuthentication() {
                         return new PasswordAuthentication("mariem.romdhani@esprit.tn", "13012930");
                     }
@@ -43,7 +44,6 @@ public class SendEmail {
             System.out.println("Sent message successfully....");
             return true ;
         } catch (MessagingException mex) {
-            mex.printStackTrace();
             return false ; 
         }
     }

@@ -44,6 +44,10 @@ public class Seance {
         this.id_Seance = id_Seance;
     }
 
+    public Seance() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public int getId_Seance() {
         return id_Seance;
     }
@@ -111,6 +115,10 @@ public class Seance {
     @Override
     public String toString() {
         return "Seance{" + "id_Seance=" + id_Seance + ", id_Ens=" + id_Ens + ", id_Classe=" + id_Classe + ", id_Matiere=" + id_Matiere + ", id_Salle=" + id_Salle + ", duree=" + duree + ", heure=" + heure + ", date=" + date + "}\n";
+    }
+
+    public void setId_Seance(Seance s) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

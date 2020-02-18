@@ -10,6 +10,7 @@ package com.esprit.test;
  * @author hadidi
  */
 
+import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -21,10 +22,11 @@ import javafx.scene.layout.AnchorPane;
 public class Main extends Application {
 	private static Stage stage;
 	
+        @Override
 	public void start(Stage primaryStage) {
 		try {
 			setStage(primaryStage);
-			primaryStage.setTitle("Ajouter classe");
+			primaryStage.setTitle("logine");
 			
  			Parent root = (AnchorPane)FXMLLoader.load(getClass()
  					.getResource("/com/esprit/gui/login.fxml"));
@@ -33,11 +35,12 @@ public class Main extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.setResizable(false);
 			primaryStage.show();
-		} catch(Exception e) {
-			e.printStackTrace();
+		} catch(IOException e) {
 		}
 	}
-	
+/*	User u = new User();
+        u.setId("");
+        abs.setIdUser(u)*/
 	public static Stage getStage() {
 		return stage;
 	}
