@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.gui.AbsenceController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="com.esprit.gui.AbsenceController">
     <stylesheets>
-        <URL value="@absence.css"/>
+        <URL value="@absence.css" />
     </stylesheets>
+   <children>
+      <Button fx:id="absenceEmploye" mnemonicParsing="false" onAction="#absenceEmploye" prefHeight="31.0" prefWidth="194.0" text="Absence Employé" />
+      <Button fx:id="absenceEtudiant" layoutX="194.0" mnemonicParsing="false" onAction="#absenceEtudiant" prefHeight="31.0" prefWidth="204.0" text="Absence Etudiant" />
+      <ScrollBar layoutX="1.0" layoutY="31.0" prefHeight="0.0" prefWidth="398.0" />
+      <AnchorPane fx:id="paneAbsence" layoutY="49.0" prefHeight="551.0" prefWidth="1000.0" />
+   </children>
 </AnchorPane>
