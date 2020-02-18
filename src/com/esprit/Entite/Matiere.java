@@ -14,7 +14,7 @@ public class Matiere {
     private String nom;
     private int coefficient;
     private int credit;
-
+    
     public Matiere(int id, String nom, int coefficient, int credit) {
         this.id = id;
         this.nom = nom;

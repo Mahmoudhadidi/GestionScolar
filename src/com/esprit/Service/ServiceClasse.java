@@ -10,19 +10,29 @@ import com.esprit.Entite.Matiere;
 import com.esprit.Entite.Salle;
 import com.esprit.IService.IService;
 import com.esprit.Utils.DataBase;
+import javafx.event.ActionEvent;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+import java.util.ResourceBundle;
+
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+
+import javafx.fxml.FXML;
+
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 
 /**
  *
  * @author hadidi
  */
-public class ServiceClasse implements IService<Classe> {
+public class ServiceClasse implements IService<Classe>,Initializable{
     
       private Connection con;
     private Statement ste;
@@ -32,8 +42,28 @@ public class ServiceClasse implements IService<Classe> {
 
     }
 
+     @FXML
+    private TextField nbrEtudiant;
+
+    @FXML
+    private Button annuler;
+
+    @FXML
+    private Button ajouter;
+
+    @FXML
+    private TextField specialite;
+
+    @FXML
+    private TextField nomClasse;
+
+    @FXML
+    public void fannuler(ActionEvent event) {
+
+    }
+ 
     @Override
-    public void ajouter(Classe t) throws SQLException {
+    public void ajouter(Classe t) throws SQLException  {
       
      ste = con.createStatement();
         String requeteInsert = "INSERT INTO classe ( `num_classe`,`nbre_etudient`,`specialite`) VALUES ('" + t.getNum() + "', '" + t.getNbrEtudient()+ "', '" + t.getSpecialite() + "');";
@@ -41,6 +71,24 @@ public class ServiceClasse implements IService<Classe> {
 //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @FXML
+    public void fajouter(ActionEvent event) {
+       ServiceClasse serC= new ServiceClasse();
+       Classe c1=new Classe(nomClasse.getText(),Integer.valueOf(nbrEtudiant.getText()),specialite.getText());
+        try{
+        serC.ajouter(c1);
+        }
+        catch(Exception e){
+                System.out.println(e);
+                }
+
+    }
+
+    
+    
+    
+    
+   
     @Override
     public boolean delete(Classe t) throws SQLException {
       ste = con.createStatement();
@@ -93,8 +141,9 @@ public class ServiceClasse implements IService<Classe> {
        int w=ste.executeUpdate(requeteUpdate);
         if(w>0)
           return true; 
-    return false;
-   }
-
-    
+        return false;
+}public void initialize(URL location, ResourceBundle resources) {
+		
+		
+	}
 }
