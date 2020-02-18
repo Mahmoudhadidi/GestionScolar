@@ -23,6 +23,7 @@ import java.sql.Statement;
  * @author LENOVO
  */
 public class Pdf {
+
     private final Connection con;
         private Statement ste;
     public Pdf()  {
@@ -96,5 +97,5 @@ public class Pdf {
                 con.close();
         
     }
+} 
     
-}
