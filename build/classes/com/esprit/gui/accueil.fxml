@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="com.esprit.gui.AccueilController">
+   <children>
+      <Button fx:id="gestionuser" layoutY="52.0" mnemonicParsing="false" onAction="#gestionUser" prefHeight="40.0" prefWidth="141.0" text="Gestion utilisateur" />
+      <Button layoutY="92.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="141.0" text="Gestion affectation" />
+      <Button layoutY="132.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="141.0" text="Gestion  absence" />
+      <Button layoutY="172.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="141.0" text="Gestion notes" />
+      <Button layoutY="211.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="141.0" text="Gestion reclamations" />
+      <Button layoutY="251.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="141.0" text="Clubs" />
+      <Button layoutY="291.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="141.0" text="exisit" />
+      <ScrollBar layoutX="141.0" layoutY="52.0" orientation="VERTICAL" prefHeight="282.0" prefWidth="0.0" />
+      <AnchorPane fx:id="pane" layoutX="156.0" layoutY="52.0" prefHeight="282.0" prefWidth="445.0" />
+   </children>
+</AnchorPane>
