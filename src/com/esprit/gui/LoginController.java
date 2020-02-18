@@ -55,7 +55,7 @@ Parent root;
         if(su.connexion(userlogine)==true){
 
         root = (AnchorPane)FXMLLoader.load(getClass()
-				.getResource("/com/esprit/gui/classe.fxml"));
+				.getResource("/com/esprit/gui/accueil.fxml"));
 
         
         	Main.getStage().getScene().setRoot(root);
