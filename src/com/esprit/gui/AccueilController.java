@@ -33,17 +33,70 @@ public class AccueilController implements Initializable {
     
 
 
+
+    @FXML
+    private Button gestionreclamation;
+
     @FXML
     private Button gestionuser;
+
+    @FXML
+    private Button gestionaffectation;
+
+    @FXML
+    private Button gestionnote;
+
+    @FXML
+    private Button quitter;
+
+    @FXML
+    private Button gestionAbsence;
+
+    @FXML
+    private Button clubs;
 
     @FXML
     private AnchorPane pane;
 
     @FXML
     void gestionUser(ActionEvent event) throws IOException {
+     pane.getChildren().clear();
      Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("/com/esprit/gui/classe.fxml"));
-  pane.getChildren().add(newLoadedPane);
+     pane.getChildren().add(newLoadedPane);
         		    }
+
+    @FXML
+    void gestionaffectation(ActionEvent event) throws IOException {
+        pane.getChildren().clear();
+        Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("/com/esprit/gui/gestionAffectaion.fxml"));
+        pane.getChildren().add(newLoadedPane);
+
+    }
+
+    @FXML
+    void gestionAbsence(ActionEvent event) {
+
+    }
+
+    @FXML
+    void gestionNote(ActionEvent event) {
+
+    }
+
+    @FXML
+    void gestionReclamation(ActionEvent event) {
+
+    }
+
+    @FXML
+    void clubs(ActionEvent event) {
+
+    }
+
+    @FXML
+    void quitter(ActionEvent event) {
+
+    }
 
 
     @Override
