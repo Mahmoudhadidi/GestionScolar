@@ -26,7 +26,11 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			setStage(primaryStage);
+
 			primaryStage.setTitle("logine");
+
+			primaryStage.setTitle("");
+
 			
  			Parent root = (AnchorPane)FXMLLoader.load(getClass()
  					.getResource("/com/esprit/gui/login.fxml"));
