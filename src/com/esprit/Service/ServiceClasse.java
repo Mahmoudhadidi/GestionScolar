@@ -31,8 +31,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
+//import javafx.scene.control.Alert;
+//import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -90,9 +90,7 @@ Parent root;
     public void fajouter(ActionEvent event) {
        ServiceClasse serC= new ServiceClasse();
        Classe c1=new Classe(nomClasse.getText(),Integer.valueOf(nbrEtudiant.getText()),specialite.getText());
-        Alert alert = new Alert(AlertType.WARNING);
-        		alert.setContentText("username or password not available");
-        		alert.show();	 
+         
        try{
            
         serC.ajouter(c1);

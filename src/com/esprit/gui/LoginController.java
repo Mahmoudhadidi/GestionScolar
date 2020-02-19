@@ -19,6 +19,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+//import javafx.scene.control.Alert;
+//import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -48,14 +50,14 @@ public class LoginController implements Initializable {
 Parent root;
     
     @FXML       
-    void connexion(ActionEvent event) throws IOException, SQLException {
+   void connexion(ActionEvent event) throws IOException, SQLException {
    User userlogine=new User(logine.getText(), password.getText());
         ServiceUser su=new ServiceUser();
         
         if(su.connexion(userlogine)==true){
 
         root = (AnchorPane)FXMLLoader.load(getClass()
-				.getResource("/com/esprit/gui/classe.fxml"));
+				.getResource("/com/esprit/gui/accueil.fxml"));
 
         
         	Main.getStage().getScene().setRoot(root);
@@ -65,7 +67,7 @@ Parent root;
         }else{
                         logine.clear();
     			password.clear();
-        		Alert alert = new Alert(AlertType.WARNING);
+      		Alert alert = new Alert(AlertType.WARNING);
         		alert.setContentText("username or password not available");
         		alert.show();
         }

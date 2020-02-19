@@ -35,18 +35,23 @@ public class ServiceNote implements IServiceNote<Note> {
     @Override
     public void ajouter(Note p) throws SQLException {
         
-        PreparedStatement pre=con.prepareStatement("INSERT INTO `note` ( `note_cc`, `note_ds`, `note_examun`, `moyenne`, `net`, `id_user`, `id_matiere`) VALUES ( ?, ?, ?, ?, ?, ?, ?);");
+        PreparedStatement pre=con.prepareStatement("INSERT INTO `note` ( `note_cc`, `note_ds`, `note_examun`, `moyenne`, `net`, `cin`, `nom_matier`) VALUES ( ?, ?, ?, ?, ?, ?, ?);");
     pre.setFloat(1, p.getNote_cc()); 
     pre.setFloat(2, p.getNote_ds());
     pre.setFloat(3, p.getNote_examun());
     pre.setFloat(4, p.getMoyenne());
     pre.setFloat(5, p.getNet());
     pre.setInt(6, p.getId_user());
-    pre.setInt(7, p.getId_matiere());
+    
+    pre.setString(7, p.getId_matiere());
     
     pre.executeUpdate();
         System.out.println("Note ajoutée !!");
+       
+        pre.setFloat(1, p.getNote_cc()); 
+
     }
+ 
 
     @Override
     public boolean delete(int id) throws SQLException {
@@ -67,7 +72,7 @@ try{
     @Override
     public boolean update(Note p) throws SQLException {
         
-        String sql = "UPDATE note SET note_cc=?, note_ds=?, note_examun=?, net=?, moyenne=?,id_user=?,id_matiere=?  WHERE id_note=?";
+        String sql = "UPDATE note SET note_cc=?, note_ds=?, note_examun=?, net=?, moyenne=?,cin=?,nom_matier=?  WHERE id_note=?";
  
 PreparedStatement statement = con.prepareStatement(sql);
 statement.setFloat(1, p.getNote_cc());
@@ -76,7 +81,7 @@ statement.setFloat(3, p.getNote_examun());
 statement.setFloat(4, p.getMoyenne());
 statement.setFloat(5, p.getNet());
 statement.setInt(6, p.getId_user());
-statement.setInt(7, p.getId_matiere());
+statement.setString(7, p.getId_matiere());
 statement.setInt(8, p.getId_note());
  
 int rowsUpdated = statement.executeUpdate();
@@ -101,7 +106,7 @@ List<Note> arr=new ArrayList<>();
                float moyenne =rs.getFloat("moyenne");
                float net=rs.getFloat("net");
                int id_user =rs.getInt("id_user");
-               int id_matiere = rs.getInt(8);
+               String id_matiere = rs.getString(8);
                Note p=new Note(id_note, note_cc, note_ds, note_examun, moyenne, net, id_user, id_matiere);
      arr.add(p);
      }
@@ -147,11 +152,15 @@ List<Note> arr=new ArrayList<>();
                float moyenne =rs.getFloat("moyenne");
                int net=rs.getInt(6);
                int id_user =rs.getInt("id_user");
-               int id_matiere = rs.getInt(7);
+               String id_matiere = rs.getString(7);
                Note p=new Note(id_note, note_cc, note_ds, note_examun, moyenne, net, id_user, id_matiere);
      arr.add(p);
      }
     return arr;        
+    }
+    public void afficherListEtudiant() {
+    
+        
     }
 
 
