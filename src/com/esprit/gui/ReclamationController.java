@@ -5,12 +5,20 @@
  */
 package com.esprit.gui;
 
+import com.esprit.Entite.Reclamation;
+import com.esprit.Service.ServiceReclamation;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.fxml.FXML;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ComboBox;
 
 /**
  * FXML Controller class
@@ -19,21 +27,23 @@ import javafx.scene.control.TextField;
  */
 public class ReclamationController implements Initializable {
     
+   
     @FXML
     private TextField nom;
+
     @FXML
-    private TextField Description;
+    private TextArea Description;
+
     @FXML
     private TextField Sujet;
+
     @FXML
     private TextField etat;
     @FXML
-    private ComboBox Reclamations;
-    @FXML
-    private ComboBox Satisfaction;
-    @FXML
-    private ComboBox<String> ComboBox;
+    private ComboBox<String> Reclamations;
 
+    @FXML
+    private ComboBox<String> Satisfaction;
     /**
      * Initializes the controller class.
      */
@@ -48,7 +58,19 @@ public class ReclamationController implements Initializable {
         
         
 
-         Reclamations.getItems().addAll ("Reclamations traitées","Reclamation non traitées");
+        Reclamations.getItems().addAll ("Reclamations traitées","Reclamation non traitées","Reclamations");
+        
+        Satisfaction.getItems().addAll ("satisfait","non satisfait");
+        
+//    ServiceReclamation sr = new ServiceReclamation();
+//          List<Reclamation> arr=new ArrayList<>();
+//          arr = sr.readAll();
+//          for (Reclamation r : arr){
+//                  this.id_user.setText(r.getId_user());
+//          }
+
+  
+    
             
     }
     

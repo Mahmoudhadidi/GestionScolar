@@ -1,6 +1,7 @@
 package com.esprit.Service;
 
 import com.esprit.Entite.Reclamation;
+import com.esprit.Entite.User;
 import com.esprit.IService.IService;
 import com.esprit.Utils.DataBase;
 import java.sql.*;
@@ -152,6 +153,43 @@ public  class ServiceReclamation implements IService<Reclamation> {
             ex.printStackTrace();     
         }
     }
+
+    /**
+     *
+     * @param r
+     * @return
+     */
+    public void detaileutilisateur(Reclamation r) {
+           try {
+              String requete=" SELECT nom FROM `user` WHERE `id_user`='"+r.getId_user()+"' ";
+             ste.executeUpdate(requete);
+              } catch (SQLException ex) {
+            System.out.println("### ERROR : "+ex.getCause());
+            ex.printStackTrace();     
+        }
     }
+    
+    public void detailSujet (Reclamation r) {
+           try {
+              String requete=" SELECT Sujet FROM `reclamation` WHERE `id_user`='"+r.getId_user()+"' ";
+             ste.executeUpdate(requete);
+              } catch (SQLException ex) {
+            System.out.println("### ERROR : "+ex.getCause());
+            ex.printStackTrace();     
+        }         
+    }
+     
+    public void detailDescription (Reclamation r) {
+           try {
+              String requete=" SELECT description FROM `reclamation` WHERE `id_user`='"+r.getId_user()+"' ";
+             ste.executeUpdate(requete);
+              } catch (SQLException ex) {
+            System.out.println("### ERROR : "+ex.getCause());
+            ex.printStackTrace();     
+        }
+    }
+}
+    
+    
     
 

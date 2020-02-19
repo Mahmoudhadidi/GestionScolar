@@ -6,7 +6,6 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
@@ -18,21 +17,15 @@
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f5f8fc" height="200.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#034c90" height="200.0" layoutX="1.0" layoutY="208.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-      <ImageView fitHeight="45.0" fitWidth="77.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@logo/logo_Finale.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="69.0" layoutY="28.0" text="Assurer votre succès" textFill="#3312f2" />
-      <ComboBox id="reclamations" layoutX="25.0" layoutY="100.0" prefWidth="150.0" promptText="Reclamations" />
-      <ComboBox id="satisfaction" layoutX="25.0" layoutY="278.0" prefWidth="150.0" promptText="Satisfaction" />
+      <ComboBox id="reclamations" fx:id="Reclamations" layoutX="25.0" layoutY="100.0" prefWidth="150.0" promptText="Reclamations" />
+      <ComboBox id="satisfaction" fx:id="Satisfaction" layoutX="25.0" layoutY="278.0" prefWidth="150.0" promptText="Satisfaction" />
       <Separator layoutY="195.0" prefHeight="10.0" prefWidth="200.0" />
       <Separator layoutX="197.0" orientation="VERTICAL" prefHeight="417.0" prefWidth="0.0" />
       <ImageView fitHeight="56.0" fitWidth="61.0" layoutX="583.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true" />
-      <TextField id="nom" layoutX="223.0" layoutY="63.0" prefHeight="17.0" prefWidth="100.0" text="nom" />
-      <TextArea id="description" layoutX="332.0" layoutY="94.0" prefHeight="37.0" prefWidth="256.0" text="Description" />
-      <TextField id="sujet" layoutX="332.0" layoutY="63.0" prefHeight="25.0" prefWidth="225.0" text="Sujet" />
-      <TextField id="etat" layoutX="600.0" layoutY="94.0" prefHeight="37.0" prefWidth="89.0" text="etat" />
+      <TextField id="nom" fx:id="nom" layoutX="223.0" layoutY="63.0" prefHeight="17.0" prefWidth="100.0" text="nom" />
+      <TextArea id="description" fx:id="Description" layoutX="332.0" layoutY="94.0" prefHeight="37.0" prefWidth="256.0" text="Description" />
+      <TextField id="sujet" fx:id="Sujet" layoutX="332.0" layoutY="63.0" prefHeight="25.0" prefWidth="225.0" text="Sujet" />
+      <TextField id="etat" fx:id="etat" layoutX="600.0" layoutY="94.0" prefHeight="37.0" prefWidth="89.0" text="etat" />
       <Separator layoutX="200.0" layoutY="161.0" prefHeight="0.0" prefWidth="493.0" />
       <Label alignment="CENTER" layoutX="614.0" layoutY="67.0" prefHeight="17.0" prefWidth="61.0" text="Etat" />
    </children>
