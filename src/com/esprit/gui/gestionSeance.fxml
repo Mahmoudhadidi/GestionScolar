@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="com.esprit.gui.GestionSeanceController">
+   <children>
+      <TableView fx:id="tableseance" layoutX="-1.0" prefHeight="400.0" prefWidth="600.0">
+        <columns>
+          <TableColumn fx:id="classe" prefWidth="75.0" text="Classe" />
+          <TableColumn fx:id="matiere" prefWidth="75.0" text="Matiere" />
+            <TableColumn fx:id="salle" prefWidth="75.0" text="salle" />
+            <TableColumn fx:id="heure" prefWidth="75.0" text="Heure" />
+            <TableColumn fx:id="date" prefWidth="75.0" text="date" />
+            <TableColumn fx:id="ensignant" prefWidth="75.0" text="Enseignant" />
+            <TableColumn fx:id="matiere1" prefWidth="75.0" text="Actions" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

@@ -5,6 +5,8 @@
  */
 package com.esprit.Entite;
 
+import javafx.scene.control.Button;
+
 /**
  *
  * @author hadidi
@@ -14,6 +16,11 @@ public class Salle {
     int numSalle;
     String nomSalle;
     String bloc;
+      private final Button btn = new Button("Supprimer");
+
+    public Button getBtn() {
+        return btn;
+    }
 
     public Salle(int numSalle, String nomSalle, String bloc) {
         this.numSalle = numSalle;

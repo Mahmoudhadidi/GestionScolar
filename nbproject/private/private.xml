@@ -1,18 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-<<<<<<< HEAD
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/Service/ServiceClasse.java</file>
-            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/Utils/DataBase.java</file>
-            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/Entite/User.java</file>
-            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/IService/IService.java</file>
-            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/gui/classe.fxml</file>
-            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/Service/ServiceSeance.java</file>
+            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/gui/GestionClasseController.java</file>
+            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/gui/gestionMatiere.fxml</file>
+            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/gui/GestionSeanceController.java</file>
+            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/gui/GestionAffectaionController.java</file>
+            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/gui/LoginController.java</file>
+            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/gui/login.fxml</file>
+            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/gui/GestionSalleController.java</file>
+            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/Entite/Classe.java</file>
             <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/test/Main.java</file>
+            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/gui/GestionMatiereController.java</file>
+            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/gui/gestionclasse.css</file>
+            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/gui/gestionsalle.css</file>
+            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/gui/AccueilController.java</file>
+            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/gui/gestionSeance.fxml</file>
+            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/gui/gestionClasse.fxml</file>
+            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/gui/gestionSalle.fxml</file>
+            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/Service/ServiceSeance.java</file>
         </group>
     </open-files>
-=======
->>>>>>> 07bf6c1fb3ee9b8f7b02c13fefa623422aeee525
 </project-private>

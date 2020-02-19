@@ -45,7 +45,8 @@ public class LoginController implements Initializable {
 
     @FXML
     private TextField logine;
-Parent root;
+    
+    Parent root;
     
     @FXML       
     void connexion(ActionEvent event) throws IOException, SQLException {
@@ -55,12 +56,12 @@ Parent root;
         if(su.connexion(userlogine)==true){
 
         root = (AnchorPane)FXMLLoader.load(getClass()
-				.getResource("/com/esprit/gui/classe.fxml"));
+				.getResource("/com/esprit/gui/accueil.fxml"));
 
         
         	Main.getStage().getScene().setRoot(root);
     	    	Main.getStage().setTitle("Manipulation Interface");
-                Main.getStage().getScene().getStylesheets().add(getClass().getResource("/com/esprit/gui/Accueil.fxml").toExternalForm());
+                Main.getStage().getScene().getStylesheets().add(getClass().getResource("/com/esprit/gui/accueil.fxml").toExternalForm());
            	
         }else{
                         logine.clear();

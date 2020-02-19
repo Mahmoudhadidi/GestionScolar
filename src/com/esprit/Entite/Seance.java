@@ -5,6 +5,8 @@
  */
 package com.esprit.Entite;
 
+import javafx.scene.control.Button;
+
 /**
  *
  * @author hadidi
@@ -18,6 +20,11 @@ public class Seance {
     String duree;
     String heure;
     String date;
+      private final Button btn = new Button("Supprimer");
+
+    public Button getBtn() {
+        return btn;
+    }
 
     public Seance(int id_Seance, int id_Ens, int id_Classe, int id_Matiere, int id_Salle, String duree, String heure, String date) {
         this.id_Seance = id_Seance;
