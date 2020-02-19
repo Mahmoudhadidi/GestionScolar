@@ -46,7 +46,10 @@ public class GestionAffectaionController implements Initializable {
     private Button gestionSalle;
 
     @FXML
-    void gestionSeances(ActionEvent event) {
+    void gestionSeances(ActionEvent event) throws IOException {
+        paneAffectaion.getChildren().clear();
+     Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("/com/esprit/gui/gestionSeance.fxml"));
+     paneAffectaion.getChildren().add(newLoadedPane);
 
     }
 
@@ -56,8 +59,10 @@ public class GestionAffectaionController implements Initializable {
     }
 
     @FXML
-    void gestionClasse(ActionEvent event) {
-
+    void gestionClasse(ActionEvent event) throws IOException {
+ paneAffectaion.getChildren().clear();
+     Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("/com/esprit/gui/gestionClasse.fxml"));
+     paneAffectaion.getChildren().add(newLoadedPane);
     }
 
     @FXML
