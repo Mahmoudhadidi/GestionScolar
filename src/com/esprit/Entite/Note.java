@@ -17,10 +17,10 @@ public class Note {
     private float moyenne;
     private float net;
     private int id_user;
-    private int id_matiere;
+    private String id_matiere;
     
     
-    public Note(int id_note, float note_cc, float note_ds, float note_examun, float moyenne, float net, int id_user, int id_matiere) {
+    public Note(int id_note, float note_cc, float note_ds, float note_examun, float moyenne, float net, int id_user, String id_matiere) {
         this.id_note=id_note;
         this.note_cc=note_cc;
         this.note_ds=note_ds;
@@ -31,7 +31,7 @@ public class Note {
         this.id_matiere=id_matiere;
     }
 
-    public Note(float note_cc, float note_ds, float note_examun, float moyenne, float net, int id_user, int id_matiere) {
+    public Note(float note_cc, float note_ds, float note_examun, float moyenne, float net, int id_user, String id_matiere) {
          this.note_cc=note_cc;
         this.note_ds=note_ds;
         this.note_examun=note_examun;
@@ -99,11 +99,11 @@ public class Note {
         this.id_user = id_user;
     }
 
-    public int getId_matiere() {
+    public String getId_matiere() {
         return id_matiere;
     }
 
-    public void setId_matiere(int id_matiere) {
+    public void setId_matiere(String id_matiere) {
         this.id_matiere = id_matiere;
     }
 

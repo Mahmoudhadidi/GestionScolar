@@ -24,10 +24,14 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			setStage(primaryStage);
-			primaryStage.setTitle("Ajouter classe");
+			primaryStage.setTitle("");
 			
  			Parent root = (AnchorPane)FXMLLoader.load(getClass()
- 					.getResource("/view/interface_note_prof.fxml"));
+
+ 					
+                                          .getResource("/com/esprit/gui/Interface_Note_Prof.fxml"));
+// 					.getResource("/com/esprit/gui/logi.fxml"));
+
 			Scene scene = new Scene(root);
 			//scene.getStylesheets().add(getClass().getResource("/view/MainStyle.css").toExternalForm());
 			primaryStage.setScene(scene);

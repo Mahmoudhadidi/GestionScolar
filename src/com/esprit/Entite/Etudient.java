@@ -9,65 +9,41 @@ package com.esprit.Entite;
  *
  * @author hadidi
  */
-public class Etudient {
-    String nom;
-    String prenom;
-    String date_naissance;
-    int cin;
-    String adresse;
+public class Etudient extends User{
 
-    public Etudient(String nom, String prenom, String date_naissance, int cin, String adresse) {
-        this.nom = nom;
-        this.prenom = prenom;
-        this.date_naissance = date_naissance;
-        this.cin = cin;
-        this.adresse = adresse;
+    public Etudient(String logine, String mdp) {
+        super(logine, mdp);
     }
 
-    public String getNom() {
-        return nom;
+    public Etudient() {
     }
 
-    public String getPrenom() {
-        return prenom;
+    public Etudient(int id) {
+        super(id);
     }
 
-    public String getDate_naissance() {
-        return date_naissance;
+    public Etudient(String logine, String mdp, String role, int id_classe, String nom, String prenom, String mail, String date_N, String adresse, int cin, String niveau) {
+        super(logine, mdp, role, id_classe, nom, prenom, mail, date_N, adresse, cin, niveau);
     }
 
-    public int getCin() {
-        return cin;
+    public Etudient(int id, String logine, String mdp, String role, int id_classe, String nom, String prenom, String mail, String date_N, String adresse, int cin, String niveau) {
+        super(id, logine, mdp, role, id_classe, nom, prenom, mail, date_N, adresse, cin, niveau);
     }
 
-    public String getAdresse() {
-        return adresse;
+    public Etudient(int id, String logine, String mdp, String role, String nom, String prenom, String mail, String date_N, String adresse, int cin, String niveau) {
+        super(id, logine, mdp, role, nom, prenom, mail, date_N, adresse, cin, niveau);
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public Etudient(String logine, String mdp, String role, String nom, String prenom, String mail, String date_N, String adresse, int cin, String niveau) {
+        super(logine, mdp, role, nom, prenom, mail, date_N, adresse, cin, niveau);
     }
 
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
+    public Etudient(String nom, String prenom, String date_N, String adresse, int cin) {
+        super(nom, prenom, date_N, adresse, cin);
     }
 
-    public void setDate_naissance(String date_naissance) {
-        this.date_naissance = date_naissance;
+    public Etudient(String nom, String prenom, String date, int cin, String adresse) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    public void setCin(int cin) {
-        this.cin = cin;
-    }
-
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
-    }
-
-    @Override
-    public String toString() {
-        return "Etudient{" + "nom=" + nom + ", prenom=" + prenom + ", date_naissance=" + date_naissance + ", cin=" + cin + ", adresse=" + adresse + "}\n";
-    }
-    
-    
+   
 }
