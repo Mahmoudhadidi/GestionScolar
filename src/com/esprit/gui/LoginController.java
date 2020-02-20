@@ -11,6 +11,7 @@ import com.esprit.test.Main;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -20,6 +21,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 /**
@@ -76,7 +78,8 @@ public class LoginController implements Initializable {
     void annuler(ActionEvent event) {
                         logine.clear();
     			password.clear();
-    }
+                        
+            }
 
     @Override
     

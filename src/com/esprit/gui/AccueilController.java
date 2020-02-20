@@ -60,9 +60,7 @@ public class AccueilController implements Initializable {
 
     @FXML
     void gestionUser(ActionEvent event) throws IOException {
-     pane.getChildren().clear();
-     Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("/com/esprit/gui/classe.fxml"));
-     pane.getChildren().add(newLoadedPane);
+     
         		    }
 
     @FXML

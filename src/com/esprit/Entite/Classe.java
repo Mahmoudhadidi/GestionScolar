@@ -17,12 +17,20 @@ public class Classe {
     String num;
     int nbrEtudient;
     String specialite;
-    private final Button btn = new Button("Supprimer");
+    private final Button btnSupprimer = new Button("Supprimer");
+    private final Button btnModifier = new Button("Modifer");
+   
 
-    public Button getBtn() {
-        return btn;
+    public Button getBtnSupprimer() {
+        
+        return btnSupprimer;
     }
 
+    public Button getBtnModifier() {
+        return btnModifier;
+    }
+
+    
     public Classe(int id) {
         this.id = id;
     }

@@ -68,7 +68,7 @@ Parent root;
     public void fannuler(ActionEvent event) throws IOException {
         
     		root = (AnchorPane)FXMLLoader.load(getClass()
-  				.getResource("/com/esprit/gui/matiere.fxml"));
+  				.getResource("/com/esprit/gui/accueil.fxml"));
 
         	    	Main.getStage().getScene().setRoot(root);
         	    	Main.getStage().setTitle("Manipulation Interface");
@@ -85,15 +85,35 @@ Parent root;
         ste.executeUpdate(requeteInsert);
 //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    
 
     @FXML
     public void fajouter(ActionEvent event) {
+        if( nomClasse.getText().equals("") ||Integer.valueOf(nbrEtudiant.getText())<0|| Integer.valueOf(nbrEtudiant.getText()).equals("") || specialite.getText().equals("")){
+          Alert alert1 = new Alert(AlertType.WARNING);
+        		alert1.setContentText("vérifier votre données ");
+        		alert1.show();  
+        }
        ServiceClasse serC= new ServiceClasse();
        Classe c1=new Classe(nomClasse.getText(),Integer.valueOf(nbrEtudiant.getText()),specialite.getText());
          
        try{
            
         serC.ajouter(c1);
+        nomClasse.clear();
+        nbrEtudiant.clear();
+        specialite.clear();
+        Alert alert = new Alert(AlertType.INFORMATION);
+    			alert.setContentText("Classe bien ajouter");
+    			alert.show();
+                        root = (AnchorPane)FXMLLoader.load(getClass()
+				.getResource("/com/esprit/gui/accueil.fxml"));
+
+        
+        	Main.getStage().getScene().setRoot(root);
+    	    	Main.getStage().setTitle("Manipulation Interface");
+                Main.getStage().getScene().getStylesheets().add(getClass().getResource("/com/esprit/gui/accueil.fxml").toExternalForm());
         }
         
         catch(Exception e){
