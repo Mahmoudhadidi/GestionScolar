@@ -3,16 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/gui/AjouterSalleController.java</file>
             <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/Service/ServiceClasse.java</file>
             <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/gui/GestionClasseController.java</file>
-            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/gui/LoginController.java</file>
-            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/gui/login.fxml</file>
-            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/Entite/Salle.java</file>
-            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/Entite/Matiere.java</file>
-            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/Entite/Classe.java</file>
+            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/gui/Affecte_etudiant_classeController.java</file>
+            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/Service/MailSeance.java</file>
+            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/gui/affecte_etudiant_classe.fxml</file>
+            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/gui/AjouterSeanceController.java</file>
             <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/test/Main.java</file>
             <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/Service/ServiceSeance.java</file>
-            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/Entite/Seance.java</file>
+            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/Service/Mail.java</file>
         </group>
     </open-files>
 </project-private>

@@ -1,11 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.gui.GestionMatiereController">
-    
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="com.esprit.gui.GestionMatiereController">
+   <children>
+      <TableView fx:id="tablematiere" layoutX="-2.0" layoutY="28.0" prefHeight="235.0" prefWidth="454.0">
+         <columns>
+            <TableColumn fx:id="nomMatier" prefWidth="76.0" text="Nom matiere" />
+            <TableColumn fx:id="coefficient" prefWidth="94.0" text="Coefficient" />
+            <TableColumn fx:id="credit" prefWidth="108.0" text="crédit" />
+            <TableColumn fx:id="idC" minWidth="0.0" prefWidth="0.0" text="id" />
+         </columns>
+      </TableView>
+      <Button fx:id="ajouterMatiere" layoutX="351.0" layoutY="1.0" mnemonicParsing="false" onAction="#ajouterMatiere" text="Ajouter Matiere" />
+      <Text layoutX="4.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestion des Matiere">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Text>
+      <TextField fx:id="cherche" layoutX="197.0" layoutY="1.0" onKeyPressed="#chercherMatiere" prefHeight="25.0" prefWidth="80.0" />
+   </children>
 </AnchorPane>

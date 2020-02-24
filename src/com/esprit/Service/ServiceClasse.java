@@ -11,6 +11,7 @@ import com.esprit.Entite.Salle;
 import com.esprit.IService.IService;
 import com.esprit.Utils.DataBase;
 import com.esprit.test.Main;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import java.net.URL;
@@ -21,6 +22,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -42,7 +45,7 @@ import javafx.scene.layout.AnchorPane;
 public class ServiceClasse implements IService<Classe>,Initializable{
     
       private Connection con;
-    private Statement ste;
+    private Statement ste,steer;
 
     public ServiceClasse() {
         con = DataBase.getInstance().getConnection();
@@ -63,7 +66,14 @@ public class ServiceClasse implements IService<Classe>,Initializable{
 
     @FXML
     private TextField nomClasse;
+     @FXML
+    private TextField tcherche;
+
+    @FXML
+    private Button chercher;
+
 Parent root;
+
     @FXML
     public void fannuler(ActionEvent event) throws IOException {
         
@@ -71,8 +81,8 @@ Parent root;
   				.getResource("/com/esprit/gui/accueil.fxml"));
 
         	    	Main.getStage().getScene().setRoot(root);
-        	    	Main.getStage().setTitle("Manipulation Interface");
- 		Main.getStage().getScene().getStylesheets().add(getClass().getResource("/view/MainStyle.css").toExternalForm());
+        	    	Main.getStage().setTitle("Accueil");
+ 		Main.getStage().getScene().getStylesheets().add(getClass().getResource("/view/accueil.css").toExternalForm());
            	
 
     }
@@ -112,7 +122,7 @@ Parent root;
 
         
         	Main.getStage().getScene().setRoot(root);
-    	    	Main.getStage().setTitle("Manipulation Interface");
+    	    	Main.getStage().setTitle("Accueil");
                 Main.getStage().getScene().getStylesheets().add(getClass().getResource("/com/esprit/gui/accueil.fxml").toExternalForm());
         }
         
@@ -184,4 +194,26 @@ Parent root;
 		
 		
 	}
-}
+
+
+
+
+    public ObservableList<Classe>  SearchEventsF(String n) throws SQLException  {         
+      
+        ObservableList<Classe>  arr = FXCollections.observableArrayList();     
+        steer = con.createStatement();
+        ResultSet res ;
+        //System.out.println(n);
+        res = steer.executeQuery(" select * from classe where  (id_classe like'%"+n+"%')||(num_classe like'%"+n+"%')||(nbre_etudient like'%"+n+"%')||(specialite like'%"+n+"%')");
+        // select* from events where (Nom like '%"+n+"%') or (etat like '%"+n+"%') or (date like '%"+n+"%') or (type like '%"+n+"%') or (id like '%"+n+"%') ");
+//             res = ste.executeQuery(" select* from events where (Nom like '%"+n+"%') or (etat like '%"+n+"%') or (date like '%"+n+"%') or (type like '%"+n+"%') or (id like '%"+n+"%') ");
+            while (res.next())
+            {
+               Classe    a=new Classe(res.getInt(1),res.getString(2),res.getInt(3),res.getString(4));
+               
+               arr.add(a);
+             //  System.out.println(arr);
+            }
+        
+        return arr;
+    }}

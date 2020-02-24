@@ -15,14 +15,14 @@ import javax.activation.*;
  *
  * @author USER-PC
  */
-public class Mail {
+public class MailSeance {
   
-    public static void sendMail(String to,String Subject,String message)
+    public  void sendMail(String to,String Subject,String message)
     {
         try{
             String host ="smtp.gmail.com" ;
-            String user = "mariemromdhani97@gmail.com";
-            String pass = "13012930";
+            String user = "mahmoud.hadidi1@esprit.tn";
+            String pass = "191SMT2006";
             String too = to;
             String fro = user;
             String subject = Subject;
@@ -59,8 +59,8 @@ public class Mail {
     
     }
 
-    public Mail() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public MailSeance() {
     }
-    
+
+  
 }

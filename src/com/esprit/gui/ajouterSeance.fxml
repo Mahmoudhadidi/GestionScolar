@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="com.esprit.gui.AjouterSeanceController">
+    <stylesheets>
+        <URL value="@ajouterseance.css" />
+    </stylesheets>
+   <children>
+      <Text layoutX="148.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Classe" />
+      <Text layoutX="148.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Matiere" />
+      <Text layoutX="148.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Salle" />
+      <Text layoutX="148.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enseignant" />
+      <Text layoutX="148.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Durée" />
+      <Text layoutX="148.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Heure" />
+      <Text layoutX="148.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" />
+      <TextField fx:id="date" layoutX="256.0" layoutY="275.0" />
+      <TextField fx:id="heure" layoutX="256.0" layoutY="234.0" />
+      <TextField fx:id="duree" layoutX="256.0" layoutY="196.0" />
+      <Button fx:id="ajouter" layoutX="274.0" layoutY="331.0" mnemonicParsing="false" onAction="#ajouter" text="Ajouter" />
+      <Button fx:id="annuler" layoutX="168.0" layoutY="331.0" mnemonicParsing="false" onAction="#anuler" text="Annuler" />
+      <ComboBox fx:id="enseignant" layoutX="256.0" layoutY="155.0" onAction="#enseignant" prefWidth="150.0" />
+      <ComboBox fx:id="salle" layoutX="256.0" layoutY="117.0" onAction="#salle" prefWidth="150.0" />
+      <ComboBox fx:id="matiere" layoutX="256.0" layoutY="74.0" prefWidth="150.0" />
+      <ComboBox fx:id="classe" layoutX="256.0" layoutY="31.0" onAction="#classe" prefWidth="150.0" />
+   </children>
+</AnchorPane>

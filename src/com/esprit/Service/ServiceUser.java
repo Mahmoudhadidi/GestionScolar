@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import static sun.security.jgss.GSSUtil.login;
 
 /**
@@ -33,5 +35,20 @@ public class ServiceUser {
           }
    
     return false;
+    }
+    public List<User> readAll() throws SQLException {
+List<User> salle=new ArrayList<>();
+    ste=con.createStatement();
+    ResultSet rs=ste.executeQuery("select * from user where role='enseignant'");
+     while (rs.next()) {                
+               int id=rs.getInt(1);
+              
+               String nom=rs.getString("nom");
+               String prenom=rs.getString("prenom");
+              User p=new User(id,nom,prenom);
+     salle.add(p);
+     }
+    return salle;        
+//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

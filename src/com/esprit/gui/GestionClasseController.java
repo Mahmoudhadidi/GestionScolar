@@ -4,9 +4,11 @@
  * and open the template in the editor.
  */
 package com.esprit.gui;
+
 import com.esprit.Entite.Classe;
 import com.esprit.Service.ServiceClasse;
 import com.esprit.test.Main;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
@@ -48,8 +50,7 @@ public class GestionClasseController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    
-    static int fakhrimalem=0;
+    static int fakhrimalem = 0;
     @FXML
     private TableView<Classe> tableClasse;
 
@@ -61,135 +62,150 @@ public class GestionClasseController implements Initializable {
 
     @FXML
     private TableColumn<?, ?> spécialiste;
- Parent root;
+    Parent root;
+    @FXML
+    private Button ajouterClasse;
+
+    public void navModif() throws IOException {
+        root = (AnchorPane) FXMLLoader.load(getClass()
+                .getResource("/com/esprit/gui/modifierClasse.fxml"));
+
+        Main.getStage().getScene().setRoot(root);
+        Main.getStage().setTitle("Modifier Classe");
+        Main.getStage().getScene().getStylesheets().add(getClass().getResource("/com/esprit/gui/modifierClasse.fxml").toExternalForm());
+    }
 
     @FXML
     void ajouterClasse(ActionEvent event) throws IOException {
 
-        root = (AnchorPane)FXMLLoader.load(getClass()
-				.getResource("/com/esprit/gui/classe.fxml"));
+        root = (AnchorPane) FXMLLoader.load(getClass()
+                .getResource("/com/esprit/gui/classe.fxml"));
 
-        
-        	Main.getStage().getScene().setRoot(root);
-    	    	Main.getStage().setTitle("Manipulation Interface");
-                Main.getStage().getScene().getStylesheets().add(getClass().getResource("/com/esprit/gui/classe.fxml").toExternalForm());
-               }
-    
+        Main.getStage().getScene().setRoot(root);
+        Main.getStage().setTitle("Ajouter classe");
+        Main.getStage().getScene().getStylesheets().add(getClass().getResource("/com/esprit/gui/classe.fxml").toExternalForm());
+    }
+
     @FXML
     private TableColumn<?, ?> idC;
     public ObservableList<Classe> list;
-    
-    
-    
-  
-    ServiceClasse SeC=new ServiceClasse();
-public List<Classe> listTable(){
-               
-               List<Classe> listClasse = null;
+
+    ServiceClasse SeC = new ServiceClasse();
+
+    public List<Classe> listTable() {
+
+        List<Classe> listClasse = null;
         try {
             listClasse = SeC.readAll();
         } catch (SQLException ex) {
             Logger.getLogger(GestionClasseController.class.getName()).log(Level.SEVERE, null, ex);
         }
         return listClasse;
-        }
-       Parent root1; 
-    
+    }
+
+    @FXML
+    private TextField tcherche;
+
+    void refreshtable(String n) throws SQLException {
+        idC.setVisible(false);
+        tableClasse.setEditable(false);
+        
+       
+
+        list = SeC.SearchEventsF(n);
+        
+        classe.setCellValueFactory(new PropertyValueFactory<>("num"));
+        capacite.setCellValueFactory(new PropertyValueFactory<>("nbrEtudient"));
+        spécialiste.setCellValueFactory(new PropertyValueFactory<>("specialite"));
+        idC.setCellValueFactory(new PropertyValueFactory<>("id"));
+
+        tableClasse.setItems(list);
+
+    }
+
+    @FXML
+    private void ch(javafx.scene.input.KeyEvent event) throws SQLException {
+
+        String s = tcherche.getText();
+        refreshtable(s);
+    }
+
+    Parent root1;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
+
 //        Classe c=new Classe();
         idC.setVisible(false);
         tableClasse.setEditable(false);
- 
-        
-                
-           
-	list=FXCollections.observableArrayList(listTable());
-       
+
+        list = FXCollections.observableArrayList(listTable());
+
         classe.setCellValueFactory(new PropertyValueFactory<>("num"));
- 	capacite.setCellValueFactory(new PropertyValueFactory<>("nbrEtudient"));
- 	spécialiste.setCellValueFactory(new PropertyValueFactory<>("specialite"));
+        capacite.setCellValueFactory(new PropertyValueFactory<>("nbrEtudient"));
+        spécialiste.setCellValueFactory(new PropertyValueFactory<>("specialite"));
         idC.setCellValueFactory(new PropertyValueFactory<>("id"));
-        
-        
-       
-	tableClasse.setItems(list);
-        
-        tableClasse.setRowFactory( tv -> {
-    TableRow<Classe> row = new TableRow<>();
-    row.setOnMouseClicked(event -> {
-        if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
-            Classe rowData = row.getItem();
-            Alert alert= new Alert(AlertType.CONFIRMATION);
-            
-               alert.setTitle("Action ");
-              alert.setHeaderText("Modifier ou supprimer le classe "+rowData.getNum());
-              
-               ButtonType supprimer = new ButtonType("Supprimer");
-               //alert.show();
-        ButtonType modifier = new ButtonType("Modifier");
-        
 
-           alert.getButtonTypes().clear();
-           alert.getButtonTypes().addAll(supprimer, modifier);
+        tableClasse.setItems(list);
 
+        tableClasse.setRowFactory(tv -> {
+            TableRow<Classe> row = new TableRow<>();
+            row.setOnMouseClicked((javafx.scene.input.MouseEvent event) -> {
+                if (event.getClickCount() == 2 && (!row.isEmpty())) {
+                    Classe rowData = row.getItem();
+                    Alert alert = new Alert(AlertType.CONFIRMATION);
 
-          // option != null.
+                    alert.setTitle("Action ");
+                    alert.setHeaderText("Modifier ou supprimer le classe " + rowData.getNum());
 
-      Optional<ButtonType> option = alert.showAndWait();
+                    ButtonType supprimer = new ButtonType("Supprimer");
+                    //alert.show();
+                    ButtonType modifier = new ButtonType("Modifier");
 
+                    alert.getButtonTypes().clear();
+                    alert.getButtonTypes().addAll(supprimer, modifier);
 
-    if (option.get() == supprimer) {
- Classe c=new Classe(rowData.getId());
+                    // option != null.
+                    Optional<ButtonType> option = alert.showAndWait();
 
-                try {
-                    SeC.delete(c);
-                    tableClasse.getItems().clear();
-                    	list=FXCollections.observableArrayList(listTable());
-       
-        classe.setCellValueFactory(new PropertyValueFactory<>("num"));
- 	capacite.setCellValueFactory(new PropertyValueFactory<>("nbrEtudient"));
- 	spécialiste.setCellValueFactory(new PropertyValueFactory<>("specialite"));
-        idC.setCellValueFactory(new PropertyValueFactory<>("id"));
-        
-        
-       
-	tableClasse.setItems(list);
+                    if (option.get() == supprimer) {
+                        Classe c = new Classe(rowData.getId());
 
-                    //tableClasse.
-                    
-                } catch (SQLException ex) {
-                    Logger.getLogger(GestionClasseController.class.getName()).log(Level.SEVERE, null, ex);
+                        try {
+                            SeC.delete(c);
+
+                            tableClasse.getItems().clear();
+                            list = FXCollections.observableArrayList(listTable());
+
+                            classe.setCellValueFactory(new PropertyValueFactory<>("num"));
+                            capacite.setCellValueFactory(new PropertyValueFactory<>("nbrEtudient"));
+                            spécialiste.setCellValueFactory(new PropertyValueFactory<>("specialite"));
+                            idC.setCellValueFactory(new PropertyValueFactory<>("id"));
+
+                            tableClasse.setItems(list);
+                            Alert aler = new Alert(AlertType.INFORMATION);
+                            aler.setContentText("Classe bien supprimer");
+                            aler.show();
+
+                            //tableClasse.
+                        } catch (SQLException ex) {
+                            Logger.getLogger(GestionClasseController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    } else if (option.get() == modifier) {
+                        fakhrimalem = rowData.getId();
+                        try {
+                            navModif();
+                            //Classe c=new Classe(,rowData.getNum(),rowData.getNbrEtudient(),rowData.getSpecialite());  
+                        } catch (IOException ex) {
+                            Logger.getLogger(GestionClasseController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
                 }
-        } else if (option.get() == modifier) {
-             fakhrimalem=rowData.getId();
-                try {
-                    root1 = (AnchorPane)FXMLLoader.load(getClass()
-                            .getResource("/com/esprit/gui/modifierClasse.fxml"));
-                } catch (IOException ex) {
-                    Logger.getLogger(GestionClasseController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-        
-        	Main.getStage().getScene().setRoot(root);
-    	    	Main.getStage().setTitle("Manipulation Interface");
-                Main.getStage().getScene().getStylesheets().add(getClass().getResource("/com/esprit/gui/modifierClasse.fxml").toExternalForm());
-          //Classe c=new Classe(,rowData.getNum(),rowData.getNbrEtudient(),rowData.getSpecialite());  
- }  
-        }
-    });
-    return row ;
-});
-        
-        
-        
-        
-        
+            });
+            return row;
+        });
 
     }
-        
-    }    
-    
 
+}
