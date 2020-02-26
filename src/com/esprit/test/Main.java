@@ -27,9 +27,13 @@ public class Main extends Application {
 			primaryStage.setTitle("");
 			
  			Parent root = (AnchorPane)FXMLLoader.load(getClass()
-
- 					
-                                          .getResource("/com/esprit/gui/Interface_Note_Prof.fxml"));
+                                
+                                
+                                //      .getResource("/com/esprit/gui/Statistics.fxml"));
+                                         .getResource("/com/esprit/gui/Consultation_note.fxml"));
+ 				
+                                        //    .getResource("/com/esprit/gui/Interface_Note_Prof.fxml"));
+                                  //        .getResource("/com/esprit/gui/Interface_Note_Administrateur.fxml"));
 // 					.getResource("/com/esprit/gui/logi.fxml"));
 
 			Scene scene = new Scene(root);

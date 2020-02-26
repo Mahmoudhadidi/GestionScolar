@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="541.0" prefWidth="763.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.gui.Interface_Note_AdministrateurController">
+    <stylesheets>
+        <URL value="@interface_note_administrateur.css" />
+    </stylesheets>
+   <children>
+      <TableView fx:id="tableview" layoutX="24.0" layoutY="102.0" prefHeight="191.0" prefWidth="699.0">
+        <columns>
+          <TableColumn fx:id="colcc" prefWidth="75.0" text="note cc" />
+          <TableColumn fx:id="colds" prefWidth="75.0" text="note ds" />
+            <TableColumn fx:id="colexamen" prefWidth="125.0" text="note examen" />
+            <TableColumn fx:id="colmoy" prefWidth="139.0" text="moyenne" />
+            <TableColumn fx:id="colnet" prefWidth="79.0" text="net" />
+            <TableColumn fx:id="colcin" prefWidth="96.0" text="cin_étudiant" />
+            <TableColumn fx:id="colmat" prefWidth="108.0" text="nom matiére" />
+        </columns>
+      </TableView>
+      <Label layoutX="178.0" layoutY="8.0" prefHeight="85.0" prefWidth="408.0" text="Administration">
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#ab0e0e" />
+                  <Stop color="#321818" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <font>
+            <Font size="58.0" />
+         </font>
+      </Label>
+      <Button fx:id="btncalculer" layoutX="265.0" layoutY="447.0" mnemonicParsing="false" onAction="#calculer" prefHeight="25.0" prefWidth="218.0" text="Calculer" />
+      <TextField fx:id="taux1" layoutX="24.0" layoutY="361.0" />
+      <TextField fx:id="taux2" layoutX="190.0" layoutY="361.0" />
+      <TextField fx:id="taux3" layoutX="352.0" layoutY="361.0" />
+      <TextField fx:id="nom_mat" layoutX="533.0" layoutY="361.0" />
+      <Label layoutX="63.0" layoutY="339.0" text="Taux CC" />
+      <Label layoutX="235.0" layoutY="339.0" text="Taux DS" />
+      <Label layoutX="382.0" layoutY="339.0" text="taux Examen" />
+      <Label layoutX="586.0" layoutY="339.0" text="Nom Matière" />
+   </children>
+</AnchorPane>

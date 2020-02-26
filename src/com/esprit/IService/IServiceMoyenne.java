@@ -15,7 +15,7 @@ import java.util.List;
  * @author Amenallah Lounis
  */
 public interface IServiceMoyenne {
-    public void CalculeMoyenneMatiere() throws SQLException;
+    public void CalculeMoyenneMatiere(Note note) throws SQLException;
     public void CalculeMoyenneMatiere1() throws SQLException;
     public List<TableNote> afficherNoteEtudiant(int x) ;
     
