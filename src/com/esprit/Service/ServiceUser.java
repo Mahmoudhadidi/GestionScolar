@@ -25,7 +25,7 @@ import static sun.security.jgss.GSSUtil.login;
 public class ServiceUser implements IService<User>{
     private Connection con;
     private Statement ste,steer;
-static int id_user_conecte;
+public static int id_user_conecte;
     public ServiceUser() {
         con = DataBase.getInstance().getConnection();
     }
@@ -45,7 +45,7 @@ static int id_user_conecte;
         ste=con.createStatement();
     ResultSet resultat=ste.executeQuery("select * from user where login='"+u.getLogine()+"' and mdp='"+u.getMdp()+"'");
           while(resultat.next()) 
-          { 
+          {  id_user_conecte=resultat.getInt(1);
               type_conecte=resultat.getString("role");
            
           }

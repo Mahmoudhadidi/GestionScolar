@@ -4,7 +4,10 @@
  * and open the template in the editor.
  */
 package com.esprit.Service;
+import com.esprit.Entite.Seance;
+import com.esprit.Entite.User;
 import com.esprit.Entite.absence;
+import com.esprit.Entite.absence_employe;
 import com.esprit.IService.IService;
 import java.sql.SQLException;
 import java.util.List;
@@ -45,34 +48,35 @@ public class ServiceAbsence implements IService<absence>{
   
             
 
-    @Override
-    public boolean delete(absence t) throws SQLException {
+    
+    public boolean delete(int id) throws SQLException {
         boolean b = false;
-        try{
-        ste = con.createStatement();
         
-        String requeteDelete = "delete from `esprit`.`absence` where id_absence='" +t.getId_absence()+"'";
-        System.out.println(requeteDelete);
-        ste.executeUpdate(requeteDelete);
-        System.out.println("User deleted ");
-       b = true;}
-        catch(SQLException e) {
-             System.err.println("problem in deleting ...");
-        }
+        try
+        {
+            PreparedStatement pst ;
+            pst=con.prepareStatement("delete from `esprit`.`absence` where id_etudiant = ? ");
+            
+            pst.setInt(1, id);
+            pst.executeUpdate();
+            
+        } catch (SQLException e){
+            System.out.println(e);}
         return b;
     }
+    
 
     @Override
     public boolean update(absence t) throws SQLException {
         try{
         ste = con.createStatement();
-         String requeteUpdate ="update `esprit`.`absence` set type_absence='"+t.getType_absence()+"' where id_absence="+t.getId_absence()+"";
+         String requeteUpdate ="update `esprit`.`absence` set type-absence='"+t.getType_absence()+"' where id_absence="+t.getId_absence()+"";
         ste.executeUpdate(requeteUpdate);
         System.out.println("User upated ");}
          catch(SQLException e) {
              System.err.println("problem in deleting ...");
         }
-        return true;
+        return false;
     }
 
     /**
@@ -90,7 +94,8 @@ public class ServiceAbsence implements IService<absence>{
                int id_seance=rs.getInt(2);
                int id_etudiant=rs.getInt(3);
                String type_absence=rs.getString(4);
-        absence a = new absence(id_absence, id_seance, id_etudiant, type_absence);
+                 
+        absence a = new absence(id_absence, id_etudiant, id_seance, type_absence);
      arr.add(a);
      }
     return arr;
@@ -108,12 +113,12 @@ public class ServiceAbsence implements IService<absence>{
       
       if(rs.first()) {
       
-               String type_absence = rs.getString(3);
+               String type_absence = rs.getString(4);
        
                int id_absence=rs.getInt(1);
-                int id_seance=rs.getInt(1);
-  
-        absence= new absence(id_absence, id_seance,id_etudiant, type_absence);
+                int id_seance=rs.getInt(2);
+                 
+        absence= new absence(id_absence, id_etudiant, id_seance, type_absence);
                  
     } }
     catch (SQLException e) {
@@ -134,14 +139,106 @@ public class ServiceAbsence implements IService<absence>{
                int id_etudiant=rs.getInt(3);
                String type_absence=rs.getString(4);
                
-               absence p=new absence(id_absence, id_seance, id_etudiant, type_absence);
+                 
+                 // Seance s=new Seance();
+                // s.setId_Seance((new ServiceSeance().getSeanceById(id_seance)));
+               absence p=new absence(id_absence, id_etudiant, id_seance, type_absence);
      arr.add(p);
      }
     return arr;        
     }
 
-    public List<absence> afficherelimination() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+   
+    public List<String> afficherelimination(User u,Seance s ) throws SQLException {
+          List<String> l1 = new ArrayList<>();
+             ste=con.createStatement() ;
+             
+             String requete=" SELECT * FROM `absence` WHERE `type-absence`='"+"noncertifie"+"'and  `id_seance`='"+s.getId_Seance()+"'and  `id_user`='"+u.getId()+"'";
+             ResultSet rs=ste.executeQuery(requete);
+             
+             while(rs.next()){
+                 l1.add(rs.getInt(3)+"est iliminé dans"+rs.getInt(2));
+             }
+             return l1;
+
     }
+    
+    public List chercherEtat(String type_absence) {
+         try {
+             List<absence> l1 = new ArrayList<>();
+             ste=con.createStatement() ;
+             
+             String requete=" SELECT * FROM `absence` WHERE `type-absence`='"+type_absence+"' ";
+             ResultSet rs=ste.executeQuery(requete);
+             
+             while(rs.next()){
+                 
+                 int id_absence_e=rs.getInt(1);
+                 int id_etudiant=rs.getInt(2);
+                 int id_senace=rs.getInt(3);
+                 
+                 
+               
+               absence p=new absence(id_absence_e, id_etudiant, id_senace, type_absence);
+                 
+                 l1.add(p);
+             }
+             
+             return l1;
+         } 
+           catch (SQLException e) {
+        System.err.println("system dosen't find ...");
+    }
+         return null;
+         
+    }
+    public float stat()  throws SQLException{
+          float s=0;
+          float t=0;
+         try {
+             ste = con.createStatement();
+         } catch (SQLException ex) {
+             Logger.getLogger(ServiceAbsence.class.getName()).log(Level.SEVERE, null, ex);
+         }
+           ResultSet rs1 = null;  
+        try {
+            rs1 = ste.executeQuery(" select count(*) from absence" );
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceAbsenceEmploye.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         try {
+             while (rs1.next()) {
+
+                 t = rs1.getInt(1);
+             }
+         } catch (SQLException ex) {
+             Logger.getLogger(ServiceAbsenceEmploye.class.getName()).log(Level.SEVERE, null, ex);
+         }
+             ResultSet rs = null;  
+        try {
+            rs = ste.executeQuery(" select count(*) from absence  where type-absence=non certifie " );
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceAbsenceEmploye.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         try {
+             while (rs.next()) {
+                 s = rs.getInt(1);
+             }
+         } catch (SQLException ex) {
+             Logger.getLogger(ServiceAbsenceEmploye.class.getName()).log(Level.SEVERE, null, ex);
+         }
+           float m=(float)((s/t)*100);
+           return (m);
+      }
+
+    @Override
+    public boolean delete(absence t) throws SQLException {
+        return false;
+    }
+
+    public void ajouter(absence_employe p) {
+    }
+
+  
     
 }

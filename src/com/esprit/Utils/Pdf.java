@@ -4,50 +4,111 @@
  * and open the template in the editor.
  */
 package com.esprit.Utils;
-import com.esprit.Entite.absence;
-import com.esprit.IService.IService;
-import com.esprit.Service.ServiceAbsence;
-import com.itextpdf.text.BadElementException;
+
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Image;
-import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import java.awt.AWTException;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
+import java.sql.Statement;
 
 /**
  *
- * @author Administrator
+ * @author LENOVO
  */
-
 public class Pdf {
-      
-        //webcam.main(args);  
-    public void GeneratePdf(String filename) throws FileNotFoundException, DocumentException, BadElementException, IOException, InterruptedException, SQLException
-    {
-        Document document=new  Document();
-        PdfWriter.getInstance(document, new FileOutputStream(filename+".pdf"));
-        document.open();
-        //Image img = Image.getInstance("photo.png");
-        //Image img2 = Image.getInstance("logo.png");
-       ServiceAbsence us=new ServiceAbsence();
-        List<absence> list=us.readAll();
-        for(absence u:list)
-        {
-        document.add(new Paragraph("id_absence :"+u.getId_absence()));
-        document.add(new Paragraph("id_etudiant:"+u.getId_etudiant()));
-        document.add(new Paragraph("id_seance :"+u.getId_seance()));
-        document.add(new Paragraph("type_absence :"+u.getType_absence()));
-           //document.add(img);
-         //document.add(img2);
-        document.add(new Paragraph("---------------------------------------------------------------------------------------------------------------------------------- "));
-        }//Notification.main(args);
-        document.close();
-        Process pro=Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler "+filename+".pdf");
-    }
+
+    private final Connection con;
+        private Statement ste;
+    public Pdf()  {
+        
+        con = DataBase.getInstance().getConnection();
+          
+    
 }
+    public void add(String file) throws FileNotFoundException, SQLException, DocumentException{
+        
+        /* Create Connection objects */
+//                con = DataBase.getInstance().getConnection();
+                Document my_pdf_report = new Document();
+                    
+                PdfWriter.getInstance(my_pdf_report, new FileOutputStream(file));
+                 ste=con.createStatement();
+                  PdfPCell table_cell, table_cell_1,table_cell_2,table_cell_3;
+                  PdfPTable my_report_table = new PdfPTable(3);
+                  table_cell=new PdfPCell(new Phrase("nom"));
+                  table_cell_1=new PdfPCell(new Phrase("prenom"));
+                  table_cell_2=new PdfPCell(new Phrase("type_absence"));
+                 // table_cell_3=new PdfPCell(new Phrase("id_seance"));
+                  my_report_table.addCell(table_cell);
+                  my_report_table.addCell(table_cell_1);
+                  my_report_table.addCell(table_cell_2);
+                //  my_report_table.addCell(table_cell_3);
+                  ResultSet rs=ste.executeQuery("SELECT nom,prenom,absence.type_absence,absence.id_seance FROM user,seance,absence where absence.id_etudiant=user.id_user AND absence.id_seance=seance.id_seance");
+                  my_pdf_report.open(); 
+
+                        
+                               
+                                
+               
+                while (rs.next()) {  
+                    
+                              String orderState= rs.getString("nom");
+                                table_cell=new PdfPCell(new Phrase(orderState));
+                               my_report_table.addCell(table_cell);
+                                           
+                                String orderState1= rs.getString("prenom");
+                                table_cell_1=new PdfPCell(new Phrase(orderState1));
+                               my_report_table.addCell(table_cell_1);
+                                
+                               
+                                String orderState2= rs.getString("type_absence");
+                                table_cell_2=new PdfPCell(new Phrase(orderState2));
+                               my_report_table.addCell(table_cell_2);
+                               
+                               /* my_report_table.addCell(""+table_cell_2);
+                                String orderState2=rs.getString("type_absence");*/
+                                
+                               //  table_cell_3=new PdfPCell(new Phrase("id_seance"));
+                                //my_report_table.addCell(table_cell_3).toString();
+                                 //String orderState3= rs.getString("id_seance");
+                                
+                                 
+                                
+                                
+                                
+                                //my_report_table.addCell(""+orderState);
+                                
+                                
+//                                table_cell=new PdfPCell(new Phrase(id));
+//                                my_report_table.addCell(table_cell).toString();
+                                
+//                                
+//                                
+//                                float tt=rs.getFloat("total");
+//                                table_cell=new PdfPCell(new Phrase(tt));
+//                                my_report_table.addCell(table_cell);
+//                                
+//                                String orderState= rs.getString("orderState");
+//                                table_cell=new PdfPCell(new Phrase(orderState));
+//                                my_report_table.addCell(table_cell);
+                }
+                                
+                /* Attach report table to PDF */
+                my_pdf_report.add(my_report_table);                       
+                my_pdf_report.close();
+                
+               /* Close all DB related objects */
+                 rs.close();
+                ste.close();
+                con.close();
+        
+    }
+} 
+    

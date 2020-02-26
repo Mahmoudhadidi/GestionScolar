@@ -77,7 +77,10 @@ public class AccueilController implements Initializable {
     }
 
     @FXML
-    void gestionAbsence(ActionEvent event) {
+    void gestionAbsence(ActionEvent event) throws IOException {
+        pane.getChildren().clear();
+        Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("/com/esprit/gui/absence.fxml"));
+        pane.getChildren().add(newLoadedPane);
 
     }
 

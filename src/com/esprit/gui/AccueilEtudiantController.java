@@ -47,7 +47,7 @@ public class AccueilEtudiantController implements Initializable {
     @FXML
     private void gestionAbsence(ActionEvent event) throws IOException {
         pane.getChildren().clear();
-        Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("/com/esprit/gui/gestionUser.fxml"));
+        Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("/com/esprit/gui/etudientconsult.fxml"));
         pane.getChildren().add(newLoadedPane);
 
     }
