@@ -44,6 +44,8 @@ public class ReclamationController implements Initializable {
 
     @FXML
     private ComboBox<String> Satisfaction;
+     ServiceReclamation sr=new ServiceReclamation();
+     //  Reclamation r=new Reclamation(8);
     /**
      * Initializes the controller class.
      */
@@ -52,6 +54,8 @@ public class ReclamationController implements Initializable {
 //     public void ComboBoxUpdated(){
 //        this.ComboBox.SetText("course selected: \n"+ ComboBox.getValue().toString());
 //   }
+    
+       
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -62,15 +66,17 @@ public class ReclamationController implements Initializable {
         
         Satisfaction.getItems().addAll ("satisfait","non satisfait");
         
+      //  Description.setText(sr.detailDecription(r));
+        
+        
 //    ServiceReclamation sr = new ServiceReclamation();
 //          List<Reclamation> arr=new ArrayList<>();
 //          arr = sr.readAll();
 //          for (Reclamation r : arr){
 //                  this.id_user.setText(r.getId_user());
-//          }
-
-  
-    
+//          } 
+      
+   
             
     }
     

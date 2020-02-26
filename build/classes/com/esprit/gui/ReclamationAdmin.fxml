@@ -2,15 +2,14 @@
 
 <?import java.net.URL?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="700.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="com.esprit.gui.ReclamationController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="700.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.gui.ReclamationController">
     <stylesheets>
         <URL value="@reclamation.css" />
     </stylesheets>
@@ -22,11 +21,14 @@
       <Separator layoutY="195.0" prefHeight="10.0" prefWidth="200.0" />
       <Separator layoutX="197.0" orientation="VERTICAL" prefHeight="417.0" prefWidth="0.0" />
       <ImageView fitHeight="56.0" fitWidth="61.0" layoutX="583.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true" />
-      <TextField id="nom" fx:id="nom" layoutX="223.0" layoutY="63.0" prefHeight="17.0" prefWidth="100.0" text="nom" />
-      <TextArea id="description" fx:id="Description" layoutX="332.0" layoutY="94.0" prefHeight="37.0" prefWidth="256.0" text="Description" />
-      <TextField id="sujet" fx:id="Sujet" layoutX="332.0" layoutY="63.0" prefHeight="25.0" prefWidth="225.0" text="Sujet" />
-      <TextField id="etat" fx:id="etat" layoutX="600.0" layoutY="94.0" prefHeight="37.0" prefWidth="89.0" text="etat" />
-      <Separator layoutX="200.0" layoutY="161.0" prefHeight="0.0" prefWidth="493.0" />
-      <Label alignment="CENTER" layoutX="614.0" layoutY="67.0" prefHeight="17.0" prefWidth="61.0" text="Etat" />
+      <TableView layoutX="199.0" layoutY="52.0" prefHeight="200.0" prefWidth="501.0">
+        <columns>
+          <TableColumn prefWidth="89.0" text="nom" />
+          <TableColumn prefWidth="120.0" text="sujet" />
+            <TableColumn prefWidth="148.0" text="Description" />
+            <TableColumn prefWidth="78.0" text="date" />
+            <TableColumn prefWidth="65.0" text="Etat" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

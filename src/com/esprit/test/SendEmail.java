@@ -1,5 +1,8 @@
 package com.esprit.test;
 
+import com.esprit.Entite.Reclamation;
+import com.esprit.Entite.User;
+import com.esprit.Service.ServiceReclamation;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
@@ -50,7 +53,12 @@ public class SendEmail {
     
     
     public static void main(String[] args) {
-          SendEmail.sendEmail("mariem.romdhani@esprit.tn", "Helo mariem", "Have a good Day ^^ :D");
-     
+        SendEmail.sendEmail("mariem.romdhani@esprit.tn", "reclamation", "check your compte");
+        ServiceReclamation reclamation = new ServiceReclamation();
+        Reclamation r = new Reclamation();
+        r.setId_user(8);
+      
+            User  user = reclamation.detaileutilisateur( r);
+            System.out.println(user);
     }
 }
