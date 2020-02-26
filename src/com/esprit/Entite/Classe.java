@@ -5,15 +5,23 @@
  */
 package com.esprit.Entite;
 
+import javafx.scene.control.Button;
+
 /**
  *
  * @author hadidi
  */
 public class Classe {
+    
     int id;
     String num;
     int nbrEtudient;
     String specialite;
+    private final Button btn = new Button("Supprimer");
+
+    public Button getBtn() {
+        return btn;
+    }
 
     public Classe(int id) {
         this.id = id;
@@ -30,6 +38,10 @@ public class Classe {
         this.num = num;
         this.nbrEtudient = nbrEtudient;
         this.specialite = specialite;
+    }
+
+    public Classe() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public int getId() {

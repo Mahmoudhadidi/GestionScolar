@@ -47,7 +47,8 @@ public class LoginController implements Initializable {
 
     @FXML
     private TextField logine;
-Parent root;
+    
+    Parent root;
     
     @FXML       
    void connexion(ActionEvent event) throws IOException, SQLException {
@@ -62,7 +63,7 @@ Parent root;
         
         	Main.getStage().getScene().setRoot(root);
     	    	Main.getStage().setTitle("Manipulation Interface");
-                Main.getStage().getScene().getStylesheets().add(getClass().getResource("/com/esprit/gui/Accueil.fxml").toExternalForm());
+                Main.getStage().getScene().getStylesheets().add(getClass().getResource("/com/esprit/gui/accueil.fxml").toExternalForm());
            	
         }else{
                         logine.clear();

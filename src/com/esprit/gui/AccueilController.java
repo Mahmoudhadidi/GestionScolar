@@ -84,7 +84,10 @@ public class AccueilController implements Initializable {
     }
 
     @FXML
-    void gestionReclamation(ActionEvent event) {
+    void gestionReclamation(ActionEvent event) throws IOException {
+     pane.getChildren().clear();
+        Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("/com/esprit/gui/ReclamationAdmin.fxml"));
+        pane.getChildren().add(newLoadedPane);
 
     }
 

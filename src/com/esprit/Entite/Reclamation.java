@@ -21,6 +21,7 @@ public class Reclamation {
     private int id_user;
     private int id_reclamation;
     private boolean sat;
+    public String getId_user;
 
     public Reclamation( int id_reclamation,int id_user,String description,String etat,String sujet,String date_env, String date_rep) {
         
@@ -42,6 +43,10 @@ public class Reclamation {
         this.date_env=date_env;
         this.date_rep=date_rep;
         
+    }
+
+    public Reclamation(String nom) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     
