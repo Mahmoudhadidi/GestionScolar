@@ -15,6 +15,11 @@ public class Salle {
     String nomSalle;
     String bloc;
 
+    public Salle(int idSalle, String nomSalle) {
+        this.idSalle = idSalle;
+        this.nomSalle = nomSalle;
+    }
+
     public Salle(String nomSalle) {
         this.nomSalle = nomSalle;
     }

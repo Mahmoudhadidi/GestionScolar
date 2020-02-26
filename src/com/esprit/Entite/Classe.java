@@ -45,6 +45,11 @@ public class Classe {
         this.specialite = specialite;
     }
 
+    public Classe(int id, String num) {
+        this.id = id;
+        this.num = num;
+    }
+
     public Classe(int id, String num, int nbrEtudient, String specialite) {
         this.id = id;
         this.num = num;

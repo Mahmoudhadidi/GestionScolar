@@ -2,6 +2,7 @@ package com.esprit.Service;
 
 
 import com.esprit.Entite.Note;
+import com.esprit.Entite.listeetudiants;
 import com.esprit.Utils.DataBase;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -35,18 +36,23 @@ public class ServiceNote implements IServiceNote<Note> {
     @Override
     public void ajouter(Note p) throws SQLException {
         
-        PreparedStatement pre=con.prepareStatement("INSERT INTO `note` ( `note_cc`, `note_ds`, `note_examun`, `moyenne`, `net`, `id_user`, `id_matiere`) VALUES ( ?, ?, ?, ?, ?, ?, ?);");
+        PreparedStatement pre=con.prepareStatement("INSERT INTO `note` ( `note_cc`, `note_ds`, `note_examun`, `moyenne`, `net`, `cin`, `nom_matier`) VALUES ( ?, ?, ?, ?, ?, ?, ?);");
     pre.setFloat(1, p.getNote_cc()); 
     pre.setFloat(2, p.getNote_ds());
     pre.setFloat(3, p.getNote_examun());
     pre.setFloat(4, p.getMoyenne());
     pre.setFloat(5, p.getNet());
     pre.setInt(6, p.getId_user());
-    pre.setInt(7, p.getId_matiere());
+    
+    pre.setString(7, p.getId_matiere());
     
     pre.executeUpdate();
         System.out.println("Note ajoutée !!");
+       
+        pre.setFloat(1, p.getNote_cc()); 
+
     }
+ 
 
     @Override
     public boolean delete(int id) throws SQLException {
@@ -63,11 +69,38 @@ try{
 
         return true ;        
     }
+    
+    public int findidclassebyclasse(String classe) throws SQLException{
+        ste = con.createStatement();
+        ResultSet rs=ste.executeQuery(" SELECT id_classe FROM classe where num_classe ='"+ classe +"'") ;
+        int idclasse=0;
+         while (rs.next()) {                
+               idclasse=rs.getInt(1);
+         }
+          return idclasse;
+    
+    
+    }
+    
+    public void supprimer(int cin) throws SQLException
+    {
+        try
+        {
+            PreparedStatement pst ;
+            pst=con.prepareStatement("Delete from note where cin = ? ");
+            
+            pst.setInt(1, cin);
+            pst.executeUpdate();
+            
+        } catch (SQLException e){
+            System.out.println(e);}
+    }
+            
 
     @Override
     public boolean update(Note p) throws SQLException {
         
-        String sql = "UPDATE note SET note_cc=?, note_ds=?, note_examun=?, net=?, moyenne=?,id_user=?,id_matiere=?  WHERE id_note=?";
+        String sql = "UPDATE note SET note_cc=?, note_ds=?, note_examun=?,nom_matier=?  WHERE id_note=?";
  
 PreparedStatement statement = con.prepareStatement(sql);
 statement.setFloat(1, p.getNote_cc());
@@ -76,7 +109,7 @@ statement.setFloat(3, p.getNote_examun());
 statement.setFloat(4, p.getMoyenne());
 statement.setFloat(5, p.getNet());
 statement.setInt(6, p.getId_user());
-statement.setInt(7, p.getId_matiere());
+statement.setString(7, p.getId_matiere());
 statement.setInt(8, p.getId_note());
  
 int rowsUpdated = statement.executeUpdate();
@@ -86,6 +119,24 @@ if (rowsUpdated > 0) {
         return true;
     }
     
+    public void Modifier(listeetudiants pan) {
+        try {
+            PreparedStatement pst;
+            pst = con.prepareStatement("UPDATE note SET note_cc=?, note_ds=?, note_examun=?  WHERE cin=?");
+            
+            pst.setString(1, pan.getA());
+            pst.setString(2, pan.getB());
+            pst.setString(3, pan.getC());
+            pst.setInt(4, pan.getD());
+
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+            
+        }
+                 System.out.println("Moyenne Matière calculé");
+
+    }
 
     @Override
     public List readAll() throws SQLException {
@@ -101,7 +152,7 @@ List<Note> arr=new ArrayList<>();
                float moyenne =rs.getFloat("moyenne");
                float net=rs.getFloat("net");
                int id_user =rs.getInt("id_user");
-               int id_matiere = rs.getInt(8);
+               String id_matiere = rs.getString(8);
                Note p=new Note(id_note, note_cc, note_ds, note_examun, moyenne, net, id_user, id_matiere);
      arr.add(p);
      }
@@ -119,7 +170,7 @@ List<Note> arr=new ArrayList<>();
 //     while (rs.next()) {                
 //               int id_note=rs.getInt(1);
 //               float note_ds=rs.getFloat("note_ds");
-//               float note_examun=rs.getFloat(3);
+//               float note_examun=rs.getFloat(3);f
 //               float moyenne =rs.getFloat("moyenne");
 //               int id_user =rs.getInt("id_user");
 //               int id_matiere = rs.getInt(6);
@@ -147,11 +198,19 @@ List<Note> arr=new ArrayList<>();
                float moyenne =rs.getFloat("moyenne");
                int net=rs.getInt(6);
                int id_user =rs.getInt("id_user");
-               int id_matiere = rs.getInt(7);
+               String id_matiere = rs.getString(7);
                Note p=new Note(id_note, note_cc, note_ds, note_examun, moyenne, net, id_user, id_matiere);
      arr.add(p);
      }
     return arr;        
+    }
+    public void  afficherListEtudiant() {
+    
+        
+    }
+
+    private String parseString(int cin) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 

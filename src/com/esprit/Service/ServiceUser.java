@@ -50,9 +50,46 @@ public static int id_user_conecte;
            
           }
     return   type_conecte;
+    }//etudiant
+    
+     public List<User> readAll_connecte(int i) throws SQLException {
+List<User> etu=new ArrayList<>();
+    ste=con.createStatement();
+    ResultSet rs=ste.executeQuery("select * from user where id_user='"+i+"' ");
+     while (rs.next()) {                
+               int id=rs.getInt(1);
+              
+               String nom=rs.getString("nom");
+               String prenom=rs.getString("prenom");
+              String mail=rs.getString("email");
+              User p=new User(id,nom,prenom,mail);
+     etu.add(p);
+     }
+    return etu;        
+//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    public List<User> readAll_etudiant() throws SQLException {
+List<User> etu=new ArrayList<>();
+    ste=con.createStatement();
+    ResultSet rs=ste.executeQuery("select * from user where role='etudiant' && id_classe is NULL");
+     while (rs.next()) {                
+               int id=rs.getInt(1);
+              
+               String nom=rs.getString("nom");
+               String prenom=rs.getString("prenom");
+              String mail=rs.getString("email");
+              User p=new User(id,nom,prenom,mail);
+     etu.add(p);
+     }
+    return etu;        
+//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
+    
     public List<User> readAll() throws SQLException {
-List<User> salle=new ArrayList<>();
+List<User> ens=new ArrayList<>();
     ste=con.createStatement();
     ResultSet rs=ste.executeQuery("select * from user where role='enseignant'");
      while (rs.next()) {                
@@ -60,10 +97,11 @@ List<User> salle=new ArrayList<>();
               
                String nom=rs.getString("nom");
                String prenom=rs.getString("prenom");
-              User p=new User(id,nom,prenom);
-     salle.add(p);
+               String mail=rs.getString("email");
+              User p=new User(id,nom,prenom,mail);
+     ens.add(p);
      }
-    return salle;        
+    return ens;        
 //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
  public List<User> readall() throws SQLException{

@@ -85,17 +85,22 @@ ServiceUser user=new ServiceUser();
         
        
     int idsalle=  SeC.readAll().get(salle.getSelectionModel().getSelectedIndex()).getIdSalle() ;
+    String nomsalle=  SeC.readAll().get(salle.getSelectionModel().getSelectedIndex()).getNomSalle() ;
     int idmatier=  matier.readAll().get(matiere.getSelectionModel().getSelectedIndex()).getId() ;
+    String nommatier=  matier.readAll().get(matiere.getSelectionModel().getSelectedIndex()).getNom() ;
     int idclasse= clas.readAll().get(classe.getSelectionModel().getSelectedIndex()).getId() ;
+    String nomclasse= clas.readAll().get(classe.getSelectionModel().getSelectedIndex()).getNum() ;
     int iduser= user.readAll().get(enseignant.getSelectionModel().getSelectedIndex()).getId() ;
+    String mail= user.readAll().get(enseignant.getSelectionModel().getSelectedIndex()).getMail() ;
+    String nom= user.readAll().get(enseignant.getSelectionModel().getSelectedIndex()).getNom() ;
     String dat=date.getText();
     String h=heure.getText();
     String hd=duree.getText();
-    User ens=new User(iduser);
+    User ens=new User(iduser,nom,mail);
 
-    Classe lass = new Classe(idclasse);
-    Matiere ma=new Matiere(idmatier);
-    Salle sal=new Salle(idsalle);
+    Classe lass = new Classe(idclasse,nomclasse);
+    Matiere ma=new Matiere(idmatier,nommatier);
+    Salle sal=new Salle(idsalle,nomsalle);
     
     Seance sen=new Seance(ens, lass, ma, sal, hd, h, dat);
         //System.out.println(sen.toString());

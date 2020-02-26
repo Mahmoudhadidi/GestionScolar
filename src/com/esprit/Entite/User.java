@@ -222,10 +222,17 @@ public class User {
         this.niveau = niveau;
     }
 
-    public User(int id, String nom, String prenom) {
+    public User(int id, String nom, String mail) {
+        this.id = id;
+        this.nom = nom;
+        this.mail = mail;
+    }
+
+    public User(int id, String nom, String prenom,String mail) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
+        this.mail=mail;
     }
 
     public User(String logine, String mdp, String role, String nom, String prenom, String mail, String date_N, String adresse, int cin, String niveau) {

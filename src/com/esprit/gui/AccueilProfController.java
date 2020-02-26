@@ -50,7 +50,11 @@ public class AccueilProfController implements Initializable {
     }
 
     @FXML
-    private void gestionNote(ActionEvent event) {
+    private void gestionNote(ActionEvent event) throws IOException {
+         pane.getChildren().clear();
+        Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("/com/esprit/gui/Interface_Note_Prof.fxml"));
+        pane.getChildren().add(newLoadedPane);
+
     }
 
     @FXML

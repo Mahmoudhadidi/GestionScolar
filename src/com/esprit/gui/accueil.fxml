@@ -6,17 +6,18 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" prefHeight="584.0" prefWidth="804.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.gui.AccueilController">
    <children>
       <Button fx:id="gestionuser" layoutY="52.0" mnemonicParsing="false" onAction="#gestionUser" prefHeight="40.0" prefWidth="141.0" text="Gestion des utilisateurs" />
       <Button fx:id="gestionaffectation" layoutY="92.0" mnemonicParsing="false" onAction="#gestionaffectation" prefHeight="40.0" prefWidth="141.0" text="Gestion des affectations" />
       <Button fx:id="gestionAbsence" layoutY="132.0" mnemonicParsing="false" onAction="#gestionAbsence" prefHeight="40.0" prefWidth="141.0" text="Gestion des absences" />
-      <Button fx:id="gestionnote" layoutY="172.0" mnemonicParsing="false" onAction="#gestionNote" prefHeight="40.0" prefWidth="141.0" text="Gestion des notes" />
+      <Button fx:id="gestionnote" layoutY="172.0" mnemonicParsing="false" onAction="#gestionNote" prefHeight="40.0" prefWidth="141.0" text="Calculer Moyenne" />
       <Button fx:id="gestionreclamation" layoutY="211.0" mnemonicParsing="false" onAction="#gestionReclamation" prefHeight="40.0" prefWidth="141.0" text="Gestion des reclamations" />
       <Button fx:id="clubs" layoutY="251.0" mnemonicParsing="false" onAction="#clubs" prefHeight="40.0" prefWidth="141.0" text="Clubs" />
       <Button fx:id="quitter" layoutY="291.0" mnemonicParsing="false" onAction="#quitter" prefHeight="40.0" prefWidth="141.0" text="Quitter" />
-      <ScrollBar layoutX="141.0" layoutY="52.0" orientation="VERTICAL" prefHeight="320.0" prefWidth="14.0" />
+      <ScrollBar layoutX="141.0" layoutY="52.0" orientation="VERTICAL" prefHeight="282.0" prefWidth="14.0" />
       <AnchorPane fx:id="pane" layoutX="156.0" layoutY="52.0" prefHeight="282.0" prefWidth="648.0" />
       <ImageView fitHeight="50.0" fitWidth="62.0" layoutX="5.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -24,5 +25,6 @@
          </image>
       </ImageView>
       <Label layoutX="57.0" layoutY="24.0" text="Assurer votre succès" textFill="#2d3cab" />
+      <Text fx:id="nomuser" layoutX="689.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" />
    </children>
 </AnchorPane>

@@ -28,6 +28,6 @@
             <Font name="System Bold Italic" size="18.0" />
          </font></Text>
       <TextField fx:id="tcherche" layoutX="172.0" onKeyPressed="#ch" prefHeight="25.0" prefWidth="80.0" />
-      <Button layoutX="262.0" mnemonicParsing="false" text="Etudiant_Classe" />
+      <Button fx:id="afecter" layoutX="262.0" mnemonicParsing="false" onAction="#afecter" text="Etudiant_Classe" />
    </children>
 </AnchorPane>

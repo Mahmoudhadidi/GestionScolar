@@ -5,10 +5,14 @@
  */
 package com.esprit.gui;
 
+import com.esprit.Service.ServiceUser;
 import com.esprit.test.Main;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
@@ -17,6 +21,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 
 
 
@@ -58,7 +63,7 @@ public class AccueilController implements Initializable {
     @FXML
     private AnchorPane pane;
     @FXML
-    private Button gestionUser;
+    private Text nomuser;
 
     @FXML
     void gestionUser(ActionEvent event) throws IOException {
@@ -67,6 +72,7 @@ public class AccueilController implements Initializable {
         pane.getChildren().add(newLoadedPane);
 
         		    }
+    
 
     @FXML
     void gestionaffectation(ActionEvent event) throws IOException {
@@ -85,8 +91,10 @@ public class AccueilController implements Initializable {
     }
 
     @FXML
-    void gestionNote(ActionEvent event) {
-
+    void gestionNote(ActionEvent event) throws IOException {
+ pane.getChildren().clear();
+        Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("/com/esprit/gui/Interface_Note_Administrateur.fxml"));
+        pane.getChildren().add(newLoadedPane);
     }
 
     @FXML
@@ -108,13 +116,21 @@ public class AccueilController implements Initializable {
 
     }
 
+ServiceUser s=new ServiceUser();
+
+       String nomc() throws SQLException{
+          return  s.readAll_connecte(ServiceUser.id_user_conecte).get(1).getNom();
+       }    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        try {
+            nomuser.setText(nomc());
+        } catch (SQLException ex) {
+            Logger.getLogger(AccueilController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }    
 
-    @FXML
     private void gestionuser(ActionEvent event) throws IOException {
         pane.getChildren().clear();
         Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("/com/esprit/gui/gestionUser.fxml"));
