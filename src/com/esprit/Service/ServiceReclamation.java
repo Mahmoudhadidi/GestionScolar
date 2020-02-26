@@ -100,32 +100,25 @@ public  class ServiceReclamation implements IService<Reclamation> {
     }
 
    @Override
-    public List<Reclamation> readAll()  {
-         try {
+    public List<Reclamation> readAll() throws SQLException  {
+        
              List<Reclamation> arr=new ArrayList<>();
              ste=con.createStatement();
              ResultSet rs=ste.executeQuery("select * from reclamation");
              while (rs.next()) {
-                 int id_reclamation=rs.getInt(1);
-                 int id_user=rs.getInt(2);
+                 int id_reclamation=rs.getInt("id_reclamation");
                  //String sujet, String description, String etat, String
                  //date_env, String date_rep, int id_user, boolean sat, String getId_user, boolean getSat)
                  String description=rs.getString("description");
                  String etat=rs.getString("etat");
                  String sujet=rs.getString("sujet");
-                 String date_env=rs.getString("date_env");
-                 String date_rep=rs.getString("date_rep");
-                 boolean sat =rs.getBoolean("sat");
                  
-                 Reclamation p=new Reclamation(id_reclamation,id_user,description,etat,sujet,date_env,date_rep,sat);
+                 
+                 Reclamation p=new Reclamation(description,sujet,id_reclamation);
                  arr.add(p);
              }
              return arr;
-         } catch (SQLException ex) {
-             System.out.println("### ERROR : "+ex.getCause());
-            ex.printStackTrace();     
-        }
-         return null;
+         
     }
 
     public List<Reclamation> readby_id_user(int id)  {

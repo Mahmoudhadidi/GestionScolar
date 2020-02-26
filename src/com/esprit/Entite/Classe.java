@@ -5,16 +5,36 @@
  */
 package com.esprit.Entite;
 
+import javafx.scene.control.Button;
+
 /**
  *
  * @author hadidi
  */
 public class Classe {
+    
     int id;
     String num;
     int nbrEtudient;
     String specialite;
+    private final Button btnSupprimer = new Button("Supprimer");
+    private final Button btnModifier = new Button("Modifer");
 
+    public Classe(String num) {
+        this.num = num;
+    }
+   
+
+    public Button getBtnSupprimer() {
+        
+        return btnSupprimer;
+    }
+
+    public Button getBtnModifier() {
+        return btnModifier;
+    }
+
+    
     public Classe(int id) {
         this.id = id;
     }
@@ -32,6 +52,10 @@ public class Classe {
         this.specialite = specialite;
     }
 
+    public Classe() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public int getId() {
         return id;
     }
@@ -42,6 +66,11 @@ public class Classe {
 
     public int getNbrEtudient() {
         return nbrEtudient;
+    }
+
+    @Override
+    public String toString() {
+        return "Classe{" + "id=" + id + ", num=" + num + ", nbrEtudient=" + nbrEtudient + ", specialite=" + specialite + ", btnSupprimer=" + btnSupprimer + ", btnModifier=" + btnModifier + '}';
     }
 
    
@@ -66,9 +95,9 @@ public class Classe {
         this.specialite = specialite;
     }
 
-    @Override
+   /* @Override
     public String toString() {
         return "Classe{" + "id=" + id + ", num=" + num + ", nbrEtudient=" + nbrEtudient + ", specialite=" + specialite + "}\n";
-    } 
+    } */
     
 }

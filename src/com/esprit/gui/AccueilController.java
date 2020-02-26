@@ -57,12 +57,15 @@ public class AccueilController implements Initializable {
 
     @FXML
     private AnchorPane pane;
+    @FXML
+    private Button gestionUser;
 
     @FXML
     void gestionUser(ActionEvent event) throws IOException {
      pane.getChildren().clear();
-     Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("/com/esprit/gui/classe.fxml"));
-     pane.getChildren().add(newLoadedPane);
+        Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("/com/esprit/gui/gestionUser.fxml"));
+        pane.getChildren().add(newLoadedPane);
+
         		    }
 
     @FXML
@@ -74,7 +77,10 @@ public class AccueilController implements Initializable {
     }
 
     @FXML
-    void gestionAbsence(ActionEvent event) {
+    void gestionAbsence(ActionEvent event) throws IOException {
+        pane.getChildren().clear();
+        Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("/com/esprit/gui/absence.fxml"));
+        pane.getChildren().add(newLoadedPane);
 
     }
 
@@ -86,7 +92,7 @@ public class AccueilController implements Initializable {
     @FXML
     void gestionReclamation(ActionEvent event) throws IOException {
      pane.getChildren().clear();
-        Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("/com/esprit/gui/ReclamationAdmin.fxml"));
+        Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("/com/esprit/gui/Admin.fxml"));
         pane.getChildren().add(newLoadedPane);
 
     }
@@ -98,6 +104,7 @@ public class AccueilController implements Initializable {
 
     @FXML
     void quitter(ActionEvent event) {
+        System.exit(0);
 
     }
 
@@ -106,5 +113,13 @@ public class AccueilController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void gestionuser(ActionEvent event) throws IOException {
+        pane.getChildren().clear();
+        Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("/com/esprit/gui/gestionUser.fxml"));
+        pane.getChildren().add(newLoadedPane);
+
+    }
     
 }

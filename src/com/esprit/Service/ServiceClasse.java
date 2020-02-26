@@ -11,6 +11,7 @@ import com.esprit.Entite.Salle;
 import com.esprit.IService.IService;
 import com.esprit.Utils.DataBase;
 import com.esprit.test.Main;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import java.net.URL;
@@ -21,6 +22,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -42,7 +47,7 @@ import javafx.scene.layout.AnchorPane;
 public class ServiceClasse implements IService<Classe>,Initializable{
     
       private Connection con;
-    private Statement ste;
+    private Statement ste,steer,ster;
 
     public ServiceClasse() {
         con = DataBase.getInstance().getConnection();
@@ -63,16 +68,23 @@ public class ServiceClasse implements IService<Classe>,Initializable{
 
     @FXML
     private TextField nomClasse;
+     @FXML
+    private TextField tcherche;
+
+    @FXML
+    private Button chercher;
+
 Parent root;
+
     @FXML
     public void fannuler(ActionEvent event) throws IOException {
         
     		root = (AnchorPane)FXMLLoader.load(getClass()
-  				.getResource("/com/esprit/gui/matiere.fxml"));
+  				.getResource("/com/esprit/gui/accueil.fxml"));
 
         	    	Main.getStage().getScene().setRoot(root);
-        	    	Main.getStage().setTitle("Manipulation Interface");
- 		Main.getStage().getScene().getStylesheets().add(getClass().getResource("/view/MainStyle.css").toExternalForm());
+        	    	Main.getStage().setTitle("Accueil");
+ 		Main.getStage().getScene().getStylesheets().add(getClass().getResource("/view/accueil.css").toExternalForm());
            	
 
     }
@@ -85,15 +97,35 @@ Parent root;
         ste.executeUpdate(requeteInsert);
 //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    
 
     @FXML
     public void fajouter(ActionEvent event) {
+        if( nomClasse.getText().equals("") ||Integer.valueOf(nbrEtudiant.getText())<0|| Integer.valueOf(nbrEtudiant.getText()).equals("") || specialite.getText().equals("")){
+          Alert alert1 = new Alert(AlertType.WARNING);
+        		alert1.setContentText("vérifier votre données ");
+        		alert1.show();  
+        }
        ServiceClasse serC= new ServiceClasse();
        Classe c1=new Classe(nomClasse.getText(),Integer.valueOf(nbrEtudiant.getText()),specialite.getText());
          
        try{
            
         serC.ajouter(c1);
+        nomClasse.clear();
+        nbrEtudiant.clear();
+        specialite.clear();
+        Alert alert = new Alert(AlertType.INFORMATION);
+    			alert.setContentText("Classe bien ajouter");
+    			alert.show();
+                        root = (AnchorPane)FXMLLoader.load(getClass()
+				.getResource("/com/esprit/gui/accueil.fxml"));
+
+        
+        	Main.getStage().getScene().setRoot(root);
+    	    	Main.getStage().setTitle("Accueil");
+                Main.getStage().getScene().getStylesheets().add(getClass().getResource("/com/esprit/gui/accueil.fxml").toExternalForm());
         }
         
         catch(Exception e){
@@ -161,7 +193,54 @@ Parent root;
           return true; 
         return false;
 }public void initialize(URL location, ResourceBundle resources) {
-		
+		 nbrEtudiant.textProperty().addListener(new ChangeListener<String>() {
+    @Override
+    public void changed(ObservableValue<? extends String> observable, String oldValue, 
+        String newValue) {
+        if (!newValue.matches("\\d*")) {
+            nbrEtudiant.setText(newValue.replaceAll("[^\\d]", ""));
+             
+        }
+          }
+        });
+     
 		
 	}
+
+
+
+
+    public ObservableList<Classe>  SearchEventsF(String n) throws SQLException  {         
+      
+        ObservableList<Classe>  arr = FXCollections.observableArrayList();     
+        steer = con.createStatement();
+        ResultSet res ;
+        //System.out.println(n);
+        res = steer.executeQuery(" select * from classe where  (id_classe like'%"+n+"%')||(num_classe like'%"+n+"%')||(nbre_etudient like'%"+n+"%')||(specialite like'%"+n+"%')");
+        // select* from events where (Nom like '%"+n+"%') or (etat like '%"+n+"%') or (date like '%"+n+"%') or (type like '%"+n+"%') or (id like '%"+n+"%') ");
+//             res = ste.executeQuery(" select* from events where (Nom like '%"+n+"%') or (etat like '%"+n+"%') or (date like '%"+n+"%') or (type like '%"+n+"%') or (id like '%"+n+"%') ");
+            while (res.next())
+            {
+               Classe    a=new Classe(res.getInt(1),res.getString(2),res.getInt(3),res.getString(4));
+               
+               arr.add(a);
+             //  System.out.println(arr);
+            }
+        
+        return arr;
+    }
+
+public boolean verife(Classe c) throws SQLException{
+    
+    ster = con.createStatement();
+        ResultSet res ;
+        //System.out.println(n);
+        res = ster.executeQuery(" select * from seance where  id_classe='"+c.getId()+"'");
+         while (res.next()){
+             return false;
+         }
+    return true;
+}
+
+
 }

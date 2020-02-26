@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="482.0" prefWidth="741.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.gui.AccueilProfController">
+   <children>
+      <AnchorPane fx:id="pane" layoutX="186.0" prefHeight="572.0" prefWidth="548.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e2e7eb" height="180.0" layoutX="-6.0" layoutY="-9.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0a4a86" height="401.0" layoutX="-6.0" layoutY="171.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <ImageView fitHeight="93.0" fitWidth="108.0" layoutX="53.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@logo/logo_Finale.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="13.0" layoutY="129.0" text="Assurer votre succès" textFill="#2d3b90">
+         <font>
+            <Font name="Arial Bold" size="17.0" />
+         </font>
+      </Label>
+      <Button fx:id="gestionnote" layoutX="15.0" layoutY="205.0" mnemonicParsing="false" onAction="#gestionNote" prefHeight="40.0" prefWidth="141.0" text="Gestion des  notes" />
+      <Button fx:id="quitter" layoutX="20.0" layoutY="498.0" mnemonicParsing="false" onAction="#quitter" prefHeight="40.0" prefWidth="141.0" text="Quitter" />
+      <Button fx:id="gestionreclamation" layoutX="16.0" layoutY="366.0" mnemonicParsing="false" onAction="#gestionReclamation" prefHeight="40.0" prefWidth="141.0" text="Réclamation" />
+      <Button fx:id="gestionAbsence" layoutX="17.0" layoutY="287.0" mnemonicParsing="false" onAction="#gestionAbsence" prefHeight="40.0" prefWidth="141.0" text="Absences" />
+   </children>
+</AnchorPane>

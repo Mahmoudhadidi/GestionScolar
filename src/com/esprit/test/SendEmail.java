@@ -1,15 +1,11 @@
-package com.esprit.test;
-
-import com.esprit.Entite.Reclamation;
-import com.esprit.Entite.User;
-import com.esprit.Service.ServiceReclamation;
+package com.esprit.test ; 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
 public class SendEmail {
-    public static boolean sendEmail(String to , String subject , String emailContent){
+    public   boolean sendEmail(String to , String subject , String emailContent){
         // Get system properties
         Properties properties = System.getProperties();
 
@@ -53,12 +49,9 @@ public class SendEmail {
     
     
     public static void main(String[] args) {
-        SendEmail.sendEmail("mariem.romdhani@esprit.tn", "reclamation", "check your compte");
-        ServiceReclamation reclamation = new ServiceReclamation();
-        Reclamation r = new Reclamation();
-        r.setId_user(8);
-      
-            User  user = reclamation.detaileutilisateur( r);
-            System.out.println(user);
+//        AdminController a = new AdminController();
+SendEmail m = new SendEmail();
+          m.sendEmail("mariem.romdhani@esprit.tn", "reclamation", "check your compte");
+     
     }
 }

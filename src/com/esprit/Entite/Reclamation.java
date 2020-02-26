@@ -46,16 +46,24 @@ public class Reclamation {
         
     }
 
+    public Reclamation(String sujet, String description, int id_reclamation) {
+        this.sujet = sujet;
+        this.description = description;
+        this.id_reclamation = id_reclamation;
+    }
+     
+
     public Reclamation() {
     }  
 
 
     
 
-    public Reclamation(String sujet, String description, int id_user) {
-        this.sujet = sujet;
+ 
+
+    public Reclamation(String description, String sujet) {
+         this.sujet = sujet;
         this.description = description;
-        this.id_user = id_user;
     }
 
    

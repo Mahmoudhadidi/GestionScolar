@@ -3,7 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/PC-HP/Documents/NetBeansProjects/GestionScolar/src/com/esprit/Entite/User.java</file>
+            <file>file:/C:/Users/PC-HP/Documents/NetBeansProjects/GestionScolar/src/com/esprit/test/Main.java</file>
+            <file>file:/C:/Users/PC-HP/Documents/NetBeansProjects/GestionScolar/src/com/esprit/gui/AdminController.java</file>
+            <file>file:/C:/Users/PC-HP/Documents/NetBeansProjects/GestionScolar/src/com/esprit/test/SendEmail.java</file>
+            <file>file:/C:/Users/PC-HP/Documents/NetBeansProjects/GestionScolar/src/com/esprit/Service/ServiceReclamation.java</file>
+            <file>file:/C:/Users/PC-HP/Documents/NetBeansProjects/GestionScolar/src/com/esprit/test/Email.java</file>
+            <file>file:/C:/Users/PC-HP/Documents/NetBeansProjects/GestionScolar/src/com/esprit/Service/Mail.java</file>
+            <file>file:/C:/Users/PC-HP/Documents/NetBeansProjects/GestionScolar/src/com/esprit/Entite/Reclamation.java</file>
+            <file>file:/C:/Users/PC-HP/Documents/NetBeansProjects/GestionScolar/src/com/esprit/gui/ModifierReclamationController.java</file>
+            <file>file:/C:/Users/PC-HP/Documents/NetBeansProjects/GestionScolar/src/com/esprit/Entite/Admin.java</file>
+            <file>file:/C:/Users/PC-HP/Documents/NetBeansProjects/GestionScolar/src/com/esprit/gui/TableViewController.java</file>
+            <file>file:/C:/Users/PC-HP/Documents/NetBeansProjects/GestionScolar/src/com/esprit/gui/MainAdmin.java</file>
+            <file>file:/C:/Users/PC-HP/Documents/NetBeansProjects/GestionScolar/src/com/esprit/gui/AjoutReclamationController.java</file>
+            <file>file:/C:/Users/PC-HP/Documents/NetBeansProjects/GestionScolar/src/com/esprit/Service/MailSeance.java</file>
+            <file>file:/C:/Users/PC-HP/Documents/NetBeansProjects/GestionScolar/src/com/esprit/Utils/Mail.java</file>
+            <file>file:/C:/Users/PC-HP/Documents/NetBeansProjects/GestionScolar/src/com/esprit/gui/AccueilController.java</file>
+            <file>file:/C:/Users/PC-HP/Documents/NetBeansProjects/GestionScolar/src/com/esprit/gui/MainFX.java</file>
         </group>
     </open-files>
 </project-private>
