@@ -7,60 +7,90 @@ package com.esprit.Service;
 
 
 
-import java.util.*;
-import javax.mail.*;
-import javax.mail.internet.*;
-import javax.activation.*;
-/**
- *
- * @author USER-PC
- */
-public class MailSeance {
-  
-    public  void sendMail(String to,String Subject,String message)
+import com.mysql.jdbc.interceptors.SessionAssociationInterceptor;
+import java.util.Date;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.mail.Authenticator;
+import javax.mail.Multipart;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMultipart;
+       
+public class MailSeance
+{
+    private String host, port = "587";
+
+    public MailSeance(String mailFrom, String password, String mailTo, String subject, String message) throws Exception
     {
-        try{
-            String host ="smtp.gmail.com" ;
-            String user = "mahmoud.hadidi1@esprit.tn";
-            String pass = "191SMT2006";
-            String too = to;
-            String fro = user;
-            String subject = Subject;
-            String messageText = message;
-            boolean sessionDebug = false;
+       
+            this.host = "smtp.gmail.com";
+       
 
-            Properties props = System.getProperties();
+        sendEmail(host, port, mailFrom, password, mailTo, subject, message, null);
+    }
 
-            props.put("mail.smtp.starttls.enable", "true");
-            props.put("mail.smtp.host", host);
-            props.put("mail.smtp.port", "587");
-            props.put("mail.smtp.auth", "true");
-            props.put("mail.smtp.starttls.required", "true");
+    private void sendEmail(String host, String port, final String userName, final String password, String toAddress, String subject, String message, String[] attachFiles) throws Exception
+    {
+        Properties properties = new Properties();
+        properties.put("mail.smtp.host", host);
+        properties.put("mail.smtp.port", port);
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.user", userName);
+        properties.put("mail.password", password);
 
-            java.security.Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
-            Session mailSession = Session.getDefaultInstance(props, null);
-            mailSession.setDebug(sessionDebug);
-            Message msg = new MimeMessage(mailSession);
-            msg.setFrom(new InternetAddress(fro));
-            InternetAddress[] address = {new InternetAddress(too)};
-            msg.setRecipients(Message.RecipientType.TO, address);
-            msg.setSubject(subject); msg.setSentDate(new Date());
-            msg.setText(messageText);
-
-           Transport transport=mailSession.getTransport("smtp");
-           transport.connect(host, user, pass);
-           transport.sendMessage(msg, msg.getAllRecipients());
-           transport.close();
-           System.out.println("message send successfully");
-        }catch(Exception ex)
+        Authenticator auth = new Authenticator()
         {
-            System.out.println(ex);
+            public PasswordAuthentication getPasswordAuthentication()
+            {
+                return new PasswordAuthentication(userName, password);
+            }
+        };
+        Session session = Session.getInstance(properties, auth);
+
+        Message msg = new MimeMessage(session);
+
+        msg.setFrom(new InternetAddress(userName));
+        InternetAddress[] toAddresses = {new InternetAddress(toAddress)};
+        msg.setRecipients(Message.RecipientType.TO, toAddresses);
+        msg.setSubject(subject);
+        msg.setSentDate(new Date());
+        
+        MimeBodyPart messageBodyPart = new MimeBodyPart();
+        messageBodyPart.setContent(message, "text/html");
+
+        Multipart multipart = new MimeMultipart();
+        multipart.addBodyPart(messageBodyPart);
+
+        if (attachFiles != null && attachFiles.length > 0)
+        {
+            for (String filePath : attachFiles)
+            {
+                MimeBodyPart attachPart = new MimeBodyPart();
+
+                try
+                {
+                    attachPart.attachFile(filePath);
+                }
+                finally
+                {
+                    multipart.addBodyPart(attachPart);
+                }
+            }
         }
-    
+        msg.setContent(multipart);
+
+        Transport.send(msg);
     }
 
-    public MailSeance() {
-    }
-
-  
 }

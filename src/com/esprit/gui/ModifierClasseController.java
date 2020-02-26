@@ -65,7 +65,7 @@ public class ModifierClasseController implements Initializable {
 
         	    	Main.getStage().getScene().setRoot(root);
         	    	Main.getStage().setTitle("Manipulation Interface");
- 		Main.getStage().getScene().getStylesheets().add(getClass().getResource("/view/ServiceSalle.css").toExternalForm());
+ 		Main.getStage().getScene().getStylesheets().add(getClass().getResource("/com/esprit/gui/accueil.fxml").toExternalForm());
            	
     }
 private Connection con;
@@ -100,7 +100,7 @@ private Connection con;
         ste=con.createStatement();
         
          ResultSet rs = null;
-         System.out.println(GestionClasseController.fakhrimalem + "static");
+         //System.out.println(GestionClasseController.fakhrimalem + "static");
          rs = ste.executeQuery("select * from classe where id_classe='"+GestionClasseController.fakhrimalem+"'");
           while (rs.next()) {
                 int id=rs.getInt(1);

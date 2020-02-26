@@ -10,8 +10,11 @@ import com.esprit.Entite.Salle;
 import com.esprit.Service.ServiceClasse;
 import com.esprit.Service.ServiceSalle;
 import com.esprit.test.Main;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 
@@ -50,9 +53,13 @@ public class AjouterSalleController implements Initializable {
     @FXML
     private Button Ajouter;
     Parent root;
+    
+    
     @FXML
     void ajouterSalle(ActionEvent event) {
-         if( nomSalle.getText().equals("") ||Integer.valueOf(numeroSalle.getText())<0|| Integer.valueOf(numeroSalle.getText()).equals("") || bloc.getText().equals("")){
+
+      
+        if( nomSalle.getText().equals("") ||Integer.valueOf(numeroSalle.getText())<0|| Integer.valueOf(numeroSalle.getText()).equals("") || bloc.getText().equals("")){
           Alert alert1 = new Alert(Alert.AlertType.WARNING);
         		alert1.setContentText("vérifier votre données ");
         		alert1.show();  
@@ -86,13 +93,29 @@ public class AjouterSalleController implements Initializable {
     }
 
     @FXML
-    void annulerSalle(ActionEvent event) {
+    void annulerSalle(ActionEvent event) throws IOException {
+root = (AnchorPane)FXMLLoader.load(getClass()
+  				.getResource("/com/esprit/gui/accueil.fxml"));
 
+        	    	Main.getStage().getScene().setRoot(root);
+        	    	Main.getStage().setTitle("Manipulation Interface");
+ 		Main.getStage().getScene().getStylesheets().add(getClass().getResource("/com/esprit/gui/accueil.fxml").toExternalForm());
+           
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+          numeroSalle.textProperty().addListener(new ChangeListener<String>() {
+    @Override
+    public void changed(ObservableValue<? extends String> observable, String oldValue, 
+        String newValue) {
+        if (!newValue.matches("\\d*")) {
+            numeroSalle.setText(newValue.replaceAll("[^\\d]", ""));
+             
+        }
+          }
+        });
     }    
     
 }

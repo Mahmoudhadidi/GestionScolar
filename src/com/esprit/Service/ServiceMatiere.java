@@ -24,7 +24,7 @@ import javafx.collections.ObservableList;
 public class ServiceMatiere implements IService<Matiere> {
 
     private Connection con;
-    private Statement ste,steer;
+    private Statement ste,steer,ster;
 
     public ServiceMatiere() {
         con = DataBase.getInstance().getConnection();
@@ -104,6 +104,16 @@ public class ServiceMatiere implements IService<Matiere> {
         
         return arr;
     }
+   public boolean verife(Matiere c) throws SQLException{
     
+    ster = con.createStatement();
+        ResultSet res ;
+        //System.out.println(n);
+        res = ster.executeQuery(" select * from seance where  id_matiere='"+c.getId()+"'");
+         while (res.next()){
+             return false;
+         }
+    return true;
+}  
     
 }

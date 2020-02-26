@@ -9,7 +9,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.gui.GestionSeanceController">
    <children>
-      <TableView fx:id="tableseance" layoutX="-1.0" layoutY="27.0" prefHeight="370.0" prefWidth="453.0">
+      <TableView fx:id="tableseance" layoutX="-1.0" layoutY="27.0" prefHeight="249.0" prefWidth="453.0">
         <columns>
           <TableColumn fx:id="classe" prefWidth="64.0" text="Classe" />
           <TableColumn fx:id="matiere" prefWidth="78.0" text="Matiere" />

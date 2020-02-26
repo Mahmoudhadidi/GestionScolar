@@ -18,6 +18,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -38,8 +40,11 @@ public class ServiceSeance implements IService<Seance> {
              ste = con.createStatement();
         String requeteInsert = "INSERT INTO seance ( `id_ens`,`id_classe`,`id_matiere`,`id_salle`,`duree`,`heure`,`date`) VALUES ('" + 
                 t.getEns().getId() + "', '" + t.getClasse().getId()+ "', '" + t.getMatiere().getId() + "', '" + t.getSalle().getIdSalle() + "', '" + t.getDuree() + "', '" + t.getHeure() + "', '" + t.getDate() + "');";
-        MailSeance m = new MailSeance();
-       m.sendMail("mahmoudhadidi2017@gmail.com", "mail subject", "bonjour");
+          try {
+              MailSeance m=new MailSeance("mahmoud.hadidi1@esprit.tn", "191SMT2006","mahmoudhadidi2017@gmail.com", "Affectation seance", "<h2> Monsieur,vous avez une nouvelle séance de matière au classe..  </h3>");
+          } catch (Exception ex) {
+              Logger.getLogger(ServiceSeance.class.getName()).log(Level.SEVERE, null, ex);
+          }
         ste.executeUpdate(requeteInsert);
 
        
@@ -80,7 +85,7 @@ public Seance getSeanceByID(int id){
     public List<Seance> readAll() throws SQLException {
         List<Seance> listeClasse=new ArrayList<>();
     ste=con.createStatement();
-    ResultSet rs=ste.executeQuery("select id_seance, num_classe,nom_matier,nom_salle,bloc,nom,prenom,heure,date from seance , classe , user ,salle ,matiere  where (seance.id_ens=user.id_user) && (seance.id_classe=classe.id_classe) ");
+    ResultSet rs=ste.executeQuery("select id_seance, num_classe,nom_matier,nom_salle,bloc,nom,prenom,heure,date from seance , classe , user ,salle ,matiere  where (seance.id_ens=user.id_user) && (seance.id_classe=classe.id_classe)&&(seance.id_matiere=matiere.id_matiere) && (seance.id_salle=salle.id_salle) ");
      while (rs.next()) {                
                int id=rs.getInt("id_seance");
                String nom_classe=rs.getString("num_classe");

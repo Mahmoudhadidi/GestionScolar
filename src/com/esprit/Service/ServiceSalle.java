@@ -22,7 +22,7 @@ import java.util.List;
  */
 public class ServiceSalle  implements IService<Salle>{
       private Connection con;
-    private Statement ste;
+    private Statement ste,ster;
 
     public ServiceSalle() {
         con = DataBase.getInstance().getConnection();
@@ -81,5 +81,17 @@ List<Salle> salle=new ArrayList<>();
     return salle;        
 //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    public boolean verife(Salle c) throws SQLException{
+    
+    ster = con.createStatement();
+        ResultSet res ;
+        //System.out.println(n);
+        res = ster.executeQuery(" select * from seance where  id_salle='"+c.getIdSalle()+"'");
+         while (res.next()){
+             return false;
+         }
+    return true;
+}
+
     
 }

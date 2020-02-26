@@ -54,18 +54,36 @@ public class LoginController implements Initializable {
     void connexion(ActionEvent event) throws IOException, SQLException {
    User userlogine=new User(logine.getText(), password.getText());
         ServiceUser su=new ServiceUser();
-        
-        if(su.connexion(userlogine)==true){
-
+        //administrateur","enseignant","etudiant
+        //System.out.println(su.typeuser(userlogine));
+           if(su.typeuser(userlogine).equalsIgnoreCase("administrateur")){
         root = (AnchorPane)FXMLLoader.load(getClass()
 				.getResource("/com/esprit/gui/accueil.fxml"));
 
         
         	Main.getStage().getScene().setRoot(root);
-    	    	Main.getStage().setTitle("Manipulation Interface");
+    	    	Main.getStage().setTitle("Interface Administrateur");
                 Main.getStage().getScene().getStylesheets().add(getClass().getResource("/com/esprit/gui/accueil.fxml").toExternalForm());
-           	
-        }else{
+           }else if(su.typeuser(userlogine).equalsIgnoreCase("enseignant")){
+                root = (AnchorPane)FXMLLoader.load(getClass()
+				.getResource("/com/esprit/gui/accueilProf.fxml"));
+
+        
+        	Main.getStage().getScene().setRoot(root);
+    	    	Main.getStage().setTitle("Interface Prof");
+                Main.getStage().getScene().getStylesheets().add(getClass().getResource("/com/esprit/gui/AccueilEtudiant.fxml").toExternalForm());
+         
+               
+           }else if(su.typeuser(userlogine).equalsIgnoreCase("etudiant")){
+               root = (AnchorPane)FXMLLoader.load(getClass()
+				.getResource("/com/esprit/gui/AccueilEtudiant.fxml"));
+
+        
+        	Main.getStage().getScene().setRoot(root);
+    	    	Main.getStage().setTitle("Interface Etudiant");
+                Main.getStage().getScene().getStylesheets().add(getClass().getResource("/com/esprit/gui/AccueilEtudiant.fxml").toExternalForm());
+         
+           }else{
                         logine.clear();
     			password.clear();
         		Alert alert = new Alert(AlertType.WARNING);

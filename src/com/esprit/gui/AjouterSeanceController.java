@@ -121,7 +121,7 @@ ServiceUser user=new ServiceUser();
 
         	    	Main.getStage().getScene().setRoot(root);
         	    	Main.getStage().setTitle("Manipulation Interface");
- 		Main.getStage().getScene().getStylesheets().add(getClass().getResource("/view/MainStyle.css").toExternalForm());
+ 		Main.getStage().getScene().getStylesheets().add(getClass().getResource("/com/esprit/gui/accueil.fxml").toExternalForm());
            	
 
 

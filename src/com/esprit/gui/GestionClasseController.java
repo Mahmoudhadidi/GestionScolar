@@ -171,24 +171,33 @@ public class GestionClasseController implements Initializable {
 
                     if (option.get() == supprimer) {
                         Classe c = new Classe(rowData.getId());
-
                         try {
-                            SeC.delete(c);
-
-                            tableClasse.getItems().clear();
-                            list = FXCollections.observableArrayList(listTable());
-
-                            classe.setCellValueFactory(new PropertyValueFactory<>("num"));
-                            capacite.setCellValueFactory(new PropertyValueFactory<>("nbrEtudient"));
-                            spécialiste.setCellValueFactory(new PropertyValueFactory<>("specialite"));
-                            idC.setCellValueFactory(new PropertyValueFactory<>("id"));
-
-                            tableClasse.setItems(list);
-                            Alert aler = new Alert(AlertType.INFORMATION);
-                            aler.setContentText("Classe bien supprimer");
-                            aler.show();
-
-                            //tableClasse.
+                            if(SeC.verife(c)){
+                                try {
+                                    SeC.delete(c);
+                                    
+                                    tableClasse.getItems().clear();
+                                    list = FXCollections.observableArrayList(listTable());
+                                    
+                                    classe.setCellValueFactory(new PropertyValueFactory<>("num"));
+                                    capacite.setCellValueFactory(new PropertyValueFactory<>("nbrEtudient"));
+                                    spécialiste.setCellValueFactory(new PropertyValueFactory<>("specialite"));
+                                    idC.setCellValueFactory(new PropertyValueFactory<>("id"));
+                                    
+                                    tableClasse.setItems(list);
+                                    Alert aler = new Alert(AlertType.INFORMATION);
+                                    aler.setContentText("Classe bien supprimer");
+                                    aler.show();
+                                    
+                                    //tableClasse.
+                                } catch (SQLException ex) {
+                                    Logger.getLogger(GestionClasseController.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                            }else{
+                                Alert ale = new Alert(AlertType.WARNING);
+                                ale.setContentText("Impossible !!!. Classe déjà affecter a une seance ");
+                                ale.show();
+                            }
                         } catch (SQLException ex) {
                             Logger.getLogger(GestionClasseController.class.getName()).log(Level.SEVERE, null, ex);
                         }

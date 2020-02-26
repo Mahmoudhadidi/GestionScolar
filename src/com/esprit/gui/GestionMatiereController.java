@@ -49,11 +49,19 @@ public class GestionMatiereController implements Initializable {
     // @FXML
    // private TableView<Matiere> tableMatiere;
 
-    @FXML
+   
+
+
+
+   
+     @FXML
+    private TableView<Matiere> tablematiere;
+
+     @FXML
     private TableColumn<?, ?> nomMatier;
 
     @FXML
-    private TableColumn<?, ?> coefficient;
+    private TableColumn<?, ?> cofficient;
 
     @FXML
     private TableColumn<?, ?> credit;
@@ -66,11 +74,21 @@ public class GestionMatiereController implements Initializable {
 
     @FXML
     private TextField cherche;
-        @FXML
-    private TableView<Matiere> tablematiere;
 
     @FXML
-    void ajouterMatiere(ActionEvent event) {
+    void ajouterClasse(ActionEvent event) throws IOException {
+         root = (AnchorPane) FXMLLoader.load(getClass()
+                .getResource("/com/esprit/gui/ajouterMatier.fxml"));
+
+        Main.getStage().getScene().setRoot(root);
+        Main.getStage().setTitle("Ajouter Matiere");
+        Main.getStage().getScene().getStylesheets().add(getClass().getResource("/com/esprit/gui/classe.fxml").toExternalForm());
+  
+
+    }
+
+    @FXML
+    void chercheMatiere(KeyEvent event) {
 
     }
 
@@ -79,22 +97,14 @@ public class GestionMatiereController implements Initializable {
     
      public void navModif() throws IOException {
         root = (AnchorPane) FXMLLoader.load(getClass()
-                .getResource("/com/esprit/gui/modifierClasse.fxml"));
+                .getResource("/com/esprit/gui/modifierMatiere.fxml"));
 
         Main.getStage().getScene().setRoot(root);
-        Main.getStage().setTitle("Modifier Classe");
-        Main.getStage().getScene().getStylesheets().add(getClass().getResource("/com/esprit/gui/modifierClasse.fxml").toExternalForm());
+        Main.getStage().setTitle("Modifier Matiere");
+        Main.getStage().getScene().getStylesheets().add(getClass().getResource("/com/esprit/gui/modifierMatiere.fxml").toExternalForm());
     }
 
-    void ajouterClasse(ActionEvent event) throws IOException {
-
-        root = (AnchorPane) FXMLLoader.load(getClass()
-                .getResource("/com/esprit/gui/ajouterMatier.fxml"));
-
-        Main.getStage().getScene().setRoot(root);
-        Main.getStage().setTitle("Ajouter Matiere");
-        Main.getStage().getScene().getStylesheets().add(getClass().getResource("/com/esprit/gui/classe.fxml").toExternalForm());
-    }
+   
 
     
     public ObservableList<Matiere> list;
@@ -123,7 +133,7 @@ public class GestionMatiereController implements Initializable {
         list = SeC.SearchEventsF(n);
         
         nomMatier.setCellValueFactory(new PropertyValueFactory<>("nom"));
-        coefficient.setCellValueFactory(new PropertyValueFactory<>("coefficient"));
+        cofficient.setCellValueFactory(new PropertyValueFactory<>("coefficient"));
         credit.setCellValueFactory(new PropertyValueFactory<>("credit"));
         idC.setCellValueFactory(new PropertyValueFactory<>("id"));
 
@@ -133,13 +143,13 @@ public class GestionMatiereController implements Initializable {
 
    
 
-    @FXML
-    private void chercherMatiere(javafx.scene.input.KeyEvent event) throws SQLException {
-        String s = cherche.getText();
+  
+     @FXML
+    private void chercheMatiere(javafx.scene.input.KeyEvent event) throws SQLException {
+         String s = cherche.getText();
         refreshtable(s);
     }
-   
-     
+
     
     
     
@@ -157,9 +167,9 @@ public class GestionMatiereController implements Initializable {
         tablematiere.setEditable(false);
 
         list = FXCollections.observableArrayList(listTable());
-
+  
          nomMatier.setCellValueFactory(new PropertyValueFactory<>("nom"));
-        coefficient.setCellValueFactory(new PropertyValueFactory<>("coefficient"));
+        cofficient.setCellValueFactory(new PropertyValueFactory<>("coefficient"));
         credit.setCellValueFactory(new PropertyValueFactory<>("credit"));
         idC.setCellValueFactory(new PropertyValueFactory<>("id"));
 
@@ -187,26 +197,35 @@ public class GestionMatiereController implements Initializable {
 
                     if (option.get() == supprimer) {
                         Matiere c = new Matiere(rowData.getId());
-
                         try {
-                            SeC.delete(c);
-
-                            tablematiere.getItems().clear();
-                            list = FXCollections.observableArrayList(listTable());
-
-                           nomMatier.setCellValueFactory(new PropertyValueFactory<>("nom"));
-        coefficient.setCellValueFactory(new PropertyValueFactory<>("coefficient"));
-        credit.setCellValueFactory(new PropertyValueFactory<>("credit"));
-        idC.setCellValueFactory(new PropertyValueFactory<>("id"));
-
-        tablematiere.setItems(list);
-                            Alert aler = new Alert(AlertType.INFORMATION);
-                            aler.setContentText("Classe bien supprimer");
-                            aler.show();
-
-                            //tableClasse.
+                            if(SeC.verife(c)){
+                                try {
+                                    SeC.delete(c);
+                                    
+                                    tablematiere.getItems().clear();
+                                    list = FXCollections.observableArrayList(listTable());
+                                    
+                                    nomMatier.setCellValueFactory(new PropertyValueFactory<>("nom"));
+                                    cofficient.setCellValueFactory(new PropertyValueFactory<>("coefficient"));
+                                    credit.setCellValueFactory(new PropertyValueFactory<>("credit"));
+                                    idC.setCellValueFactory(new PropertyValueFactory<>("id"));
+                                    
+                                    tablematiere.setItems(list);
+                                    Alert aler = new Alert(AlertType.INFORMATION);
+                                    aler.setContentText("Classe bien supprimer");
+                                    aler.show();
+                                    
+                                    //tableClasse.
+                                } catch (SQLException ex) {
+                                    Logger.getLogger(GestionClasseController.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                            }else{
+                                Alert ale = new Alert(AlertType.WARNING);
+                                ale.setContentText("Impossible !!!. Matiere déjà affecter a une seance ");
+                                ale.show();
+                            }
                         } catch (SQLException ex) {
-                            Logger.getLogger(GestionClasseController.class.getName()).log(Level.SEVERE, null, ex);
+                            Logger.getLogger(GestionMatiereController.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     } else if (option.get() == modifier) {
                        malem = rowData.getId();
@@ -224,6 +243,7 @@ public class GestionMatiereController implements Initializable {
 
     }
 
+    
 
     }    
     

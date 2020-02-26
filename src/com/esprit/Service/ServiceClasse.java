@@ -22,6 +22,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -45,7 +47,7 @@ import javafx.scene.layout.AnchorPane;
 public class ServiceClasse implements IService<Classe>,Initializable{
     
       private Connection con;
-    private Statement ste,steer;
+    private Statement ste,steer,ster;
 
     public ServiceClasse() {
         con = DataBase.getInstance().getConnection();
@@ -191,7 +193,17 @@ Parent root;
           return true; 
         return false;
 }public void initialize(URL location, ResourceBundle resources) {
-		
+		 nbrEtudiant.textProperty().addListener(new ChangeListener<String>() {
+    @Override
+    public void changed(ObservableValue<? extends String> observable, String oldValue, 
+        String newValue) {
+        if (!newValue.matches("\\d*")) {
+            nbrEtudiant.setText(newValue.replaceAll("[^\\d]", ""));
+             
+        }
+          }
+        });
+     
 		
 	}
 
@@ -216,4 +228,19 @@ Parent root;
             }
         
         return arr;
-    }}
+    }
+
+public boolean verife(Classe c) throws SQLException{
+    
+    ster = con.createStatement();
+        ResultSet res ;
+        //System.out.println(n);
+        res = ster.executeQuery(" select * from seance where  id_classe='"+c.getId()+"'");
+         while (res.next()){
+             return false;
+         }
+    return true;
+}
+
+
+}

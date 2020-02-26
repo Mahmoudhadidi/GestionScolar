@@ -27,6 +27,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
@@ -145,30 +146,38 @@ public List<Salle> listTable(){
 
     if (option.get() == supprimer) {
  Salle c=new Salle(rowData.getIdSalle());
-
                 try {
-                    SeC.delete(c);
-                   
-                    tableClasse.getItems().clear();
-                    	list=FXCollections.observableArrayList(listTable());
-       
-       
-        nomsalle.setCellValueFactory(new PropertyValueFactory<>("nomSalle"));
- 	numSallle.setCellValueFactory(new PropertyValueFactory<>("numSalle"));
- 	bloc.setCellValueFactory(new PropertyValueFactory<>("bloc"));
-        idC.setCellValueFactory(new PropertyValueFactory<>("idSalle"));
-        
-        
-       
-	tableClasse.setItems(list);
-        Alert aler = new Alert(Alert.AlertType.INFORMATION);
-    			aler.setContentText("salle bien supprimer");
-    			aler.show();
-        
-                    //tableClasse.
-                    
+                    if(SeC.verife(c)){
+                        try {
+                            SeC.delete(c);
+                            
+                            tableClasse.getItems().clear();
+                            list=FXCollections.observableArrayList(listTable());
+                            
+                            
+                            nomsalle.setCellValueFactory(new PropertyValueFactory<>("nomSalle"));
+                            numSallle.setCellValueFactory(new PropertyValueFactory<>("numSalle"));
+                            bloc.setCellValueFactory(new PropertyValueFactory<>("bloc"));
+                            idC.setCellValueFactory(new PropertyValueFactory<>("idSalle"));
+                            
+                            
+                            
+                            tableClasse.setItems(list);
+                            Alert aler = new Alert(Alert.AlertType.INFORMATION);
+                            aler.setContentText("salle bien supprimer");
+                            aler.show();
+                                                
+                            //tableClasse.
+                            
+                        } catch (SQLException ex) {
+                            Logger.getLogger(GestionClasseController.class.getName()).log(Level.SEVERE, null, ex);
+                        } }else{
+                        Alert ale = new Alert(AlertType.WARNING);
+                        ale.setContentText("Impossible !!!. Classe déjà affecter a une seance ");
+                        ale.show();
+                    }
                 } catch (SQLException ex) {
-                    Logger.getLogger(GestionClasseController.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(GestionSalleController.class.getName()).log(Level.SEVERE, null, ex);
                 }
         } else if (option.get() == modifier) {
             malem = rowData.getIdSalle();
