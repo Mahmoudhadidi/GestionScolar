@@ -18,10 +18,10 @@
             <NumberAxis side="LEFT" />
          </yAxis>
       </BarChart>
-      <Button fx:id="retour" layoutX="579.0" layoutY="14.0" mnemonicParsing="false" onAction="#retour" style="-fx-background-color: #48A5EA;" text="Retour" textFill="#fff3f3" />
-      <AnchorPane prefHeight="418.0" prefWidth="150.0" style="-fx-background-color: #48A5EA;">
+      <Button fx:id="retour" layoutX="561.0" layoutY="14.0" mnemonicParsing="false" onAction="#retour" style="-fx-background-color: #0a4a86;" text="Retour" textFill="#fff3f3" />
+      <AnchorPane prefHeight="418.0" prefWidth="150.0" style="-fx-background-color: #0a4a86;">
          <children>
-            <Label layoutX="20.0" layoutY="37.0" text="Statistique" textAlignment="CENTER" textFill="WHITE" textOverrun="LEADING_ELLIPSIS" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="32.0" layoutY="37.0" text="Statistique" textAlignment="CENTER" textFill="WHITE" textOverrun="LEADING_ELLIPSIS" />
             <Button layoutX="27.0" layoutY="349.0" mnemonicParsing="false" onAction="#pdf" style="-fx-background-color: white;" text="imprimer" textFill="#320303" />
             <Button fx:id="valider" layoutX="39.0" layoutY="224.0" mnemonicParsing="false" onAction="#valider" style="-fx-background-color: white;" text="valider" textFill="#1e0101" />
          </children>

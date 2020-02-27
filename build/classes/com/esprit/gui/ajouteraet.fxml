@@ -8,18 +8,18 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.gui.AjouteraetController">
    <children>
-      <AnchorPane prefHeight="415.0" prefWidth="150.0" style="-fx-background-color: #48A5EA;">
+      <AnchorPane prefHeight="415.0" prefWidth="150.0" style="-fx-background-color: #0a4a86;">
          <children>
-            <Label layoutX="20.0" layoutY="37.0" text="AJOUTER Absence" textAlignment="CENTER" textFill="WHITE" textOverrun="LEADING_ELLIPSIS" />
+            <Label layoutX="20.0" layoutY="37.0" text="Ajouter Absence" textAlignment="CENTER" textFill="WHITE" textOverrun="LEADING_ELLIPSIS" />
          </children>
       </AnchorPane>
       <Label layoutX="207.0" layoutY="161.0" text="type d'absence" />
       <Label layoutX="211.0" layoutY="203.0" prefHeight="21.0" prefWidth="74.0" text="id étudiant" />
       <Label layoutX="211.0" layoutY="250.0" prefHeight="21.0" prefWidth="74.0" text="id seance" />
-      <TextField fx:id="idemplo1" layoutX="320.0" layoutY="198.0" />
-      <TextField fx:id="datee1" layoutX="322.0" layoutY="245.0" />
-      <Button fx:id="btn2" layoutX="320.0" layoutY="292.0" mnemonicParsing="false" onAction="#ajouterRes" text="Ajouter" />
-      <Button fx:id="retour2" layoutX="424.0" layoutY="292.0" mnemonicParsing="false" onAction="#retourr" text="Retour" />
+      <TextField fx:id="idemplo1" layoutX="320.0" layoutY="198.0" prefHeight="25.0" prefWidth="187.0" />
+      <TextField fx:id="datee1" layoutX="322.0" layoutY="245.0" prefHeight="25.0" prefWidth="187.0" />
+      <Button fx:id="btn2" layoutX="320.0" layoutY="292.0" mnemonicParsing="false" onAction="#ajouterRes" style="-fx-background-color: #0a4a86;" text="Ajouter" textFill="WHITE" />
+      <Button fx:id="retour2" layoutX="424.0" layoutY="292.0" mnemonicParsing="false" onAction="#retourr" style="-fx-background-color: #0a4a86;" text="Retour" textFill="WHITE" />
       <ComboBox fx:id="type1" layoutX="322.0" layoutY="156.0" prefHeight="31.0" prefWidth="187.0" />
    </children>
 </AnchorPane>
