@@ -88,6 +88,11 @@ public class AdminController implements Initializable {
 public void Send(ActionEvent event) {
     SendEmail m = new SendEmail();
     m.sendEmail("mariem.romdhani@esprit.tn", "Réponse reclamation", repo.getText());
+       Notifications notificationBuilder=Notifications.create()
+    .title("Réponse envoyée").text("vous avez envoyé une reclamation").position(Pos.TOP_RIGHT);
+           notificationBuilder.show();
+        
+
     
     }
    
