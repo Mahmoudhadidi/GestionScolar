@@ -10,7 +10,7 @@ package com.esprit.Utils;
  * @author hadidi
  */
 
-import com.mysql.jdbc.interceptors.SessionAssociationInterceptor;
+//import com.mysql.jdbc.interceptors.SessionAssociationInterceptor;
 import java.util.Date;
 import java.util.Properties;
 import java.util.logging.Level;

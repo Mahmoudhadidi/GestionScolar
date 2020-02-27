@@ -9,21 +9,21 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="617.0" prefWidth="865.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.gui.LoginController">
+<AnchorPane id="AnchorPane" prefHeight="552.0" prefWidth="865.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.gui.LoginController">
     <stylesheets>
         <URL value="@login.css" />
     </stylesheets>
    <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dfe2e4" height="519.0" layoutX="49.0" layoutY="20.0" stroke="BLACK" strokeType="INSIDE" width="339.0" />
       <Text layoutX="447.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login :" wrappingWidth="69.79980524629354" />
       <Text layoutX="447.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password :" />
       <TextField fx:id="logine" layoutX="531.0" layoutY="113.0" prefHeight="31.0" prefWidth="187.0" />
       <PasswordField fx:id="password" layoutX="532.0" layoutY="175.0" prefHeight="31.0" prefWidth="187.0" />
-      <Button fx:id="con" layoutX="553.0" layoutY="240.0" mnemonicParsing="false" onAction="#connexion" prefHeight="31.0" prefWidth="128.0" text="Connexion" textFill="#510707">
+      <Button fx:id="con" layoutX="543.0" layoutY="247.0" mnemonicParsing="false" onAction="#connexion" prefHeight="46.0" prefWidth="138.0" text="Connexion" textFill="#510707">
          <font>
             <Font size="21.0" />
          </font></Button>
@@ -33,28 +33,17 @@
          </font>
       </Label>
       <Hyperlink layoutX="553.0" layoutY="300.0" text="Forgot Password?" />
-      <AnchorPane>
-         <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-5.0" layoutY="353.0" prefHeight="53.0" prefWidth="353.0" text="Assurer votre succés" textAlignment="CENTER">
-               <font>
-                  <Font name="System Bold" size="36.0" />
-               </font>
-               <textFill>
-                  <LinearGradient endX="0.9466019417475728" endY="0.7135922330097088" startX="0.9223300970873787" startY="0.2766990291262136">
-                     <stops>
-                        <Stop color="#0e06f5" />
-                        <Stop color="WHITE" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </textFill>
-            </Label>
-            <ImageView fitHeight="349.0" fitWidth="363.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@logo/logo_Finale.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
-      <Button layoutX="736.0" layoutY="361.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="115.0" text="Sign Up" textAlignment="CENTER" textFill="#b80909" />
+      <AnchorPane />
+      <Button layoutX="559.0" layoutY="379.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="115.0" text="Sign Up" textAlignment="CENTER" textFill="#b80909" />
+      <ImageView fitHeight="127.0" fitWidth="118.0" layoutX="160.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@logo/logo_Finale.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="132.0" layoutY="275.0" text="Assurer votre succès" textFill="#2d3b90">
+         <font>
+            <Font name="Arial Bold" size="17.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

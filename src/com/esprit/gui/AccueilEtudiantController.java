@@ -62,7 +62,10 @@ public class AccueilEtudiantController implements Initializable {
     }
 
     @FXML
-    private void gestionReclamation(ActionEvent event) {
+    private void gestionReclamation(ActionEvent event) throws IOException {
+      pane.getChildren().clear();
+        Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("/com/esprit/gui/AjoutReclamation.fxml"));
+        pane.getChildren().add(newLoadedPane);
     }
 
     @FXML

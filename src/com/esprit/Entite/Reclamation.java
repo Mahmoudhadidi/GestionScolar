@@ -21,9 +21,9 @@ public class Reclamation {
     private int id_user;
     private int id_reclamation;
     private boolean sat;
-    public String getId_user;
+  
 
-    public Reclamation( int id_reclamation,int id_user,String description,String etat,String sujet,String date_env, String date_rep) {
+    public Reclamation( int id_reclamation,int id_user,String description,String etat,String sujet,String date_env, String date_rep,boolean sat) {
         
         this.id_reclamation=id_reclamation;
         this.id_user=id_user;
@@ -32,9 +32,9 @@ public class Reclamation {
         this.sujet = sujet;
         this.date_env=date_env;
         this.date_rep=date_rep;
-        
+        this.sat=sat;
     }
-     public Reclamation( int id_user,String description,String etat,String sujet,String date_env, String date_rep) {
+     public Reclamation( int id_user,String description,String etat,String sujet,String date_env, String date_rep, boolean sat) {
         
         this.id_user=id_user;
         this.description = description;
@@ -42,15 +42,33 @@ public class Reclamation {
         this.sujet = sujet;
         this.date_env=date_env;
         this.date_rep=date_rep;
+        this.sat=sat;
         
     }
 
-    public Reclamation(String nom) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Reclamation(String sujet, String description, int id_reclamation) {
+        this.sujet = sujet;
+        this.description = description;
+        this.id_reclamation = id_reclamation;
     }
+     
+
+    public Reclamation() {
+    }  
+
+
     
-    
+
+ 
+
+    public Reclamation(String description, String sujet) {
+         this.sujet = sujet;
+        this.description = description;
+    }
+
    
+  
+  
 
     public String getSujet() {
         return sujet;
@@ -113,7 +131,7 @@ public class Reclamation {
         return "reclamation{" + "sujet=" + sujet + ", description=" + description + ", etat=" + etat + ", date_env=" + date_env + ", date_rep=" + date_rep + ", id_user=" + id_user + ", id_reclamation=" + id_reclamation + '}';
     }
 
-    public boolean isSat() {
+    public boolean getSat() {
         return sat;
     }
 
@@ -131,6 +149,7 @@ public class Reclamation {
         this.id_reclamation = id_reclamation;
         this.sat = sat;
     }
+
 
   
 

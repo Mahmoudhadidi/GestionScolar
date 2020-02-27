@@ -100,7 +100,7 @@ public class AccueilController implements Initializable {
     @FXML
     void gestionReclamation(ActionEvent event) throws IOException {
      pane.getChildren().clear();
-        Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("/com/esprit/gui/ReclamationAdmin.fxml"));
+        Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("/com/esprit/gui/Admin.fxml"));
         pane.getChildren().add(newLoadedPane);
 
     }
@@ -116,20 +116,10 @@ public class AccueilController implements Initializable {
 
     }
 
-ServiceUser s=new ServiceUser();
-
-       String nomc() throws SQLException{
-          return  s.readAll_connecte(ServiceUser.id_user_conecte).get(1).getNom();
-       }    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        try {
-            nomuser.setText(nomc());
-        } catch (SQLException ex) {
-            Logger.getLogger(AccueilController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }    
+    }
 
     private void gestionuser(ActionEvent event) throws IOException {
         pane.getChildren().clear();

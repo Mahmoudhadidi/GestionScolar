@@ -1,11 +1,26 @@
-package com.esprit.test ; 
-import javax.mail.*;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.esprit.test;
+
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import java.util.Properties;
 
-public class SendEmail {
-    public   boolean sendEmail(String to , String subject , String emailContent){
+/**
+ *
+ * @author PC-HP
+ */
+public class Email {
+    
+    public static boolean sendEmail(String to , String subject , String emailContent){
         // Get system properties
         Properties properties = System.getProperties();
 
@@ -48,10 +63,4 @@ public class SendEmail {
     }
     
     
-    public static void main(String[] args) {
-//        AdminController a = new AdminController();
-SendEmail m = new SendEmail();
-          m.sendEmail("mariem.romdhani@esprit.tn", "reclamation", "check your compte");
-     
-    }
 }
