@@ -3,23 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/GestionScolar/src/com/esprit/gui/FXMLDocumentController.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/GestionScolar/src/com/esprit/Service/Mail.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/GestionScolar/src/com/esprit/Entite/User_1.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/GestionScolar/src/com/esprit/gui/FXMLListDemandeClubController.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/GestionScolar/src/com/esprit/gui/FXMLListDemandeClub.fxml</file>
-            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/GestionScolar/src/com/esprit/gui/FXMLDemandeClub.fxml</file>
-            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/GestionScolar/src/com/esprit/Service/ServiceClub.java</file>
             <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/GestionScolar/src/com/esprit/gui/AccueilController.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/GestionScolar/src/com/esprit/Entite/Club.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/GestionScolar/src/com/esprit/gui/FXMLDocument.fxml</file>
-            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/GestionScolar/src/com/esprit/Service/ServiceDemandeClub.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/GestionScolar/src/com/esprit/Entite/DemandeClub.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/GestionScolar/src/com/esprit/Service/ServiceUser_1.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/GestionScolar/src/com/esprit/test/SendEmail.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/GestionScolar/src/com/esprit/gui/FXMLDemandeClubController.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/GestionScolar/src/com/esprit/test/Main.java</file>
             <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/GestionScolar/src/com/esprit/gui/LoginController.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/GestionScolar/src/com/esprit/Service/ServiceUser.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/GestionScolar/src/com/esprit/test/Main.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/GestionScolar/src/com/esprit/gui/AccueilEtudiantController.java</file>
         </group>
     </open-files>
 </project-private>

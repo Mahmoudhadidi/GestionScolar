@@ -10,6 +10,7 @@ package com.esprit.Entite;
  * @author techouse
  */
 public class User {
+    
    private int id;
    private String logine;
    private String mdp;
@@ -24,6 +25,17 @@ public class User {
    private String niveau;
 
 //dfdfgdf
+
+    public User(int id,String logine, String mdp, String role, String nom, String mail, int cin, String niveau) {
+        this.id=id;
+        this.logine = logine;
+        this.mdp = mdp;
+        this.role = role;
+        this.nom = nom;
+        this.mail = mail;
+        this.cin = cin;
+        this.niveau = niveau;
+    }
 
 
     public User(String logine, String mdp) {
@@ -190,6 +202,12 @@ public class User {
         this.adresse = adresse;
         this.cin = cin;
         this.niveau = niveau;
+    }
+
+    public User(int id, String nom, String prenom) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
     }
 
     public User(String logine, String mdp, String role, String nom, String prenom, String mail, String date_N, String adresse, int cin, String niveau) {

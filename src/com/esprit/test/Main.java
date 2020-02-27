@@ -10,6 +10,7 @@ package com.esprit.test;
  * @author hadidi
  */
 
+import com.esprit.Service.ServiceUser;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -24,7 +25,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			setStage(primaryStage);
-			primaryStage.setTitle("");
+			primaryStage.setTitle("login");
 			
  			Parent root = (AnchorPane)FXMLLoader.load(getClass()
 
@@ -52,6 +53,7 @@ public class Main extends Application {
 
 	public static void main(String[] args) {
 		launch(args);
+               
 	}
 }
 

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="com.esprit.gui.ModifierMatiereController">
+   <children>
+      <TextField fx:id="nomMatiere" layoutX="276.0" layoutY="85.0" />
+      <TextField fx:id="coefficient" layoutX="276.0" layoutY="132.0" />
+      <Text layoutX="99.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom Matiere" />
+      <Text layoutX="99.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Coefficient" />
+      <TextField fx:id="credit" layoutX="276.0" layoutY="182.0" />
+      <Text layoutX="99.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Credit" />
+      <Button fx:id="Annuler" layoutX="190.0" layoutY="259.0" mnemonicParsing="false" onAction="#annulerModif" text="Annuler" />
+      <Button fx:id="Modifier" layoutX="266.0" layoutY="259.0" mnemonicParsing="false" onAction="#modifierMatiere" text="Modifier" />
+   </children>
+</AnchorPane>

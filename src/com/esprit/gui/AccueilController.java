@@ -57,12 +57,15 @@ public class AccueilController implements Initializable {
 
     @FXML
     private AnchorPane pane;
+    @FXML
+    private Button gestionUser;
 
     @FXML
     void gestionUser(ActionEvent event) throws IOException {
      pane.getChildren().clear();
-     Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("/com/esprit/gui/classe.fxml"));
-     pane.getChildren().add(newLoadedPane);
+        Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("/com/esprit/gui/gestionUser.fxml"));
+        pane.getChildren().add(newLoadedPane);
+
         		    }
 
     @FXML
@@ -101,6 +104,7 @@ public class AccueilController implements Initializable {
 
     @FXML
     void quitter(ActionEvent event) {
+        System.exit(0);
 
     }
 
@@ -109,5 +113,13 @@ public class AccueilController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void gestionuser(ActionEvent event) throws IOException {
+        pane.getChildren().clear();
+        Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("/com/esprit/gui/gestionUser.fxml"));
+        pane.getChildren().add(newLoadedPane);
+
+    }
     
 }
