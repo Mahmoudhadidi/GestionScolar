@@ -66,6 +66,7 @@ public class AccueilProfController implements Initializable {
 
     @FXML
     private void quitter(ActionEvent event) {
+        System.exit(0);
     }
     
 }

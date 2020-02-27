@@ -66,6 +66,8 @@ public class User {
     public User() {
     }
 
+    
+
     public User(String nom, String prenom, String date_N, String adresse, int cin) {
         this.nom = nom;
         this.prenom = prenom;
@@ -228,11 +230,12 @@ public class User {
         this.mail = mail;
     }
 
-    public User(int id, String nom, String prenom,String mail) {
+    public User(int id, String nom, String prenom,String mail,String niveau) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.mail=mail;
+        this.niveau=niveau;
     }
 
     public User(String logine, String mdp, String role, String nom, String prenom, String mail, String date_N, String adresse, int cin, String niveau) {

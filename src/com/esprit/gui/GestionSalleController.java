@@ -33,7 +33,9 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 
 
@@ -65,6 +67,25 @@ public class GestionSalleController implements Initializable {
     @FXML
     private Button ajouterSalle;
     Parent root;
+    @FXML
+    private TextField checher;
+    void refreshtable(String n) throws SQLException {
+        idC.setVisible(false);
+        tableClasse.setEditable(false);
+        
+       
+
+        list = SeC.SearchEventsF(n);
+        
+          nomsalle.setCellValueFactory(new PropertyValueFactory<>("nomSalle"));
+ 	numSallle.setCellValueFactory(new PropertyValueFactory<>("numSalle"));
+ 	bloc.setCellValueFactory(new PropertyValueFactory<>("bloc"));
+        idC.setCellValueFactory(new PropertyValueFactory<>("idSalle"));
+        
+        
+        tableClasse.setItems(list);
+
+    }
     
     public void navModif() throws IOException {
         root = (AnchorPane) FXMLLoader.load(getClass()
@@ -193,5 +214,17 @@ public List<Salle> listTable(){
     return row ;
 });
     }    
+
+    @FXML
+    private void chercherSalle(javafx.scene.input.KeyEvent event) throws SQLException {
+        String s = checher.getText();
+        refreshtable(s);
+    }
+
+    @FXML
+    private void chercheSalle(javafx.scene.input.KeyEvent event) throws SQLException {
+        String s = checher.getText();
+        refreshtable(s);
+    }
     
 }

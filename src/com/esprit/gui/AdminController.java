@@ -74,7 +74,7 @@ public class AdminController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-     //   afficheliste();
+       afficheliste();
         
     } 
 //    @FXML
@@ -131,7 +131,7 @@ public void Send(ActionEvent event) {
              
 
                   
-                  System.out.println("ok");
+                  //System.out.println("ok");
          obl.add(ls);
                   }
                   return obl;
@@ -159,6 +159,7 @@ public void Send(ActionEvent event) {
 
      // tableview.setItems(null);
      obl=show1(); 
+      //  System.out.println(obl);
       tabAdmin.setItems(obl);
       System.out.println("hemmm"+obl);
 

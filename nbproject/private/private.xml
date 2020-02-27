@@ -3,26 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/gui/AbsenceEtudientController.java</file>
-            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/Service/ServiceClasse.java</file>
-            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/gui/GestionClasseController.java</file>
-            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/Entite/User.java</file>
-            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/gui/LoginController.java</file>
-            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/Entite/Salle.java</file>
-            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/Service/ServiceSalle.java</file>
-            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/Entite/Classe.java</file>
-            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/gui/affecterEtudiant.fxml</file>
-            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/gui/AjouterSeanceController.java</file>
-            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/test/Main.java</file>
-            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/gui/AccueilController.java</file>
-            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/gui/Interface_Note_EtudiantController.java</file>
             <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/gui/AffecterEtudiantController.java</file>
-            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/gui/EtudientconsultController.java</file>
-            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/Entite/Matiere.java</file>
-            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/gui/AbsenceEmployeController.java</file>
-            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/Service/ServiceSeance.java</file>
+            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/test/Main.java</file>
             <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/Service/ServiceUser.java</file>
-            <file>file:/C:/Users/hadidi/Documents/NetBeansProjects/Gestion_Scolare/src/com/esprit/gui/Interface_Note_ProfController.java</file>
         </group>
     </open-files>
 </project-private>

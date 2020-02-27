@@ -18,6 +18,8 @@ import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 //import javafx.scene.control.Alert;
 //import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -86,9 +88,9 @@ public class LoginController implements Initializable {
            }else{
                         logine.clear();
     			password.clear();
-//        		Alert alert = new Alert(AlertType.WARNING);
-//        		alert.setContentText("username or password not available");
-//        		alert.show();
+      		Alert alert = new Alert(AlertType.WARNING);
+        		alert.setContentText("username or password not available");
+        		alert.show();
         }
     }
 

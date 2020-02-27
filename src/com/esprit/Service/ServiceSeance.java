@@ -20,6 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -28,7 +30,7 @@ import java.util.logging.Logger;
 public class ServiceSeance implements IService<Seance> {
     
       private Connection con;
-    private Statement ste;
+    private Statement ste,steer;
 
     public ServiceSeance() {
         con = DataBase.getInstance().getConnection();
@@ -86,7 +88,12 @@ public Seance getSeanceByID(int id){
     public List<Seance> readAll() throws SQLException {
         List<Seance> listeClasse=new ArrayList<>();
     ste=con.createStatement();
-    ResultSet rs=ste.executeQuery("select id_seance, num_classe,nom_matier,nom_salle,bloc,nom,prenom,heure,date from seance , classe , user ,salle ,matiere  where (seance.id_ens=user.id_user) && (seance.id_classe=classe.id_classe)&&(seance.id_matiere=matiere.id_matiere) && (seance.id_salle=salle.id_salle) ");
+    ResultSet rs=ste.executeQuery("select id_seance, num_classe,nom_matier,nom_salle,bloc,nom,prenom,heure,date from "
+            + "seance , classe , user ,salle ,matiere  where "
+            + "(seance.id_ens=user.id_user) && "
+            + "(seance.id_classe=classe.id_classe)&&"
+            + "(seance.id_matiere=matiere.id_matiere) &&"
+            + " (seance.id_salle=salle.id_salle) ");
      while (rs.next()) {                
                int id=rs.getInt("id_seance");
                String nom_classe=rs.getString("num_classe");
@@ -114,4 +121,45 @@ public Seance getSeanceByID(int id){
         //   throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    
+    
+     public ObservableList<Seance>  SearchEventsF(String n) throws SQLException  {         
+      
+        ObservableList<Seance>  arrr = FXCollections.observableArrayList();     
+        steer = con.createStatement();
+        ResultSet rs ;
+        //System.out.println(n);
+        //rs = steer.executeQuery(" select * from salle where  (id_salle like'%"+n+"%')||(num_salle like'%"+n+"%')||(num_salle like'%"+n+"%')||(bloc like'%"+n+"%')");
+        // select* from events where (Nom like '%"+n+"%') or (etat like '%"+n+"%') or (date like '%"+n+"%') or (type like '%"+n+"%') or (id like '%"+n+"%') ");
+//             res = ste.executeQuery(" select* from events where (Nom like '%"+n+"%') or (etat like '%"+n+"%') or (date like '%"+n+"%') or (type like '%"+n+"%') or (id like '%"+n+"%') ");
+              rs=ste.executeQuery("select id_seance, num_classe,nom_matier,nom_salle,bloc,nom,prenom,heure,date from "
+                      + "seance , classe , user ,salle ,matiere  where"
+                      + " (seance.id_ens=user.id_user) && "
+                      + "(seance.id_classe=classe.id_classe)&&"
+                      + "(seance.id_matiere=matiere.id_matiere) && "
+                      + "(seance.id_salle=salle.id_salle) ||"
+                      + "(classe.num_classe like'%\"+n+\"%')||(matiere.nom_matier like'%\"+n+\"%')||(salle.nom_salle like'%\"+n+\"%')||(salle.bloc like'%\"+n+\"%')||"
+                      + "(user.nom like'%\"+n+\"%')||(user.prenom like'%\"+n+\"%')||(seance.heure like'%\"+n+\"%')||(seance.date like'%\"+n+\"%')");
+     while (rs.next()) {                
+               int id=rs.getInt("id_seance");
+               String nom_classe=rs.getString("num_classe");
+               String nom_matier=rs.getString("nom_matier");
+               String nom_salle=rs.getString("nom_salle");
+               String bloc=rs.getString("bloc");
+               String nomEns=rs.getString("nom");
+               String prenom=rs.getString("prenom");
+               String heure=rs.getString("heure");
+               String date=rs.getString("date");
+               nomEns=nomEns+" "+prenom;
+               nom_salle=nom_salle+" "+bloc;
+               Seance a =new Seance(id, nomEns, nom_classe, nom_matier, nom_salle, heure, date);
+               
+     
+        arrr.add(a);
+             //  System.out.println(arr);
+            }
+       return arrr;
+     }
 }
+     
+

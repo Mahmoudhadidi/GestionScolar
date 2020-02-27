@@ -62,7 +62,8 @@ List<User> etu=new ArrayList<>();
                String nom=rs.getString("nom");
                String prenom=rs.getString("prenom");
               String mail=rs.getString("email");
-              User p=new User(id,nom,prenom,mail);
+              String niveau=rs.getString("niveau");
+              User p=new User(id,nom,prenom,mail,niveau);
      etu.add(p);
      }
     return etu;        
@@ -79,7 +80,8 @@ List<User> etu=new ArrayList<>();
                String nom=rs.getString("nom");
                String prenom=rs.getString("prenom");
               String mail=rs.getString("email");
-              User p=new User(id,nom,prenom,mail);
+              String niveau=rs.getString("niveau");
+              User p=new User(id,nom,prenom,mail,niveau);
      etu.add(p);
      }
     return etu;        
@@ -98,7 +100,8 @@ List<User> ens=new ArrayList<>();
                String nom=rs.getString("nom");
                String prenom=rs.getString("prenom");
                String mail=rs.getString("email");
-              User p=new User(id,nom,prenom,mail);
+              String niveau=rs.getString("niveau");
+              User p=new User(id,nom,prenom,mail,niveau);
      ens.add(p);
      }
     return ens;        

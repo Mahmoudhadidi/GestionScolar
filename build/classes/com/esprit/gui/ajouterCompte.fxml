@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="com.esprit.gui.AjouterCompteController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.gui.AjouterCompteController">
    <children>
       <Text layoutX="133.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" />
       <Text layoutX="131.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mot de passe" />
@@ -19,8 +18,8 @@
       <Text layoutX="129.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse" />
       <Text layoutX="132.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CIN" />
       <Text layoutX="133.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Niveau" />
-      <Button layoutX="439.0" layoutY="152.0" mnemonicParsing="false" onAction="#anulerLajou" text="Annuler" />
-      <Button fx:id="ajouter" layoutX="440.0" layoutY="79.0" mnemonicParsing="false" onAction="#ajouterUser" text="Ajouter" />
+      <Button layoutX="167.0" layoutY="351.0" mnemonicParsing="false" onAction="#anulerLajou" text="Annuler" />
+      <Button fx:id="ajouter" layoutX="259.0" layoutY="351.0" mnemonicParsing="false" onAction="#ajouterUser" text="Ajouter" />
       <TextField fx:id="login" layoutX="228.0" layoutY="1.0" />
       <TextField fx:id="motpasse" layoutX="228.0" layoutY="29.0" />
       <TextField fx:id="nom" layoutX="228.0" layoutY="91.0" />

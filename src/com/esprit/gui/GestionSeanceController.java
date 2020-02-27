@@ -33,7 +33,9 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -68,8 +70,6 @@ public class GestionSeanceController implements Initializable {
      @FXML
     private TableColumn<?, ?> ensignant;
 
-    @FXML
-    private TableColumn<?, ?> matiere1;
       @FXML
     private TableColumn<?, ?> id;
 
@@ -79,6 +79,52 @@ public class GestionSeanceController implements Initializable {
      public ObservableList<Seance> list;
 
     ServiceSeance SeC=new ServiceSeance();
+    @FXML
+    private TextField recherch;
+ 
+    
+    
+    
+    
+    
+    void refreshtable(String n) throws SQLException {
+        id.setVisible(false);
+        tableseance.setEditable(false);
+        
+       
+
+        list = SeC.SearchEventsF(n);
+        
+          classe.setCellValueFactory(new PropertyValueFactory<>("nomclasse"));
+ 	matiere.setCellValueFactory(new PropertyValueFactory<>("nommatiere"));
+ 	salle.setCellValueFactory(new PropertyValueFactory<>("nomsalle"));
+        date.setCellValueFactory(new PropertyValueFactory<>("date"));
+        heure.setCellValueFactory(new PropertyValueFactory<>("heure"));
+        ensignant.setCellValueFactory(new PropertyValueFactory<>("nomens"));
+        id.setCellValueFactory(new PropertyValueFactory<>("id_Seance"));
+        
+        
+        tableseance.setItems(list);
+
+    }
+    @FXML
+    private void recherchSeance(javafx.scene.input.KeyEvent  event) throws SQLException {
+        String s = recherch.getText();
+        refreshtable(s);
+    }
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     public List<Seance> listTable(){
                
                List<Seance> listClasse = null;
@@ -205,5 +251,4 @@ public class GestionSeanceController implements Initializable {
         
         // TODO
     }    
-    
 }

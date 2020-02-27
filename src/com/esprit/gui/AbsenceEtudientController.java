@@ -5,10 +5,12 @@
  */
 package com.esprit.gui;
 
-import com.esprit.Entite.listabsence;
-import com.esprit.Service.ServiceAbsenceEmploye;
+import com.esprit.Entite.listabsence1;
+import com.esprit.Service.ServiceAbsence;
 import com.esprit.Utils.DataBase;
-import java.awt.event.MouseEvent;
+import com.esprit.Utils.Pdf;
+import com.itextpdf.text.DocumentException;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -31,14 +33,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import tray.notification.TrayNotification;
-import org.controlsfx.control.Notifications;
 
 /**
  * FXML Controller class
  *
  * @author LENOVO
  */
-public class AbsenceEmployeController implements Initializable {
+public class AbsenceEtudientController implements Initializable {
 
     @FXML
     private AnchorPane idEnfant;
@@ -49,39 +50,38 @@ public class AbsenceEmployeController implements Initializable {
     @FXML
     private Button ajouter;
     @FXML
+    private TableView<listabsence1> tabPoint;
+    @FXML
+    private TableColumn<listabsence1, Integer> ide;
+    @FXML
+    private TableColumn<listabsence1, String> nom;
+    @FXML
+    private TableColumn<listabsence1, String> pre;
+    @FXML
+    private TableColumn<listabsence1, String> type;
+    @FXML
+    private TableColumn<listabsence1, Integer> ids;
+    @FXML
+    private Button Supprimer1;
+    ServiceAbsence s = new ServiceAbsence();
+     private final Connection con = DataBase.getInstance().getConnection();
+    @FXML
     private Button modifier;
-    @FXML
-    private TableView<listabsence> tabPoint;
-    
-     @FXML
-    private TableColumn<listabsence, String> nom;
-    @FXML
-    private TableColumn<listabsence, String> pre;
-    @FXML
-    private TableColumn<listabsence, String> type;
-    
-    @FXML
-    private TableColumn<listabsence, String> date;
-    
-    ServiceAbsenceEmploye s = new ServiceAbsenceEmploye();
-    
-    
+
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
-    private final Connection con = DataBase.getInstance().getConnection();
-    @FXML
-    private TableColumn<listabsence, Integer> id;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       affichelisteabsence();
-         
+        affichelisteabsence();
         
     }    
-
+ServiceAbsence n = new ServiceAbsence();
+    listabsence1 ls = new listabsence1();
     @FXML
     private void Supprimer(ActionEvent event) throws SQLException {
-        
        //notice
         String title = "Notification";
         String message = "Vous avez supprimé l'absence avec succés";
@@ -91,26 +91,26 @@ public class AbsenceEmployeController implements Initializable {
         tray.showAndWait();
     
         
-    ServiceAbsenceEmploye n = new ServiceAbsenceEmploye();
-    listabsence ls = new listabsence();
+    
     ls=tabPoint.getSelectionModel().getSelectedItem();
-    n.delete(ls.getId_employe());
+    n.delete(ls.getId_etudiant());
    affichelisteabsence();
     }
 
     @FXML
     private void retour(ActionEvent event) throws IOException {
-          javafx.scene.Parent tableview = FXMLLoader.load(getClass().getResource("accueil.fxml"));
+         javafx.scene.Parent tableview = FXMLLoader.load(getClass().getResource("accueil.fxml"));
         Scene sceneview = new Scene(tableview);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(sceneview);
         window.show();
     }
+   
+    
 
     @FXML
     private void ajouter(ActionEvent event) throws IOException {
-        
-         javafx.scene.Parent tableview = FXMLLoader.load(getClass().getResource("ajouterabsenceemp.fxml"));
+      javafx.scene.Parent tableview = FXMLLoader.load(getClass().getResource("ajouteraet.fxml"));
         Scene sceneview = new Scene(tableview);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(sceneview);
@@ -118,55 +118,38 @@ public class AbsenceEmployeController implements Initializable {
     }
 
     @FXML
-    private void modifier(ActionEvent event) {
-        
-      /*  if (event.getClickCount() > 0) {
-        onEdita();}*/
-        
+        private void Pdf(ActionEvent event) throws FileNotFoundException, SQLException, DocumentException {
+        Pdf p=new Pdf();
+         p.add("abs145.pdf");
     }
-    
-   /* public void onEdita() {
-    check the table's selected item and get selected item ;
-    if (tabPoint.getSelectionModel().getSelectedItem() != null) {
-        listabsence ls = tabPoint.getSelectionModel().getSelectedItem();
         
-        nom.setText(ls.getNom());
-        pre.setText(ls.getPrenom());
-        type.setText(ls.getType_absence());
-        date.setText(ls.getDate());
-    }
-}*/
- 
-    public void affichelisteabsence(){
-     
-       
+        public void affichelisteabsence(){
              //mettre les données dans la table view:
-             id.setCellValueFactory(new PropertyValueFactory<>("id_employe"));
-            nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
+             nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
              pre.setCellValueFactory(new PropertyValueFactory<>("prenom"));
             type.setCellValueFactory(new PropertyValueFactory<>("type_absence"));
-            date.setCellValueFactory(new PropertyValueFactory<>("date"));
-       ObservableList<listabsence> listu  = FXCollections.observableArrayList();
+            ids.setCellValueFactory(new PropertyValueFactory<>("id_seance"));
+       ObservableList<listabsence1> listu  = FXCollections.observableArrayList();
        listu=show();
        tabPoint.setItems(listu);
     }
-    public ObservableList<listabsence> show()
+    public ObservableList<listabsence1> show()
     { 
 
            try {
-               ObservableList<listabsence> listu =FXCollections.observableArrayList();
+               ObservableList<listabsence1> listu =FXCollections.observableArrayList();
                   //exécution de la réquette et enregistrer le resultat dans le resultset
-                  PreparedStatement pt= con.prepareStatement("SELECT id_employe,nom,prenom,type_absence,date FROM user,absence_employe where absence_employe.id_employe=user.id_user");
+                  PreparedStatement pt= con.prepareStatement("SELECT absence.id_etudiant,nom,prenom,absence.type_absence,absence.id_seance FROM user,seance,absence where absence.id_etudiant=user.id_user AND absence.id_seance=seance.id_seance");
                   ResultSet rs = pt.executeQuery();
                   while(rs.next()){
                   //obl.add(new Note(rs.getFloat(1),rs.getFloat(2),rs.getFloat(3),rs.getInt(4),rs.getString(5)));
-                 listabsence ls = new listabsence();
+                 listabsence1 ls = new listabsence1();
 
-                 ls.setId_employe(rs.getInt("id_employe"));
+                 ls.setId_etudiant(rs.getInt("id_etudiant"));
                  ls.setNom(rs.getString("nom"));
                  ls.setPrenom(rs.getString("prenom"));
                  ls.setType_absence(rs.getString("type_absence")); 
-                 ls.setDate(rs.getString("date"));
+                 ls.setId_seance(rs.getInt("id_seance"));
              
 
                   
@@ -180,4 +163,15 @@ public class AbsenceEmployeController implements Initializable {
               }
            return null;
     }
+ static int id;
+    @FXML
+    private void modifier(ActionEvent event) throws IOException {
+        id=ls.getId_etudiant();
+         javafx.scene.Parent tableview = FXMLLoader.load(getClass().getResource("modEt.fxml"));
+        Scene sceneview = new Scene(tableview);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(sceneview);
+        window.show();
+    }
+    
 }
