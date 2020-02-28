@@ -141,7 +141,7 @@ public class AbsenceEmployeController implements Initializable {
      
        
              //mettre les données dans la table view:
-             id.setCellValueFactory(new PropertyValueFactory<>("id_employe"));
+//             id.setCellValueFactory(new PropertyValueFactory<>("id_employe"));
             nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
              pre.setCellValueFactory(new PropertyValueFactory<>("prenom"));
             type.setCellValueFactory(new PropertyValueFactory<>("type_absence"));
