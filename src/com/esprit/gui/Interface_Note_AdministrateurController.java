@@ -30,6 +30,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javax.swing.JOptionPane;
 import tray.notification.TrayNotification;
 
 /**
@@ -89,13 +90,14 @@ public class Interface_Note_AdministrateurController implements Initializable {
     @FXML
 
     void calculer(ActionEvent event) throws SQLException {
-        //notice
-        String title = "Notification";
-        String message = "Moyenne Matiére calculée";
-        TrayNotification tray = new TrayNotification();
-        tray.setTitle(title);
-        tray.setMessage(message);
-        tray.showAndWait();
+//        //notice
+//        String title = "Notification";
+//        String message = "Moyenne Matiére calculée";
+//        TrayNotification tray = new TrayNotification();
+//        tray.setTitle(title);
+//        tray.setMessage(message);
+//        tray.showAndWait();
+
         
   ServiceMoyenne se = new ServiceMoyenne();
       
@@ -103,6 +105,13 @@ public class Interface_Note_AdministrateurController implements Initializable {
         String t1 = taux1.getText();
         String t2 = taux2.getText();
         String t3 = taux3.getText();
+        
+        
+        //Control saisie
+        if (taux1.getText().equals("") || taux2.getText().equals("") || taux3.getText().equals("") || nom_mat.getText().equals("") ){
+        JOptionPane.showMessageDialog(null, "### ERREUR champs vides");
+        }
+        //fin controle saisie
        
         float taux11=parseFloat(t1);
         float taux22=parseFloat(t2);
@@ -137,6 +146,7 @@ public class Interface_Note_AdministrateurController implements Initializable {
 
             }
          System.out.println("Moyenne Matière calculé");
+         JOptionPane.showMessageDialog(null, "Moyenne matiere calculé:"+mat);
 
       
     }

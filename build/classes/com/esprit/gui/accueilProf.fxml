@@ -18,7 +18,7 @@
             <Image url="@logo/logo_Finale.png" />
          </image>
       </ImageView>
-      <Label layoutX="13.0" layoutY="129.0" text="Assurer votre succès" textFill="#2d3b90">
+      <Label layoutX="13.0" layoutY="129.0" text="Assurer votre succès" textFill="#0a4a86">
          <font>
             <Font name="Arial Bold" size="17.0" />
          </font>

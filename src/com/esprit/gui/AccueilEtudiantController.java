@@ -24,6 +24,7 @@ import java.util.logging.Logger;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import javax.swing.JButton;
 
@@ -108,9 +109,35 @@ public class AccueilEtudiantController implements Initializable {
         Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("/com/esprit/gui/AjoutReclamation.fxml"));
         pane.getChildren().add(newLoadedPane);
     }
+    @FXML
+    private void retureAcceuil(ActionEvent event) throws IOException {
+        
+       pane.getChildren().clear();
+        Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("/com/esprit/gui/AccueilEtudiant.fxml"));
+        pane.getChildren().add(newLoadedPane);
+    }
 
     @FXML
-    private void clubs(ActionEvent event) {
+    private void clubs(ActionEvent event) throws IOException, SQLException {
+        boolean b ;
+        ServiceDemandeClub demande = new ServiceDemandeClub();
+        b = demande.verifIdEnClub(ServiceUser.id_user_conecte);
+        if (b == true) {
+            
+        Parent demandeclub = FXMLLoader.load(getClass().getResource("FXMLProfilClub.fxml"));
+        Scene tableViewScene = new Scene(demandeclub);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();       
+        window.setScene(tableViewScene);
+        window.show();          
+        }else
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Information");
+            alert.setHeaderText("Vous n'avez pas un Club ");
+            alert.setContentText("Click au dessus (Demande Club ) pour Faire une Demande de Club valid !");
+            alert.showAndWait();  
+        }
+       
     }
 
     @FXML

@@ -144,27 +144,31 @@ public class FXMLListDemandeClubController implements Initializable {
     @FXML
     public void AfficherDetailsButtonAction(ActionEvent event) throws IOException, SQLException { 
         
-       /* Parent demandeclub = FXMLLoader.load(getClass().getResource("/com/esprit/gui/FXMLDetailsDemandeClub.fxml"));
+         /*Parent demandeclub = FXMLLoader.load(getClass().getResource("/com/esprit/gui/FXMLDetailsDemandeClub.fxml"));
         Scene tableViewScene = new Scene(demandeclub);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();       
         window.setScene(tableViewScene);
-        window.show();*/
+        window.show();     */
+        
+         try {
         
         ServiceDemandeClub demande = new ServiceDemandeClub();
-        DemandeClub column = tabD.getSelectionModel().getSelectedItem();     
-        List<String> list =  demande.readEtudiantInfo(column.getId_etudiant());
-        
+        DemandeClub myclass = tabD.getSelectionModel().getSelectedItem();     
+        List<String> list =  demande.readEtudiantInfo(myclass.getId_etudiant());
+             System.out.println(list);
         
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDetailsDemandeClub.fxml"));
         Parent root= (Parent) loader.load();
+       
         FXMLDetailsDemandeClubController f = loader.getController();
-        f.InfoEtudiant(column.getId_etudiant(), list.get(0), list.get(1), list.get(2), list.get(3), list.get(4));
-        System.out.println(column.getId_etudiant());
-        System.out.println(list.get(0));
-        System.out.println(list.get(1));
+        f.InfoEtudiant(myclass.getId_etudiant(),list.get(0), list.get(1), list.get(2), list.get(3), list.get(4));
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.show();
+            
+        } catch (IOException e) {
+            e.getStackTrace();
+        }
                            
     }
     

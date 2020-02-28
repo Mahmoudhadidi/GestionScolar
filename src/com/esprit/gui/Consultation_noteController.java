@@ -24,11 +24,15 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.print.PrinterJob;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Window;
+import javax.swing.JOptionPane;
 import tray.notification.TrayNotification;
 
 /**
@@ -86,13 +90,23 @@ public class Consultation_noteController implements Initializable {
     @FXML
     private void aficher(ActionEvent event) throws SQLException {
         
-         //notice
-        String title = "Notification";
-        String message = "Votre rélevé des notes";
-        TrayNotification tray = new TrayNotification();
-        tray.setTitle(title);
-        tray.setMessage(message);
-        tray.showAndWait();
+//         //notice
+//        String title = "Notification";
+//        String message = "Votre rélevé des notes";
+//        TrayNotification tray = new TrayNotification();
+//        tray.setTitle(title);
+//        tray.setMessage(message);
+//        tray.showAndWait();
+
+//control saisie cin ///////////////////////////
+         if (cin.getText().equals("")){
+         JOptionPane.showMessageDialog(null, "Champs vide");
+         }
+          if (!(cin.getText().length() ==8)){
+         JOptionPane.showMessageDialog(null, " SVP !! Entrer 8 chiffres de votre CIN ");
+         }
+              
+        //fin /////////////////////////////////////////////
          
               
         
@@ -109,8 +123,15 @@ public class Consultation_noteController implements Initializable {
 
     @FXML
     private void extraire(ActionEvent event) throws DocumentException, BadElementException, IOException, FileNotFoundException, InterruptedException, SQLException {
-        pdf1 p = new pdf1();
-        p.GeneratePdf("relevédenote.pdf");
+        System.out.println("To Printer!");
+         PrinterJob job = PrinterJob.createPrinterJob();
+           if(job != null){
+    Window primaryStage = null;
+           job.showPrintDialog(primaryStage); 
+            
+    Node root = this.table;
+           job.printPage(root);
+           job.endJob();
     }
-    
+    }
 }

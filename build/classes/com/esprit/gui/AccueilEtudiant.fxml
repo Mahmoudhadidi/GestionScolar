@@ -29,6 +29,6 @@
       <Button fx:id="gestionreclamation" layoutX="32.0" layoutY="362.0" mnemonicParsing="false" onAction="#gestionReclamation" prefHeight="40.0" prefWidth="141.0" text="Reclamations" />
       <Button fx:id="clubs" layoutX="34.0" layoutY="431.0" mnemonicParsing="false" onAction="#clubs" prefHeight="40.0" prefWidth="141.0" text="Clubs" />
       <Button fx:id="quitter" layoutX="33.0" layoutY="495.0" mnemonicParsing="false" onAction="#quitter" prefHeight="40.0" prefWidth="141.0" text="Quitter" />
-      <Hyperlink fx:id="dd" layoutX="708.0" layoutY="1.0" onAction="#VaDemanderClubButtonAction" prefHeight="20.0" prefWidth="103.0" text="Demander Club" />
+      <Hyperlink fx:id="dd" layoutX="708.0" layoutY="1.0" onAction="#VaDemanderClubButtonAction" prefHeight="33.0" prefWidth="115.0" text="Demander Club" />
    </children>
 </AnchorPane>

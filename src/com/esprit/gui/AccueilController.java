@@ -120,9 +120,13 @@ public class AccueilController implements Initializable {
     }
 
     @FXML
-    void quitter(ActionEvent event) {
-        System.exit(0);
-
+    void quitter(ActionEvent event) throws IOException {
+        //System.exit(0);
+         Parent demandeclub = FXMLLoader.load(getClass().getResource("login.fxml"));
+        Scene tableViewScene = new Scene(demandeclub);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();       
+        window.setScene(tableViewScene);
+        window.show();
     }
 
 

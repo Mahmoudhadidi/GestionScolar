@@ -162,6 +162,20 @@ while (rs.next()) {
         return i == id_user;
     }
     
+    public String verifEtatEnDemandeClub(int id_user) throws SQLException {
+        
+    String i = null ;
+    ste=con.createStatement();
+    ResultSet rs=ste.executeQuery("SELECT `etat` FROM `demande_club` WHERE `id_etudiant` = '"+id_user+"'");
+    
+    while (rs.next()) {    
+               
+               String etat=rs.getString("etat");
+               i = etat;  
+    }
+        return i;
+    }
+    
     
     
     

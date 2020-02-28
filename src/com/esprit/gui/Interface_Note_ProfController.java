@@ -252,13 +252,16 @@ public class Interface_Note_ProfController implements Initializable {
      @FXML
     void Ajouter(ActionEvent event) throws SQLException {
         
-         //notice
-        String title = "Notification";
-        String message = "Vous avez ajouté la note avec succés";
-        TrayNotification tray = new TrayNotification();
-        tray.setTitle(title);
-        tray.setMessage(message);
-        tray.showAndWait();
+//         //notice
+//        String title = "Notification";
+//        String message = "Vous avez ajouté la note avec succés";
+//        TrayNotification tray = new TrayNotification();
+//        tray.setTitle(title);
+//        tray.setMessage(message);
+//        tray.showAndWait();
+
+     
+
         
         if (cc.getText().equals("") && ds.getText().equals("")){
             
@@ -282,6 +285,8 @@ public class Interface_Note_ProfController implements Initializable {
         
          sb.ajouter(sn);
              affichelistenote();
+             
+              JOptionPane.showMessageDialog(null, "Note ajoutée !!");
            
        cc.clear();
        ds.clear();
@@ -296,15 +301,15 @@ public class Interface_Note_ProfController implements Initializable {
 
     @FXML
     void Modifier(ActionEvent event) throws SQLException { 
-         //notice
-        String title = "Notification";
-        String message = "Vous avez modifier la note avec succés";
-        TrayNotification tray = new TrayNotification();
-        tray.setTitle(title);
-        tray.setMessage(message);
-        tray.showAndWait();
+//         //notice
+//        String title = "Notification";
+//        String message = "Vous avez modifier la note avec succés";
+//        TrayNotification tray = new TrayNotification();
+//        tray.setTitle(title);
+//        tray.setMessage(message);
+//        tray.showAndWait();
         
-        
+        JOptionPane.showMessageDialog(null, "Note Modifi&e !!");
         ServiceNote sn = new ServiceNote();
         listeetudiants ls ;
     ls=tableview.getSelectionModel().getSelectedItem();
@@ -313,10 +318,6 @@ public class Interface_Note_ProfController implements Initializable {
     ls.setC(examen.getText());
     sn.Modifier(ls);
     affichelistenote();
-
-
-                
-    
     
     }
     
@@ -324,13 +325,14 @@ public class Interface_Note_ProfController implements Initializable {
     @FXML
     void Supprimer(ActionEvent event) throws SQLException {
         
-        //notice
-        String title = "Notification";
-        String message = "Vous avez supprimé la note avec succés";
-        TrayNotification tray = new TrayNotification();
-        tray.setTitle(title);
-        tray.setMessage(message);
-        tray.showAndWait();
+//        //notice
+//        String title = "Notification";
+//        String message = "Vous avez supprimé la note avec succés";
+//        TrayNotification tray = new TrayNotification();
+//        tray.setTitle(title);
+//        tray.setMessage(message);
+//        tray.showAndWait();
+JOptionPane.showMessageDialog(null, "Note Suppprimée !!");
     
         
     ServiceNote n = new ServiceNote();
@@ -372,13 +374,6 @@ public class Interface_Note_ProfController implements Initializable {
         nommatiere.setValue(ls.getE());
     }
 }
-
-
-
-
-
-    
-     
 
         public void fillcombo() throws SQLException {
         PreparedStatement pst;

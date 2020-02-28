@@ -24,6 +24,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 import tray.notification.TrayNotification;
 
 /**
@@ -59,13 +60,12 @@ public class AjouterabsenceempController implements Initializable {
 
     @FXML
     private void ajouterRes(ActionEvent event) throws SQLException {
-        //notice
-        String title = "Notification";
-        String message = "Vous avez modifier l'absence avec succés";
-        TrayNotification tray = new TrayNotification();
-        tray.setTitle(title);
-        tray.setMessage(message);
-        tray.showAndWait();
+        
+        
+         if (type.getSelectionModel().equals("") || idemplo.getText().equals("") ){
+            JOptionPane.showMessageDialog(null, "Champs Vides");
+        }
+        else{
         
          String type_absence= type.getValue();
          Integer id_employe= Integer.valueOf(idemplo.getText());
@@ -75,6 +75,15 @@ public class AjouterabsenceempController implements Initializable {
          absence_employe p = new absence_employe( type_absence, id_employe,date);
          sp.ajouter(p);
          System.out.println(p.toString());
+         
+         //notice
+        String title = "Notification";
+        String message = "Vous avez modifier l'absence avec succés";
+        TrayNotification tray = new TrayNotification();
+        tray.setTitle(title);
+        tray.setMessage(message);
+        tray.showAndWait();
+    }
     }
 
     @FXML

@@ -36,6 +36,7 @@ import javafx.scene.control.TreeTableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
+import javax.swing.JOptionPane;
 import org.controlsfx.control.Notifications;
 
 /**
@@ -113,7 +114,10 @@ ServiceReclamation serviceReclamation=new ServiceReclamation();
     @FXML
     private void envoyer1(ActionEvent event) throws SQLException, IOException {
         
-        
+        if (sujet1.getText().equals("") || desc1.getText().equals("") ){
+            JOptionPane.showMessageDialog(null, "Champs Vides");
+        }
+        else{
         
         Reclamation reclamation=new Reclamation();
         reclamation.setSujet(sujet1.getText());
@@ -125,7 +129,7 @@ ServiceReclamation serviceReclamation=new ServiceReclamation();
            Notifications notificationBuilder=Notifications.create()
     .title("Reclamation ajouté").text("vous avez ajouté une reclamation").position(Pos.TOP_RIGHT);
            notificationBuilder.show();
-        
+        } 
         
     }
     private Connection con= DataBase.getInstance().getConnection();

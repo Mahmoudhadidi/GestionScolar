@@ -72,6 +72,38 @@ public class ServiceClub {
         return true;        
     }
     
+      
+      public List<String> selectClub(int idd) throws SQLException {
+          
+    List<String> listeE=new ArrayList<>();
+    ste=con.createStatement();
+    ResultSet rs=ste.executeQuery("select `nom`, `photo_couverture`, `logo`, `slogan`, `grand_titre`, `description`, `mail`, `etat` from club WHERE `id_etudiant`= '"+idd+"'");
+     while (rs.next()) {    
+
+               String nom=rs.getString("nom");
+               String photo_couverture=rs.getString("photo_couverture");
+               String logo=rs.getString("logo");
+               String slogan =rs.getString("slogan");
+               String grand_titre=rs.getString("grand_titre");
+               String description =rs.getString("description");
+               String mail=rs.getString("mail");
+               String etat =rs.getString("etat");
+               //String date = rs.getString("date");
+               
+
+    listeE.add(nom);
+    listeE.add(photo_couverture);
+    listeE.add(logo);
+    listeE.add(slogan);
+    listeE.add(grand_titre);
+    listeE.add(description);
+    listeE.add(mail);
+    listeE.add(etat);
+                          
+
+     }
+    return listeE;
+    }
     
     
     

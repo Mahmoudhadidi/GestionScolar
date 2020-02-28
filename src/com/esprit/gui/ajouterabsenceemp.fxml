@@ -9,17 +9,17 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.gui.AjouterabsenceempController">
    <children>
-      <AnchorPane prefHeight="410.0" prefWidth="177.0" style="-fx-background-color: #48A5EA;">
+      <AnchorPane prefHeight="410.0" prefWidth="177.0" style="-fx-background-color: #0a4a86;">
          <children>
-            <Label layoutX="20.0" layoutY="37.0" text="AJOUTER Absence" textAlignment="CENTER" textFill="WHITE" textOverrun="LEADING_ELLIPSIS" />
+            <Label layoutX="20.0" layoutY="37.0" prefHeight="17.0" prefWidth="100.0" text="Ajouter Absence" textAlignment="CENTER" textFill="WHITE" textOverrun="LEADING_ELLIPSIS" />
          </children>
       </AnchorPane>
       <Label layoutX="197.0" layoutY="151.0" text="type d'absence" />
       <Label layoutX="201.0" layoutY="193.0" text="id employé" />
       <Label layoutX="201.0" layoutY="240.0" text="Date " />
       <TextField fx:id="idemplo" layoutX="310.0" layoutY="188.0" prefHeight="31.0" prefWidth="213.0" />
-      <Button fx:id="btn" layoutX="310.0" layoutY="282.0" mnemonicParsing="false" onAction="#ajouterRes" text="Ajouter" />
-      <Button fx:id="retour" layoutX="414.0" layoutY="282.0" mnemonicParsing="false" onAction="#retourr" text="Retour" />
+      <Button fx:id="btn" layoutX="310.0" layoutY="282.0" mnemonicParsing="false" onAction="#ajouterRes" style="-fx-background-color: #0a4a86;" text="Ajouter" textFill="WHITE" />
+      <Button fx:id="retour" layoutX="414.0" layoutY="282.0" mnemonicParsing="false" onAction="#retourr" style="-fx-background-color: #0a4a86;" text="Retour" textFill="WHITE" />
       <ComboBox fx:id="type" layoutX="312.0" layoutY="136.0" prefHeight="31.0" prefWidth="213.0" />
       <DatePicker fx:id="datee" layoutX="310.0" layoutY="235.0" prefHeight="31.0" prefWidth="213.0" />
    </children>

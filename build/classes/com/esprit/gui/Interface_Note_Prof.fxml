@@ -15,12 +15,12 @@
         <URL value="@interface_note_prof.css" />
     </stylesheets>
    <children>
-      <Button fx:id="btnajouter" layoutX="32.0" layoutY="502.0" mnemonicParsing="false" onAction="#Ajouter" text="Ajouter" />
+      <Button fx:id="btnajouter" layoutX="22.0" layoutY="376.0" mnemonicParsing="false" onAction="#Ajouter" text="Ajouter" />
       <TextField fx:id="cc" layoutX="99.0" layoutY="125.0" />
       <TextField fx:id="ds" layoutX="99.0" layoutY="170.0" />
       <TextField fx:id="examen" layoutX="99.0" layoutY="214.0" prefWidth="149.0" />
-      <Button fx:id="btnmodifier" layoutX="126.0" layoutY="502.0" mnemonicParsing="false" onAction="#Modifier" text="Modifier" />
-      <Button fx:id="btnsupprimer" layoutX="213.0" layoutY="502.0" mnemonicParsing="false" onAction="#Supprimer" text="Supprimer" />
+      <Button fx:id="btnmodifier" layoutX="99.0" layoutY="376.0" mnemonicParsing="false" onAction="#Modifier" text="Modifier" />
+      <Button fx:id="btnsupprimer" layoutX="174.0" layoutY="376.0" mnemonicParsing="false" onAction="#Supprimer" text="Supprimer" />
       <Label layoutX="14.0" layoutY="129.0" text="Note CC" />
       <Label layoutX="14.0" layoutY="174.0" text="Note DS" />
       <Label layoutX="14.0" layoutY="218.0" text="Note Examen" />
@@ -29,7 +29,7 @@
       <Label layoutX="21.0" layoutY="270.0" text="cin_étudiant" />
       <Label layoutX="15.0" layoutY="321.0" text="nom Matière" />
       <ComboBox fx:id="nommatiere" editable="true" layoutX="99.0" layoutY="317.0" onAction="#nomm" prefWidth="150.0" />
-      <TableView fx:id="tableview" layoutX="268.0" layoutY="301.0" onMouseClicked="#editer" prefHeight="200.0" prefWidth="506.0">
+      <TableView fx:id="tableview" layoutX="249.0" layoutY="364.0" onMouseClicked="#editer" prefHeight="200.0" prefWidth="506.0">
         <columns>
           <TableColumn fx:id="colcc" prefWidth="75.0" text="Note CC" />
           <TableColumn fx:id="colds" prefWidth="75.0" text="Note DS" />
@@ -40,7 +40,7 @@
             <TableColumn fx:id="colcin" prefWidth="75.0" text="Cin étudiant" />
         </columns>
       </TableView>
-      <Label layoutX="401.0" layoutY="261.0" prefHeight="35.0" prefWidth="161.0" text="Liste des notes" textFill="#ab2929">
+      <Label layoutX="380.0" layoutY="304.0" prefHeight="35.0" prefWidth="161.0" text="Liste des notes" textFill="#ab2929">
          <font>
             <Font size="24.0" />
          </font>
