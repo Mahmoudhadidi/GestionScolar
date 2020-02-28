@@ -14,16 +14,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.beans.Observable;
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
+//import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
+//import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+//import javafx.scene.control.Button;
+//import javafx.scene.control.TextField;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -66,6 +66,8 @@ public class Interface_Note_EtudiantController implements Initializable {
     private ObservableList<Note> data;
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     
@@ -76,7 +78,7 @@ public class Interface_Note_EtudiantController implements Initializable {
    
   public  ObservableList<Note>look(int cin) throws SQLException
     {        Connection con=DataBase.getInstance().getConnection();
-           ObservableList<Note>data= FXCollections.observableArrayList();
+            data= FXCollections.observableArrayList();
         PreparedStatement pt = con.prepareStatement("select note_cc, note_ds, note_examun, moyenne, note.nom_matier from note,user,matiere where note.nom_matier = matiere.nom_matier and note.cin = user.cin and note.cin='"+cin+"'");
       
         ResultSet rs=pt.executeQuery();

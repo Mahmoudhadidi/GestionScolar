@@ -47,6 +47,7 @@ public static int id_user_conecte;
           while(resultat.next()) 
           {  id_user_conecte=resultat.getInt(1);
               type_conecte=resultat.getString("role");
+              id_user_conecte = resultat.getInt(1);
            
           }
     return   type_conecte;

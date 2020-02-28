@@ -82,14 +82,15 @@ try{
     
     }
     
-    public void supprimer(int cin) throws SQLException
+    public void supprimer(int cin,String nom_matier) throws SQLException
     {
         try
         {
             PreparedStatement pst ;
-            pst=con.prepareStatement("Delete from note where cin = ? ");
+            pst=con.prepareStatement("Delete from note where cin = ? and nom_matier=? ");
             
             pst.setInt(1, cin);
+            pst.setString(2, nom_matier);
             pst.executeUpdate();
             
         } catch (SQLException e){
@@ -122,12 +123,13 @@ if (rowsUpdated > 0) {
     public void Modifier(listeetudiants pan) {
         try {
             PreparedStatement pst;
-            pst = con.prepareStatement("UPDATE note SET note_cc=?, note_ds=?, note_examun=?  WHERE cin=?");
+            pst = con.prepareStatement("UPDATE note SET note_cc=?, note_ds=?, note_examun=?  WHERE cin=? and nom_matier=?");
             
             pst.setString(1, pan.getA());
             pst.setString(2, pan.getB());
             pst.setString(3, pan.getC());
             pst.setInt(4, pan.getD());
+            pst.setString(5, pan.getE());
 
             pst.executeUpdate();
         } catch (SQLException e) {

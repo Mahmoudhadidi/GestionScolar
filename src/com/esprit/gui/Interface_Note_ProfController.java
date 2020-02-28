@@ -336,7 +336,7 @@ public class Interface_Note_ProfController implements Initializable {
     ServiceNote n = new ServiceNote();
     listeetudiants ls = new listeetudiants();
     ls=tableview.getSelectionModel().getSelectedItem();
-    n.supprimer(ls.getD());
+    n.supprimer(ls.getD() , ls.getE());
     affichelistenote();
         
     }

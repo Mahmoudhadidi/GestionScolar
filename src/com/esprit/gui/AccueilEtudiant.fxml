@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -10,7 +11,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="731.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.gui.AccueilEtudiantController">
    <children>
-      <AnchorPane fx:id="pane" layoutX="200.0" layoutY="5.0" prefHeight="573.0" prefWidth="650.0" />
+      <AnchorPane fx:id="pane" layoutX="200.0" layoutY="28.0" prefHeight="550.0" prefWidth="650.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e2e7eb" height="180.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
       <ImageView fitHeight="93.0" fitWidth="108.0" layoutX="59.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -28,5 +29,6 @@
       <Button fx:id="gestionreclamation" layoutX="32.0" layoutY="362.0" mnemonicParsing="false" onAction="#gestionReclamation" prefHeight="40.0" prefWidth="141.0" text="Reclamations" />
       <Button fx:id="clubs" layoutX="34.0" layoutY="431.0" mnemonicParsing="false" onAction="#clubs" prefHeight="40.0" prefWidth="141.0" text="Clubs" />
       <Button fx:id="quitter" layoutX="33.0" layoutY="495.0" mnemonicParsing="false" onAction="#quitter" prefHeight="40.0" prefWidth="141.0" text="Quitter" />
+      <Hyperlink fx:id="dd" layoutX="708.0" layoutY="1.0" onAction="#VaDemanderClubButtonAction" prefHeight="20.0" prefWidth="103.0" text="Demander Club" />
    </children>
 </AnchorPane>

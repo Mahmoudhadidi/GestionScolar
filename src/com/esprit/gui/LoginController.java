@@ -92,6 +92,7 @@ public class LoginController implements Initializable {
         		alert.setContentText("username or password not available");
         		alert.show();
         }
+            
     }
 
     @FXML
