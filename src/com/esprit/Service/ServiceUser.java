@@ -29,7 +29,7 @@ public static int id_user_conecte;
     public ServiceUser() {
         con = DataBase.getInstance().getConnection();
     }
-   /* public boolean connexion(User u) throws SQLException{
+    public boolean connexion(User u) throws SQLException{
         ste=con.createStatement();
     ResultSet resultat=ste.executeQuery("select * from user where login='"+u.getLogine()+"' and mdp='"+u.getMdp()+"'");
           while(resultat.next()) 
@@ -39,7 +39,7 @@ public static int id_user_conecte;
           }
    
     return false;
-    }*/
+    }
     public String typeuser(User u) throws SQLException{
         String type_conecte=null;
         ste=con.createStatement();
@@ -143,8 +143,14 @@ List<User> ens=new ArrayList<>();
     }
 
     @Override
-    public boolean update(User t) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+   public boolean update(User c) throws SQLException {
+        ste = con.createStatement();
+        String requeteInsert;
+        requeteInsert = "UPDATE esprit.`user` SET login`='"+c.getLogine()+"',mdp`='"+c.getMdp()+"', role`='"+c.getRole()+"',id_classe`='"+c.getId_classe()+"',`nom`='"+c.getNom()+"', prenom`='"+c.getPrenom()+"',email`='"+c.getMail()+"',`date_naissance`='"+c.getDate_N()+"',`adresse`='"+c.getAdresse()+"',`cin`='"+c.getCin()+"',`niveau`='"+c.getNiveau()+"', WHERE `id_user`='"+c.getId()+"'";
+        ste.executeUpdate(requeteInsert);
+        
+        return true;
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
      public ObservableList<User>  SearchEventsF(String n) throws SQLException  {         

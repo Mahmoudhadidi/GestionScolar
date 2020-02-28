@@ -63,7 +63,7 @@ public class AjouterSalleController implements Initializable {
           Alert alert1 = new Alert(Alert.AlertType.WARNING);
         		alert1.setContentText("vérifier votre données ");
         		alert1.show();  
-        }
+        }else{
        ServiceSalle serC= new ServiceSalle();
        Salle c1=new Salle(Integer.valueOf(numeroSalle.getText()),nomSalle.getText(),bloc.getText());
          
@@ -91,7 +91,7 @@ public class AjouterSalleController implements Initializable {
 
 
     }
-
+    }
     @FXML
     void annulerSalle(ActionEvent event) throws IOException {
 root = (AnchorPane)FXMLLoader.load(getClass()
