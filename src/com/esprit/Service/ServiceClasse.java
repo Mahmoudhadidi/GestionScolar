@@ -104,7 +104,7 @@ Parent root;
           Alert alert1 = new Alert(AlertType.WARNING);
         		alert1.setContentText("vérifier votre données ");
         		alert1.show();  
-        }
+        }else{
        ServiceClasse serC= new ServiceClasse();
        Classe c1=new Classe(nomClasse.getText(),Integer.valueOf(nbrEtudiant.getText()),specialite.getText());
          
@@ -127,12 +127,12 @@ Parent root;
         }
         
         catch(Exception e){
-                System.out.println(e);
+               // System.out.println(e);
                 }
 
     }
 
-    
+    }
     
     
     

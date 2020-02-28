@@ -47,7 +47,7 @@ public  class ServiceReclamation implements IService<Reclamation> {
     
    
     
-    pre.executeUpdate();
+//    pre.executeUpdate();
         System.out.println("Note ajoutée !!");
        
        

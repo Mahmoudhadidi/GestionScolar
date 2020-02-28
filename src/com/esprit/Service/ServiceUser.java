@@ -29,7 +29,7 @@ public static int id_user_conecte;
     public ServiceUser() {
         con = DataBase.getInstance().getConnection();
     }
-   /* public boolean connexion(User u) throws SQLException{
+   public boolean connexion(User u) throws SQLException{
         ste=con.createStatement();
     ResultSet resultat=ste.executeQuery("select * from user where login='"+u.getLogine()+"' and mdp='"+u.getMdp()+"'");
           while(resultat.next()) 
@@ -39,7 +39,7 @@ public static int id_user_conecte;
           }
    
     return false;
-    }*/
+    }
     public String typeuser(User u) throws SQLException{
         String type_conecte=null;
         ste=con.createStatement();

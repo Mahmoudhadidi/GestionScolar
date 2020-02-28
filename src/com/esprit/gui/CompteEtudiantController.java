@@ -68,11 +68,11 @@ public class CompteEtudiantController implements Initializable {
        public ObservableList<User> list;
        public void navModif() throws IOException {
         root = (AnchorPane) FXMLLoader.load(getClass()
-                .getResource("/com/esprit/gui/modifiercompte.fxml"));
+                .getResource("/com/esprit/gui/modifierUser.fxml"));
 
         Main.getStage().getScene().setRoot(root);
         Main.getStage().setTitle("Modifier compte");
-        Main.getStage().getScene().getStylesheets().add(getClass().getResource("/com/esprit/gui/modifiercompte.fxml").toExternalForm());
+        Main.getStage().getScene().getStylesheets().add(getClass().getResource("/com/esprit/gui/modifierUser.fxml").toExternalForm());
     }
 
     ServiceUser SeC = new ServiceUser();

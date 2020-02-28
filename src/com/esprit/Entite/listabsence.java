@@ -12,6 +12,14 @@ package com.esprit.Entite;
 public class listabsence {
     private String nom,prenom,type_absence,date;
    private int id_employe;
+   private User empl;
+
+    public listabsence(String type_absence, String date, User empl) {
+        this.type_absence = type_absence;
+        this.date = date;
+        this.empl = empl;
+    }
+   
 
     public listabsence(String nom, String prenom, String type_absence, String date, int id_employe) {
         this.nom = nom;

@@ -9,10 +9,16 @@ import com.esprit.Entite.User;
 import com.esprit.Service.MailSeance;
 import com.esprit.Service.ServiceSeance;
 import com.esprit.Service.ServiceUser;
+import com.esprit.Utils.DataBase;
 import com.esprit.test.Main;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,7 +40,7 @@ import javafx.scene.layout.AnchorPane;
  *
  * @author hadidi
  */
-public class AjouterCompteController implements Initializable {
+public class ModifierUserController implements Initializable {
 
     @FXML
     private Button ajouter;
@@ -58,13 +64,46 @@ public class AjouterCompteController implements Initializable {
     private TextField niveau;
     @FXML
     private ComboBox<String> role;
-    ServiceUser us=new ServiceUser();
+ ServiceUser us=new ServiceUser();
+ Parent root;
     /**
      * Initializes the controller class.
+     * 
      */
+ private Connection con;
+    private Statement ste;
+
+    public ModifierUserController() {
+        con = DataBase.getInstance().getConnection();
+
+    }
+ public List<User> remplierModif() throws SQLException{
+      
+        List<User> listeClasse=new ArrayList<>();
+        String num = null;
+        String bloc = null;
+        ste=con.createStatement();
+        
+         ResultSet res = null;
+         //System.out.println(GestionClasseController.fakhrimalem + "static");
+         res = ste.executeQuery("select * from classe where id_classe='"+CompteEtudiantController.malem+"'");
+          while (res.next()) {
+                
+               User    a=new User(res.getInt(1),res.getString("login"),res.getString("mdp"),res.getString("role"),res.getString("nom")+" "+res.getString("prenom"),res.getString("email"),res.getInt("cin"),res.getString("niveau"));
+              
+                  listeClasse.add(a);
+                    } 
+       
+         
+         
+         
+   return listeClasse;
+    }
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        role.getItems().addAll("administrateur","enseignant","etudiant");
+        // TODO
          cin.textProperty().addListener(new ChangeListener<String>() {
     @Override
     public void changed(ObservableValue<? extends String> observable, String oldValue, 
@@ -76,11 +115,10 @@ public class AjouterCompteController implements Initializable {
           }
         });
     }    
-Parent root;
+
     @FXML
     private void anulerLajou(ActionEvent event) throws IOException {
-      
-                        root = (AnchorPane)FXMLLoader.load(getClass()
+         root = (AnchorPane)FXMLLoader.load(getClass()
 				.getResource("/com/esprit/gui/accueil.fxml"));
 
         
@@ -91,19 +129,17 @@ Parent root;
     }
 
     @FXML
-    private void ajouterUser(ActionEvent event) throws SQLException, IOException {
-        
-        
+    private void ModifierUser(ActionEvent event) throws IOException, SQLException {
         if( login.getText().equals("") || motpasse.getText().equals("") || nom.getText().equals("")|| prenom.getText().equals("") || email.getText().equals("")|| datenaissance.getText().equals("") || adresse.getText().equals("")|| cin.getText().equals("") || niveau.getText().equals("")){
           Alert alert1 = new Alert(Alert.AlertType.WARNING);
         		alert1.setContentText("vérifier votre données ");
         		alert1.show();  
         }else{
-        User u=new User(login.getText(), motpasse.getText(), role.getSelectionModel().getSelectedItem(), nom.getText(), prenom.getText(), email.getText(), datenaissance.getText(), adresse.getText(), Integer.valueOf(cin.getText()), niveau.getText());
-        us.ajouter(u);
+        User u=new User(CompteEtudiantController.malem,login.getText(), motpasse.getText(), role.getSelectionModel().getSelectedItem(), nom.getText(), prenom.getText(), email.getText(), datenaissance.getText(), adresse.getText(), Integer.valueOf(cin.getText()), niveau.getText());
+        us.update(u);
         try {
               
-              MailSeance m=new MailSeance("mahmoud.hadidi1@esprit.tn", "191SMT2006",email.getText(), "Affectation au classe", "<h2> Monsieur "+nom.getText()+",votre compte a été creé <br> login: "+login.getText()+" <br> mot de passe: "+motpasse.getText()+"</h3>");
+              MailSeance m=new MailSeance("mahmoud.hadidi1@esprit.tn", "191SMT2006",email.getText(), "Affectation au classe", "<h2> Monsieur "+nom.getText()+",votre compte a été Modifier <br> login: "+login.getText()+" <br> mot de passe: "+motpasse.getText()+"</h3>");
           } catch (Exception ex) {
               Logger.getLogger(ServiceSeance.class.getName()).log(Level.SEVERE, null, ex);
           }
@@ -120,4 +156,5 @@ Parent root;
     
     }
     }
+    
 }

@@ -5,13 +5,18 @@
  */
 package com.esprit.gui;
 
+import com.esprit.Entite.User;
 import com.esprit.Entite.absence_employe;
+import com.esprit.Entite.listabsence;
 import com.esprit.Service.ServiceAbsenceEmploye;
+import com.esprit.Service.ServiceUser;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -36,7 +41,6 @@ public class AjouterabsenceempController implements Initializable {
 
     @FXML
     private ComboBox<String> type;
-    @FXML
     private TextField idemplo;
     @FXML
     private DatePicker datee;
@@ -44,6 +48,8 @@ public class AjouterabsenceempController implements Initializable {
     private Button btn;
     @FXML
     private Button retour;
+    @FXML
+    private ComboBox<String> emplobox;
    
 
     /**
@@ -51,30 +57,39 @@ public class AjouterabsenceempController implements Initializable {
      * @param url
      * @param rb
      */
+    ServiceUser u=new ServiceUser();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        
     type.getItems().addAll("certifié","non certifié");
     type.setValue("non certifié");
+        try {
+            for(User ue:u.readAll()){
+                emplobox.getItems().addAll(ue.getNom()+""+ue.getPrenom());
+            }   } catch (SQLException ex) {
+            Logger.getLogger(AjouterabsenceempController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }    
 
     @FXML
     private void ajouterRes(ActionEvent event) throws SQLException {
         
         
-         if (type.getSelectionModel().equals("") || idemplo.getText().equals("") ){
+         if (type.getSelectionModel().equals("") || emplobox.getSelectionModel().equals("") ){
             JOptionPane.showMessageDialog(null, "Champs Vides");
         }
         else{
-        
+      //  int idsalle=  SeC.readAll().get(salle.getSelectionModel().getSelectedIndex()).getIdSalle() ;
          String type_absence= type.getValue();
-         Integer id_employe= Integer.valueOf(idemplo.getText());
+         Integer id_employe= u.readAll().get(emplobox.getSelectionModel().getSelectedIndex()).getId();
+             System.out.println(id_employe);
          LocalDate date= datee.getValue();
-         
-         ServiceAbsenceEmploye sp = new ServiceAbsenceEmploye ();
-         absence_employe p = new absence_employe( type_absence, id_employe,date);
+        // User
+        ServiceAbsenceEmploye sp = new ServiceAbsenceEmploye ();
+        User user=new User(id_employe);
+             absence_employe p=new absence_employe(type_absence, id_employe, date);
          sp.ajouter(p);
-         System.out.println(p.toString());
+       //  System.out.println(p.toString());
          
          //notice
         String title = "Notification";

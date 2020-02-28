@@ -77,7 +77,7 @@ public class AjouterMatierController implements Initializable {
           Alert alert1 = new Alert(Alert.AlertType.WARNING);
         		alert1.setContentText("vérifier votre données ");
         		alert1.show();  
-        }
+        }else{
        ServiceMatiere serC= new ServiceMatiere();
        Matiere c1=new Matiere(nomMatiere.getText(),Integer.valueOf(coefficient.getText()),Integer.valueOf(credit.getText()));
          
@@ -98,7 +98,7 @@ public class AjouterMatierController implements Initializable {
     	    	Main.getStage().setTitle("Accueil");
                 Main.getStage().getScene().getStylesheets().add(getClass().getResource("/com/esprit/gui/accueil.fxml").toExternalForm());
         }
-        
+    }
     
 
     @FXML
