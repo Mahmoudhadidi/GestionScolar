@@ -30,18 +30,24 @@ public class ServiceMoyenne implements IServiceMoyenne {
     }
 
   @Override
-    public void CalculeMoyenneMatiere() throws SQLException {
+    public void CalculeMoyenneMatiere(Note note) throws SQLException {
         
-        String sql = "UPDATE note SET  note.moyenne=note.moyenne*0+note_cc*0.1+note_ds*0.3+note_examun*0.6 WHERE id_user= id_user ;";
- 
-PreparedStatement statement = con.prepareStatement(sql);
+        try {
+            PreparedStatement pst ;
+            pst = con.prepareStatement( "UPDATE note SET note.moyenne = ? WHERE nom_matier=? and note_cc=? and note_ds=? and note_examun=? ;");
+            pst.setFloat(1, note.getMoyenne());
+            pst.setString(2, note.getId_matiere());
+            pst.setFloat(3, note.getNote_cc());
+            pst.setFloat(4, note.getNote_ds());
+            pst.setFloat(5, note.getNote_examun());
 
-int rowsUpdated = statement.executeUpdate();
-if (rowsUpdated > 0) {
-    System.out.println("Moyenne Matiére calculé!");
-}
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
        
-        
+     
+     
     }
     
     
@@ -64,7 +70,7 @@ if (rowsUpdated > 0) {
         try {
        List<TableNote> arr2=new ArrayList<>();
         stm = con.createStatement();
-         String sql="select note_cc, note_ds, note_examun, moyenne, net, nom_matier, coefficient, nom, prenom, note.id_user from note, matiere, user where note.id_matiere = matiere.id_matiere and note.id_user = user.id_user and note.id_user='"+x+"'";
+         String sql="select note_cc, note_ds, note_examun, moyenne, net, note.nom_matier, coefficient, nom, prenom from note, matiere, user where note.nom_matier = matiere.nom_matier and note.cin = user.cin and note.cin='"+x+"'";
           ResultSet rs=stm.executeQuery(sql);
            while (rs.next()) {                
                float cc=rs.getFloat("note_cc");
@@ -76,7 +82,7 @@ if (rowsUpdated > 0) {
                int coef = rs.getInt("coefficient");
                String nom = rs.getString("nom");
                String prenom = rs.getString("prenom");
-               int iduser = rs.getInt("id_user");
+               int iduser = rs.getInt("cin");
                
                TableNote p=new TableNote(cc,ds,note_examun,moyenne,net,matiere,coef,nom,prenom,iduser);
                arr2.add(p);

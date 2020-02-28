@@ -8,6 +8,7 @@ package com.esprit.Service;
 import com.esprit.Entite.Classe;
 import com.esprit.Entite.Matiere;
 import com.esprit.Entite.Salle;
+import com.esprit.Entite.User;
 import com.esprit.IService.IService;
 import com.esprit.Utils.DataBase;
 import com.esprit.test.Main;
@@ -70,11 +71,6 @@ public class ServiceClasse implements IService<Classe>,Initializable{
 
     @FXML
     private TextField nomClasse;
-     @FXML
-    private TextField tcherche;
-
-    @FXML
-    private Button chercher;
 
 Parent root;
 
@@ -186,15 +182,16 @@ Parent root;
     
     
 
-   public boolean affecterEtudian(Classe t, int id) throws SQLException{
+   public boolean affecterEtudian(Classe t, User u) throws SQLException{
        
        ste = con.createStatement();//DELETE FROM Pays WHERE Population > 170000;
-       String requeteUpdate = "update user set id_classe='"+t.getId()+"'where id_user='"+id+"'";
+       String requeteUpdate = "update user set id_classe='"+t.getId()+"'where id_user='"+u.getId()+"'";
        int w=ste.executeUpdate(requeteUpdate);
         if(w>0)
           return true; 
         return false;
-}public void initialize(URL location, ResourceBundle resources) {
+}
+   public void initialize(URL location, ResourceBundle resources) {
 		 nbrEtudiant.textProperty().addListener(new ChangeListener<String>() {
     @Override
     public void changed(ObservableValue<? extends String> observable, String oldValue, 

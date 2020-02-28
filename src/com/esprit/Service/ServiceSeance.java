@@ -41,11 +41,12 @@ public class ServiceSeance implements IService<Seance> {
         String requeteInsert = "INSERT INTO seance ( `id_ens`,`id_classe`,`id_matiere`,`id_salle`,`duree`,`heure`,`date`) VALUES ('" + 
                 t.getEns().getId() + "', '" + t.getClasse().getId()+ "', '" + t.getMatiere().getId() + "', '" + t.getSalle().getIdSalle() + "', '" + t.getDuree() + "', '" + t.getHeure() + "', '" + t.getDate() + "');";
           try {
-              MailSeance m=new MailSeance("mahmoud.hadidi1@esprit.tn", "191SMT2006","mahmoudhadidi2017@gmail.com", "Affectation seance", "<h2> Monsieur,vous avez une nouvelle séance de matière au classe..  </h3>");
+              
+              MailSeance m=new MailSeance("mahmoud.hadidi1@esprit.tn", "191SMT2006",t.getEns().getMail(), "Affectation seance", "<h2> Monsieur "+t.getEns().getNom()+",vous avez une nouvelle séance de matière "+t.getMatiere().getNom()+" au classe "+t.getClasse().getNum()+", salle "+t.getSalle().getNomSalle()+" </h3>");
           } catch (Exception ex) {
               Logger.getLogger(ServiceSeance.class.getName()).log(Level.SEVERE, null, ex);
           }
-        ste.executeUpdate(requeteInsert);
+        ste.executeUpdate(requeteInsert); 
 
        
         

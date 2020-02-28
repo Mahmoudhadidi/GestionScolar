@@ -30,12 +30,13 @@ public class ServiceClub {
         
     //Gestion de Club********************************************************
     
-    public void ajouterClub(Club c, DemandeClub d , int id) throws SQLException {
+    public void ajouterClub(Club c , int id_etud) throws SQLException {
+        String valid = "valid";
         ste = con.createStatement();
         String requeteInsert;
         String requeteInsert2;
         requeteInsert = "INSERT INTO `esprit`.`club` (`id`, `id_etudiant`, `nom`, `photo_couverture`,`logo`,`slogan`,`grand_titre`, `description`, `mail`, `etat`) VALUES (NULL, '" + c.getId_etudiant()+ "', '" + c.getNom()+ "', '" + c.getPhoto_couverture()+ "', '" + c.getLogo()+ "', '" + c.getSlogan()+ "', '" + c.getGrand_titre()+ "', '" + c.getDescription()+ "', '" + c.getMail()+ "', '" + c.getEtat()+ "');";
-        requeteInsert2 = "UPDATE `esprit`.`demande_club` SET `etat`='"+d.getEtat()+"' WHERE `id`='"+id+"'";
+        requeteInsert2 = "UPDATE `esprit`.`demande_club` SET `etat`='"+valid+"' WHERE `id_etudiant`='"+id_etud+"'";
         ste.executeUpdate(requeteInsert);
         ste.executeUpdate(requeteInsert2);
     }

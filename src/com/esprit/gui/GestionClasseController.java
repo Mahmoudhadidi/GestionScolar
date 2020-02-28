@@ -35,6 +35,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.SortEvent;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -65,6 +66,8 @@ public class GestionClasseController implements Initializable {
     Parent root;
     @FXML
     private Button ajouterClasse;
+    @FXML
+    private Button afecter;
 
     public void navModif() throws IOException {
         root = (AnchorPane) FXMLLoader.load(getClass()
@@ -215,6 +218,21 @@ public class GestionClasseController implements Initializable {
             return row;
         });
 
+    }
+
+    
+
+   
+
+    @FXML
+    private void afecter(ActionEvent event) throws IOException {
+         root = (AnchorPane) FXMLLoader.load(getClass()
+                .getResource("/com/esprit/gui/affecterEtudiant.fxml"));
+
+        Main.getStage().getScene().setRoot(root);
+        Main.getStage().setTitle("Affecter Etudiant");
+        Main.getStage().getScene().getStylesheets().add(getClass().getResource("/com/esprit/gui/affecterEtudiant.fxml").toExternalForm());
+  
     }
 
 }

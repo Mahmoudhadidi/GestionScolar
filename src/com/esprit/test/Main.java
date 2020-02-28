@@ -11,6 +11,8 @@ package com.esprit.test;
  */
 
 import com.esprit.Service.ServiceUser;
+import com.esprit.Utils.EmailZ;
+import java.time.LocalDate;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -29,9 +31,20 @@ public class Main extends Application {
 			
  			Parent root = (AnchorPane)FXMLLoader.load(getClass()
 
+
  					
                                           .getResource("/com/esprit/gui/login.fxml"));
 // 					.getResource("/com/esprit/gui/logi.fxml"));
+
+                                
+                                
+                                //      .getResource("/com/esprit/gui/Statistics.fxml"));
+                                       //  .getResource("/com/esprit/gui/Consultation_note.fxml"));
+ 				
+                                        //    .getResource("/com/esprit/gui/Interface_Note_Prof.fxml"));
+                                  //        .getResource("/com/esprit/gui/Interface_Note_Administrateur.fxml"));
+				//	.getResource("/com/esprit/gui/login.fxml"));
+
 
 			Scene scene = new Scene(root);
 			//scene.getStylesheets().add(getClass().getResource("/view/MainStyle.css").toExternalForm());
@@ -51,9 +64,9 @@ public class Main extends Application {
 		Main.stage = stage;
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		launch(args);
-               
+                
 	}
 }
 

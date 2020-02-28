@@ -40,7 +40,25 @@ public class Note {
         this.id_user=id_user;
         this.id_matiere=id_matiere;
     }
+    
+    public Note(float note_cc, float note_ds, float note_examun, int id_user, String id_matiere) {
+         this.note_cc=note_cc;
+        this.note_ds=note_ds;
+        this.note_examun=note_examun;
+        this.id_user=id_user;
+        this.id_matiere=id_matiere;
+    }
+    public Note ()
+    {}
 
+    public Note (float note_cc, float note_ds, float examun, float moyenne , String id_matiere)
+    {
+        this.note_cc=note_cc;
+        this.note_ds=note_ds;
+        this.note_examun=note_examun;
+        this.moyenne=moyenne;
+        this.id_matiere=id_matiere;
+    }
    
 
     public int getId_note() {

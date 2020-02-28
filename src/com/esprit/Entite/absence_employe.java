@@ -5,7 +5,7 @@
  */
 package com.esprit.Entite;
 
-import java.util.Objects;
+import java.time.LocalDate;
 
 /**
  *
@@ -15,16 +15,7 @@ public class absence_employe {
      private int id_absence_e;
      private String type_absence;
      private int id_employe;
-     private String date;
-
-    public absence_employe() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String toString() {
-        return "absence_employe{" + "id_absence_e=" + id_absence_e + ", type_absence=" + type_absence + ", id_employe=" + id_employe + ", date=" + date + '}';
-    }
+    private String date;
 
     public absence_employe(int id_absence_e, String type_absence, int id_employe, String date) {
         this.id_absence_e = id_absence_e;
@@ -37,6 +28,15 @@ public class absence_employe {
         this.type_absence = type_absence;
         this.id_employe = id_employe;
         this.date = date;
+    }
+
+    public absence_employe() {
+    }
+
+    public absence_employe(String type_absence, Integer id_etudiant, Integer id_seance) {
+    }
+
+    public absence_employe(String type_absence, Integer id_employe, LocalDate date) {
     }
 
     public int getId_absence_e() {
@@ -72,43 +72,10 @@ public class absence_employe {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 7;
-        return hash;
+    public String toString() {
+        return "absence_employe{" + "id_absence_e=" + id_absence_e + ", type_absence=" + type_absence + ", id_employe=" + id_employe + ", date=" + date + '}';
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final absence_employe other = (absence_employe) obj;
-        if (this.id_absence_e != other.id_absence_e) {
-            return false;
-        }
-        if (this.id_employe != other.id_employe) {
-            return false;
-        }
-        if (!Objects.equals(this.type_absence, other.type_absence)) {
-            return false;
-        }
-        if (!Objects.equals(this.date, other.date)) {
-            return false;
-        }
-        return true;
-    }
-
-   
-    
-    
-    
- 
     
     
 }

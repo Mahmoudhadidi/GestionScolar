@@ -1,12 +1,11 @@
-package com.esprit.test;
-
+package com.esprit.test ; 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
 public class SendEmail {
-    public static boolean sendEmail(String to , String subject , String emailContent){
+    public   boolean sendEmail(String to , String subject , String emailContent){
         // Get system properties
         Properties properties = System.getProperties();
 
@@ -50,7 +49,13 @@ public class SendEmail {
     
     
     public static void main(String[] args) {
-          SendEmail.sendEmail("mohamedzakaria.boutamine@esprit.tn", "Helo mariem", "Have a good Day ^^ :D");
+
+       //   SendEmail.sendEmail("mohamedzakaria.boutamine@esprit.tn", "Helo mariem", "Have a good Day ^^ :D");
+
+//        AdminController a = new AdminController();
+SendEmail m = new SendEmail();
+          m.sendEmail("mariem.romdhani@esprit.tn", "reclamation", "check your compte");
+
      
     }
 }
