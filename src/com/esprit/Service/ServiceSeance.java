@@ -5,7 +5,11 @@
  */
 package com.esprit.Service;
 
+import com.esprit.Entite.Classe;
+import com.esprit.Entite.Matiere;
+import com.esprit.Entite.Salle;
 import com.esprit.Entite.Seance;
+import com.esprit.Entite.User;
 import com.esprit.IService.IService;
 import com.esprit.Utils.DataBase;
 import java.sql.Connection;
@@ -14,6 +18,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -22,7 +30,7 @@ import java.util.List;
 public class ServiceSeance implements IService<Seance> {
     
       private Connection con;
-    private Statement ste;
+    private Statement ste,steer;
 
     public ServiceSeance() {
         con = DataBase.getInstance().getConnection();
@@ -33,8 +41,14 @@ public class ServiceSeance implements IService<Seance> {
     public void ajouter(Seance t) throws SQLException {
              ste = con.createStatement();
         String requeteInsert = "INSERT INTO seance ( `id_ens`,`id_classe`,`id_matiere`,`id_salle`,`duree`,`heure`,`date`) VALUES ('" + 
-                t.getId_Ens() + "', '" + t.getId_Classe()+ "', '" + t.getId_Matiere() + "', '" + t.getId_Salle() + "', '" + t.getDuree() + "', '" + t.getHeure() + "', '" + t.getDate() + "');";
-        ste.executeUpdate(requeteInsert);
+                t.getEns().getId() + "', '" + t.getClasse().getId()+ "', '" + t.getMatiere().getId() + "', '" + t.getSalle().getIdSalle() + "', '" + t.getDuree() + "', '" + t.getHeure() + "', '" + t.getDate() + "');";
+          try {
+              
+              MailSeance m=new MailSeance("mahmoud.hadidi1@esprit.tn", "191SMT2006",t.getEns().getMail(), "Affectation seance", "<h2> Monsieur "+t.getEns().getNom()+",vous avez une nouvelle séance de matière "+t.getMatiere().getNom()+" au classe "+t.getClasse().getNum()+", salle "+t.getSalle().getNomSalle()+" </h3>");
+          } catch (Exception ex) {
+              Logger.getLogger(ServiceSeance.class.getName()).log(Level.SEVERE, null, ex);
+          }
+        ste.executeUpdate(requeteInsert); 
 
        
         
@@ -57,7 +71,7 @@ ste = con.createStatement();
     @Override
     public boolean update(Seance t) throws SQLException {
           ste = con.createStatement();//DELETE FROM Pays WHERE Population > 170000;
-        String requeteUpdate = "update seance set id_ens='"+t.getId_Ens()+"',id_classe='"+t.getId_Classe()+"',id_matiere='"+t.getId_Matiere()+"',id_salle='"+t.getId_Salle()+"',duree='"+t.getDuree()+"',heure='"+t.getHeure()+"',date='"+t.getDate()+"'where id_seance='"+t.getId_Seance()+"'";
+        String requeteUpdate = "update seance set id_ens='"+t.getEns()+"',id_classe='"+t.getClass()+"',id_matiere='"+t.getMatiere()+"',id_salle='"+t.getSalle()+"',duree='"+t.getDuree()+"',heure='"+t.getHeure()+"',date='"+t.getDate()+"'where id_seance='"+t.getId_Seance()+"'";
     int w=ste.executeUpdate(requeteUpdate);
         if(w>0)
           return true; 
@@ -66,22 +80,39 @@ ste = con.createStatement();
         
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+public Seance getSeanceByID(int id){
+    Seance s = null;
+    return s;
+}
     @Override
     public List<Seance> readAll() throws SQLException {
         List<Seance> listeClasse=new ArrayList<>();
     ste=con.createStatement();
-    ResultSet rs=ste.executeQuery("select * from seance");
+    ResultSet rs=ste.executeQuery("select id_seance, num_classe,nom_matier,nom_salle,bloc,nom,prenom,heure,date from "
+            + "seance , classe , user ,salle ,matiere  where "
+            + "(seance.id_ens=user.id_user) && "
+            + "(seance.id_classe=classe.id_classe)&&"
+            + "(seance.id_matiere=matiere.id_matiere) &&"
+            + " (seance.id_salle=salle.id_salle) ");
      while (rs.next()) {                
-               int id=rs.getInt(1);
-               int num=rs.getInt(2);
-               int nom=rs.getInt(3);
-               int bloc=rs.getInt(4);
-               int b1=rs.getInt(5);
-               String b2=rs.getString(6);
-               String b3=rs.getString(7);
-               String b4=rs.getString(8);
-              Seance seance =new Seance(id, num, nom, bloc,b1,b2,b3,b4);
+               int id=rs.getInt("id_seance");
+               String nom_classe=rs.getString("num_classe");
+               String nom_matier=rs.getString("nom_matier");
+               String nom_salle=rs.getString("nom_salle");
+               String bloc=rs.getString("bloc");
+               String nomEns=rs.getString("nom");
+               String prenom=rs.getString("prenom");
+               String heure=rs.getString("heure");
+               String date=rs.getString("date");
+               nomEns=nomEns+" "+prenom;
+               nom_salle=nom_salle+" "+bloc;
+               Seance seance =new Seance(id, nomEns, nom_classe, nom_matier, nom_salle, heure, date);
+               
+              /* Classe classe =new Classe(nom_classe);
+               Matiere matiere=new Matiere(nom_matier);
+               Salle salle=new Salle(nom_matier);
+               User Ens=new User(nomEns,prenom);
+              Seance seance =new Seance(id, Ens, classe, matiere, salle, date, heure, date);*/
      listeClasse.add(seance);
      }
     return listeClasse;  
@@ -90,4 +121,45 @@ ste = con.createStatement();
         //   throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    
+    
+     public ObservableList<Seance>  SearchEventsF(String n) throws SQLException  {         
+      
+        ObservableList<Seance>  arrr = FXCollections.observableArrayList();     
+        steer = con.createStatement();
+        ResultSet rs ;
+        //System.out.println(n);
+        //rs = steer.executeQuery(" select * from salle where  (id_salle like'%"+n+"%')||(num_salle like'%"+n+"%')||(num_salle like'%"+n+"%')||(bloc like'%"+n+"%')");
+        // select* from events where (Nom like '%"+n+"%') or (etat like '%"+n+"%') or (date like '%"+n+"%') or (type like '%"+n+"%') or (id like '%"+n+"%') ");
+//             res = ste.executeQuery(" select* from events where (Nom like '%"+n+"%') or (etat like '%"+n+"%') or (date like '%"+n+"%') or (type like '%"+n+"%') or (id like '%"+n+"%') ");
+              rs=ste.executeQuery("select id_seance, num_classe,nom_matier,nom_salle,bloc,nom,prenom,heure,date from "
+                      + "seance , classe , user ,salle ,matiere  where"
+                      + " (seance.id_ens=user.id_user) && "
+                      + "(seance.id_classe=classe.id_classe)&&"
+                      + "(seance.id_matiere=matiere.id_matiere) && "
+                      + "(seance.id_salle=salle.id_salle) ||"
+                      + "(classe.num_classe like'%\"+n+\"%')||(matiere.nom_matier like'%\"+n+\"%')||(salle.nom_salle like'%\"+n+\"%')||(salle.bloc like'%\"+n+\"%')||"
+                      + "(user.nom like'%\"+n+\"%')||(user.prenom like'%\"+n+\"%')||(seance.heure like'%\"+n+\"%')||(seance.date like'%\"+n+\"%')");
+     while (rs.next()) {                
+               int id=rs.getInt("id_seance");
+               String nom_classe=rs.getString("num_classe");
+               String nom_matier=rs.getString("nom_matier");
+               String nom_salle=rs.getString("nom_salle");
+               String bloc=rs.getString("bloc");
+               String nomEns=rs.getString("nom");
+               String prenom=rs.getString("prenom");
+               String heure=rs.getString("heure");
+               String date=rs.getString("date");
+               nomEns=nomEns+" "+prenom;
+               nom_salle=nom_salle+" "+bloc;
+               Seance a =new Seance(id, nomEns, nom_classe, nom_matier, nom_salle, heure, date);
+               
+     
+        arrr.add(a);
+             //  System.out.println(arr);
+            }
+       return arrr;
+     }
 }
+     
+

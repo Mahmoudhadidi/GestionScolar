@@ -14,6 +14,8 @@ import com.esprit.Utils.DataBase;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -22,7 +24,7 @@ import java.util.logging.Logger;
 public class ServiceMatiere implements IService<Matiere> {
 
     private Connection con;
-    private Statement ste;
+    private Statement ste,steer,ster;
 
     public ServiceMatiere() {
         con = DataBase.getInstance().getConnection();
@@ -82,4 +84,36 @@ public class ServiceMatiere implements IService<Matiere> {
      }
     return arr;
     }
+    
+     public ObservableList<Matiere>  SearchEventsF(String n) throws SQLException  {         
+      
+        ObservableList<Matiere>  arr = FXCollections.observableArrayList();     
+        steer = con.createStatement();
+        ResultSet res ;
+        //System.out.println(n);
+        res = steer.executeQuery(" select * from matiere where  (id_matiere like'%"+n+"%')||(nom_matier like'%"+n+"%')||(coefficient like'%"+n+"%')||(cdedit like'%"+n+"%')");
+        // select* from events where (Nom like '%"+n+"%') or (etat like '%"+n+"%') or (date like '%"+n+"%') or (type like '%"+n+"%') or (id like '%"+n+"%') ");
+//             res = ste.executeQuery(" select* from events where (Nom like '%"+n+"%') or (etat like '%"+n+"%') or (date like '%"+n+"%') or (type like '%"+n+"%') or (id like '%"+n+"%') ");
+            while (res.next())
+            {
+               Matiere    a=new Matiere(res.getInt(1),res.getString(2),res.getInt(3),res.getInt(4));
+               
+               arr.add(a);
+             //  System.out.println(arr);
+            }
+        
+        return arr;
+    }
+   public boolean verife(Matiere c) throws SQLException{
+    
+    ster = con.createStatement();
+        ResultSet res ;
+        //System.out.println(n);
+        res = ster.executeQuery(" select * from seance where  id_matiere='"+c.getId()+"'");
+         while (res.next()){
+             return false;
+         }
+    return true;
+}  
+    
 }

@@ -15,6 +15,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -22,12 +24,38 @@ import java.util.List;
  */
 public class ServiceSalle  implements IService<Salle>{
       private Connection con;
-    private Statement ste;
+    private Statement ste,ster,steer;
 
     public ServiceSalle() {
         con = DataBase.getInstance().getConnection();
 
     }
+    
+     public ObservableList<Salle>  SearchEventsF(String n) throws SQLException  {         
+      
+        ObservableList<Salle>  arr = FXCollections.observableArrayList();     
+        steer = con.createStatement();
+        ResultSet rs ;
+        //System.out.println(n);
+        rs = steer.executeQuery(" select * from salle where  (id_salle like'%"+n+"%')||(num_salle like'%"+n+"%')||(nom_salle like'%"+n+"%')||(bloc like'%"+n+"%')");
+        // select* from events where (Nom like '%"+n+"%') or (etat like '%"+n+"%') or (date like '%"+n+"%') or (type like '%"+n+"%') or (id like '%"+n+"%') ");
+//             res = ste.executeQuery(" select* from events where (Nom like '%"+n+"%') or (etat like '%"+n+"%') or (date like '%"+n+"%') or (type like '%"+n+"%') or (id like '%"+n+"%') ");
+            while (rs.next())
+            {
+             int id=rs.getInt(1);
+               int num=rs.getInt(2);
+               String nom=rs.getString(3);
+               String bloc=rs.getString(4);
+              Salle a=new Salle(id, num, nom, bloc);
+     
+               arr.add(a);
+             //  System.out.println(arr);
+            }
+        
+        return arr;
+    }
+    
+    
     @Override
     public void ajouter(Salle t) throws SQLException {
         ste = con.createStatement();
@@ -81,5 +109,17 @@ List<Salle> salle=new ArrayList<>();
     return salle;        
 //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    public boolean verife(Salle c) throws SQLException{
+    
+    ster = con.createStatement();
+        ResultSet res ;
+        //System.out.println(n);
+        res = ster.executeQuery(" select * from seance where  id_salle='"+c.getIdSalle()+"'");
+         while (res.next()){
+             return false;
+         }
+    return true;
+}
+
     
 }

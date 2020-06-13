@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" fx:id="content3" prefHeight="482.0" prefWidth="684.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.gui.ModifierReclamationController">
+   <children>
+      <Label layoutX="96.0" layoutY="96.0" text="Sujet de votre réclamation:" />
+      <Label layoutX="97.0" layoutY="155.0" text="Description de votre réclamation:" />
+      <TextArea fx:id="desc2" layoutX="307.0" layoutY="155.0" prefHeight="151.0" prefWidth="288.0" />
+      <TextField fx:id="sujet2" layoutX="312.0" layoutY="92.0" prefHeight="25.0" prefWidth="268.0" />
+      <Button fx:id="btnmodifier" layoutX="476.0" layoutY="365.0" mnemonicParsing="false" onAction="#modifier" text="Modifier réclamation" />
+      <Button layoutX="167.0" layoutY="365.0" mnemonicParsing="false" onAction="#retour3" text="Retour" />
+   </children>
+</AnchorPane>

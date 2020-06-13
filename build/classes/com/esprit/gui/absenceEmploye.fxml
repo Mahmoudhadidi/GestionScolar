@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.gui.AbsenceEmployeController">
+   <children>
+      <AnchorPane id="AnchorPane" fx:id="idEnfant" layoutX="5.0" layoutY="3.0" prefHeight="623.0" prefWidth="738.0">
+         <children>
+            <Pane prefHeight="619.0" prefWidth="106.0" style="-fx-background-color: #0a4a86;" />
+            <Button fx:id="Supprimer" layoutX="133.0" layoutY="294.0" mnemonicParsing="false" onAction="#Supprimer" prefHeight="31.0" prefWidth="295.0" style="-fx-background-color: #0a4a86;" text="Supprimer absence Employe " textFill="WHITE" />
+            <Button fx:id="retour" layoutX="628.0" layoutY="34.0" mnemonicParsing="false" onAction="#retour" style="-fx-background-color: #0a4a86;" text="Retour" textFill="#fff3f3" />
+            <Button fx:id="ajouter" layoutX="134.0" layoutY="337.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="31.0" prefWidth="295.0" style="-fx-background-color: #0a4a86;" text="Ajouter absence Employe " textFill="WHITE" />
+            <TableView fx:id="tabPoint" editable="true" layoutX="106.0" layoutY="73.0" prefHeight="200.0" prefWidth="552.0">
+               <columns>
+                  <TableColumn fx:id="nom" prefWidth="115.0" text="Nom" />
+                  <TableColumn fx:id="pre" prefWidth="120.0" text="Prenom" />
+                  <TableColumn fx:id="type" prefWidth="146.0" text="type_absence" />
+                  <TableColumn fx:id="date" prefWidth="127.0" text="date" />
+               </columns>
+            </TableView>
+            <Button fx:id="modifier" layoutX="133.0" layoutY="389.0" mnemonicParsing="false" onAction="#modifier" prefHeight="31.0" prefWidth="295.0" style="-fx-background-color: #0a4a86;" text="modifier absence Employe" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

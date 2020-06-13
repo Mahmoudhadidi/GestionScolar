@@ -1,12 +1,11 @@
-package com.esprit.test;
-
+package com.esprit.test ; 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
 public class SendEmail {
-    public static boolean sendEmail(String to , String subject , String emailContent){
+    public   boolean sendEmail(String to , String subject , String emailContent){
         // Get system properties
         Properties properties = System.getProperties();
 
@@ -19,7 +18,7 @@ public class SendEmail {
         Session session = Session.getInstance(properties,
                 new javax.mail.Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication("mariem.romdhani@esprit.tn", "13012930");
+                        return new PasswordAuthentication("mohamedzakaria.boutamine@esprit.tn", "helloworldbyzakaria@gmailcom");
                     }
                 });
 
@@ -28,7 +27,7 @@ public class SendEmail {
             MimeMessage message = new MimeMessage(session);
 
             // Set From: header field of the header.
-            message.setFrom(new InternetAddress("mariem.romdhani@esprit.tn"));
+            message.setFrom(new InternetAddress("mohamedzakaria.boutamine@esprit.tn"));
 
             // Set To: header field of the header.
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
@@ -50,7 +49,13 @@ public class SendEmail {
     
     
     public static void main(String[] args) {
-          SendEmail.sendEmail("mariem.romdhani@esprit.tn", "Helo mariem", "Have a good Day ^^ :D");
+
+       //   SendEmail.sendEmail("mohamedzakaria.boutamine@esprit.tn", "Helo mariem", "Have a good Day ^^ :D");
+
+//        AdminController a = new AdminController();
+SendEmail m = new SendEmail();
+          m.sendEmail("mariem.romdhani@esprit.tn", "reclamation", "check your compte");
+
      
     }
 }

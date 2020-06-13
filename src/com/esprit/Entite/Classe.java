@@ -17,12 +17,24 @@ public class Classe {
     String num;
     int nbrEtudient;
     String specialite;
-    private final Button btn = new Button("Supprimer");
+    private final Button btnSupprimer = new Button("Supprimer");
+    private final Button btnModifier = new Button("Modifer");
 
-    public Button getBtn() {
-        return btn;
+    public Classe(String num) {
+        this.num = num;
+    }
+   
+
+    public Button getBtnSupprimer() {
+        
+        return btnSupprimer;
     }
 
+    public Button getBtnModifier() {
+        return btnModifier;
+    }
+
+    
     public Classe(int id) {
         this.id = id;
     }
@@ -31,6 +43,11 @@ public class Classe {
         this.num = num;
         this.nbrEtudient = nbrEtudient;
         this.specialite = specialite;
+    }
+
+    public Classe(int id, String num) {
+        this.id = id;
+        this.num = num;
     }
 
     public Classe(int id, String num, int nbrEtudient, String specialite) {
@@ -56,6 +73,11 @@ public class Classe {
         return nbrEtudient;
     }
 
+    @Override
+    public String toString() {
+        return "Classe{" + "id=" + id + ", num=" + num + ", nbrEtudient=" + nbrEtudient + ", specialite=" + specialite + ", btnSupprimer=" + btnSupprimer + ", btnModifier=" + btnModifier + '}';
+    }
+
    
 
     public String getSpecialite() {
@@ -78,9 +100,9 @@ public class Classe {
         this.specialite = specialite;
     }
 
-    @Override
+   /* @Override
     public String toString() {
         return "Classe{" + "id=" + id + ", num=" + num + ", nbrEtudient=" + nbrEtudient + ", specialite=" + specialite + "}\n";
-    } 
+    } */
     
 }

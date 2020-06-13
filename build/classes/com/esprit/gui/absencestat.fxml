@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" fx:id="col" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXML.StatController">
+   <children>
+      <BarChart fx:id="barChart" layoutX="175.0" layoutY="44.0" prefHeight="295.0" prefWidth="436.0" title="Absence">
+         <xAxis>
+            <CategoryAxis side="BOTTOM" />
+         </xAxis>
+         <yAxis>
+            <NumberAxis side="LEFT" />
+         </yAxis>
+      </BarChart>
+      <Button fx:id="retour" layoutX="561.0" layoutY="14.0" mnemonicParsing="false" onAction="#retour" style="-fx-background-color: #0a4a86;" text="Retour" textFill="#fff3f3" />
+      <AnchorPane prefHeight="418.0" prefWidth="150.0" style="-fx-background-color: #0a4a86;">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="32.0" layoutY="37.0" text="Statistique" textAlignment="CENTER" textFill="WHITE" textOverrun="LEADING_ELLIPSIS" />
+            <Button layoutX="27.0" layoutY="349.0" mnemonicParsing="false" onAction="#pdf" style="-fx-background-color: white;" text="imprimer" textFill="#320303" />
+            <Button fx:id="valider" layoutX="39.0" layoutY="224.0" mnemonicParsing="false" onAction="#valider" style="-fx-background-color: white;" text="valider" textFill="#1e0101" />
+         </children>
+      </AnchorPane>
+      <DatePicker fx:id="date" layoutY="161.0" prefHeight="31.0" prefWidth="150.0" />
+   </children>
+</AnchorPane>

@@ -5,18 +5,26 @@
  */
 package com.esprit.gui;
 
+import com.esprit.Service.ServiceUser;
 import com.esprit.test.Main;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 
 
@@ -57,13 +65,17 @@ public class AccueilController implements Initializable {
 
     @FXML
     private AnchorPane pane;
+    @FXML
+    private Text nomuser;
 
     @FXML
     void gestionUser(ActionEvent event) throws IOException {
      pane.getChildren().clear();
-     Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("/com/esprit/gui/classe.fxml"));
-     pane.getChildren().add(newLoadedPane);
+        Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("/com/esprit/gui/gestionUser.fxml"));
+        pane.getChildren().add(newLoadedPane);
+
         		    }
+    
 
     @FXML
     void gestionaffectation(ActionEvent event) throws IOException {
@@ -74,37 +86,55 @@ public class AccueilController implements Initializable {
     }
 
     @FXML
-    void gestionAbsence(ActionEvent event) {
-
-    }
-
-    @FXML
-    void gestionNote(ActionEvent event) {
-
-    }
-
-    @FXML
-    void gestionReclamation(ActionEvent event) throws IOException {
-     pane.getChildren().clear();
-        Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("/com/esprit/gui/ReclamationAdmin.fxml"));
+    void gestionAbsence(ActionEvent event) throws IOException {
+        pane.getChildren().clear();
+        Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("/com/esprit/gui/absence.fxml"));
         pane.getChildren().add(newLoadedPane);
 
     }
 
     @FXML
-    void clubs(ActionEvent event) {
+    void gestionNote(ActionEvent event) throws IOException {
+ pane.getChildren().clear();
+        Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("/com/esprit/gui/Interface_Note_Administrateur.fxml"));
+        pane.getChildren().add(newLoadedPane);
+    }
+
+    @FXML
+    void gestionReclamation(ActionEvent event) throws IOException {
+     pane.getChildren().clear();
+        Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("/com/esprit/gui/Admin.fxml"));
+        pane.getChildren().add(newLoadedPane);
+
+    }
+
+    @FXML
+    void clubs(ActionEvent event) throws IOException {
+        
+        Parent demandeclub = FXMLLoader.load(getClass().getResource("FXMLListDemandeClub.fxml"));
+        Scene tableViewScene = new Scene(demandeclub);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();       
+        window.setScene(tableViewScene);
+        window.show();
 
     }
 
     @FXML
     void quitter(ActionEvent event) {
+        System.exit(0);
 
     }
 
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+    }
+
+    private void gestionuser(ActionEvent event) throws IOException {
+        pane.getChildren().clear();
+        Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("/com/esprit/gui/gestionUser.fxml"));
+        pane.getChildren().add(newLoadedPane);
+
+    }
     
 }

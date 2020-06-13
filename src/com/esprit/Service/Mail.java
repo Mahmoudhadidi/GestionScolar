@@ -21,8 +21,8 @@ public class Mail {
     {
         try{
             String host ="smtp.gmail.com" ;
-            String user = "mariemromdhani97@gmail.com";
-            String pass = "13012930";
+            String user = "mohamedzakaria.boutamine@esprit.tn";
+            String pass = "helloworldbyzakaria@gmailcom";
             String too = to;
             String fro = user;
             String subject = Subject;
@@ -57,6 +57,10 @@ public class Mail {
             System.out.println(ex);
         }
     
+    }
+
+    public Mail() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

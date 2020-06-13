@@ -22,6 +22,15 @@ public class Salle {
         return btn;
     }
 
+    public Salle(int idSalle, String nomSalle) {
+        this.idSalle = idSalle;
+        this.nomSalle = nomSalle;
+    }
+
+    public Salle(String nomSalle) {
+        this.nomSalle = nomSalle;
+    }
+
     public Salle(int numSalle, String nomSalle, String bloc) {
         this.numSalle = numSalle;
         this.nomSalle = nomSalle;
@@ -74,7 +83,7 @@ public class Salle {
         this.bloc = bloc;
     }
 
-    @Override
+   @Override
     public String toString() {
         return "Salle{" + "idSalle=" + idSalle + ", numSalle=" + numSalle + ", nomSalle=" + nomSalle +
                 ", bloc=" + bloc + "}\n";

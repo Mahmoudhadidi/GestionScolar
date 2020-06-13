@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<<<<<<< HEAD
+<AnchorPane id="AnchorPane" fx:id="idEnfant" prefHeight="623.0" prefWidth="738.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.gui.AbsenceEtudientController">
+=======
+<AnchorPane id="AnchorPane" fx:id="idEnfant" prefHeight="487.0" prefWidth="705.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.gui.AbsenceEtudientController">
+>>>>>>> b05d18b652a4f604355727b230d9511abcedf2f0
+   <children>
+      <Pane prefHeight="487.0" prefWidth="106.0" style="-fx-background-color: #0a4a86;" />
+      <Button fx:id="Supprimer" layoutX="133.0" layoutY="294.0" mnemonicParsing="false" onAction="#Supprimer" prefHeight="31.0" prefWidth="295.0" style="-fx-background-color: #0a4a86;" text="Supprimer absence Etudient" textFill="WHITE" />
+      <Button fx:id="retour" layoutX="605.0" layoutY="35.0" mnemonicParsing="false" onAction="#retour" style="-fx-background-color: #0a4a86;" text="Retour" textFill="#fff3f3" />
+      <Button fx:id="ajouter" layoutX="134.0" layoutY="337.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="31.0" prefWidth="295.0" style="-fx-background-color: #0a4a86;" text="Ajouter absence Etudient" textFill="WHITE" />
+      <TableView fx:id="tabPoint" editable="true" layoutX="106.0" layoutY="73.0" prefHeight="200.0" prefWidth="551.0">
+         <columns>
+            <TableColumn fx:id="nom" prefWidth="115.0" text="nom" />
+            <TableColumn fx:id="pre" prefWidth="115.0" text="Prenom" />
+            <TableColumn fx:id="type" prefWidth="116.0" text="type_absence" />
+            <TableColumn fx:id="ids" prefWidth="120.0" text="id_seance" />
+         </columns>
+      </TableView>
+<<<<<<< HEAD
+      <Button fx:id="Supprimer1" layoutX="134.0" layoutY="424.0" mnemonicParsing="false" onAction="#Pdf" prefHeight="31.0" prefWidth="295.0" style="-fx-background-color: #48A5EA;" text="Afficher Pdf" textFill="WHITE" />
+      <Button fx:id="modifier" layoutX="134.0" layoutY="381.0" mnemonicParsing="false" onAction="#modifier" prefHeight="31.0" prefWidth="295.0" style="-fx-background-color: #48A5EA;" text="Modifier absence Etudient" textFill="WHITE" />
+=======
+      <Button fx:id="Supprimer1" layoutX="134.0" layoutY="423.0" mnemonicParsing="false" onAction="#Pdf" prefHeight="31.0" prefWidth="295.0" style="-fx-background-color: #0a4a86;" text="Afficher Pdf" textFill="WHITE" />
+      <Button fx:id="modifier" layoutX="134.0" layoutY="381.0" mnemonicParsing="false" onAction="#modifier" prefHeight="31.0" prefWidth="295.0" style="-fx-background-color: #0a4a86;" text="Modifier absence Etudient" textFill="WHITE" />
+>>>>>>> b05d18b652a4f604355727b230d9511abcedf2f0
+   </children>
+</AnchorPane>
