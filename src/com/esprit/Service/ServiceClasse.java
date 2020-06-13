@@ -185,7 +185,7 @@ Parent root;
    public boolean affecterEtudian(Classe t, User u) throws SQLException{
        
        ste = con.createStatement();//DELETE FROM Pays WHERE Population > 170000;
-       String requeteUpdate = "update user set id_classe='"+t.getId()+"'where id_user='"+u.getId()+"'";
+       String requeteUpdate = "update user set id_classe='"+t.getId()+"'where id='"+u.getId()+"'";
        int w=ste.executeUpdate(requeteUpdate);
         if(w>0)
           return true; 

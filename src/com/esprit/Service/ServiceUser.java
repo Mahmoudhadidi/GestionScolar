@@ -74,7 +74,7 @@ List<User> etu=new ArrayList<>();
     public List<User> readAll_etudiant() throws SQLException {
 List<User> etu=new ArrayList<>();
     ste=con.createStatement();
-    ResultSet rs=ste.executeQuery("select * from user where role='etudiant' && id_classe is NULL");
+    ResultSet rs=ste.executeQuery("select * from user where role='etudiant' && id_classe=0");
      while (rs.next()) {                
                int id=rs.getInt(1);
               
