@@ -5,30 +5,11 @@
  */
 package com.esprit.Entite;
 
-import javafx.scene.control.Button;
-
 /**
  *
  * @author hadidi
  */
 public class Seance {
-<<<<<<< HEAD
-    int id_Seance;
-    int id_Ens;
-    int id_Classe;
-    int id_Matiere;
-    int id_Salle;
-    String duree;
-    String heure;
-    String date;
-      private final Button btn = new Button("Supprimer");
-
-    public Button getBtn() {
-        return btn;
-    }
-
-    public Seance(int id_Seance, int id_Ens, int id_Classe, int id_Matiere, int id_Salle, String duree, String heure, String date) {
-=======
     private int id_Seance;
     private User ens;
     private String nomens;
@@ -48,7 +29,6 @@ public class Seance {
     }
 
     public Seance(int id_Seance, String nomens, String nomclasse, String nommatiere, String nomsalle, String heure, String date) {
->>>>>>> ffca43c373411410981efe44bdcefda06fb7f73f
         this.id_Seance = id_Seance;
         this.nomens = nomens;
         this.nomclasse = nomclasse;

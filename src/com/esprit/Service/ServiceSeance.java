@@ -90,7 +90,7 @@ public Seance getSeanceByID(int id){
     ste=con.createStatement();
     ResultSet rs=ste.executeQuery("select id_seance, num_classe,nom_matier,nom_salle,bloc,nom,prenom,heure,date from "
             + "seance , classe , user ,salle ,matiere  where "
-            + "(seance.id_ens=user.id_user) && "
+            + "(seance.id_ens=user.id) && "
             + "(seance.id_classe=classe.id_classe)&&"
             + "(seance.id_matiere=matiere.id_matiere) &&"
             + " (seance.id_salle=salle.id_salle) ");
@@ -134,7 +134,7 @@ public Seance getSeanceByID(int id){
 //             res = ste.executeQuery(" select* from events where (Nom like '%"+n+"%') or (etat like '%"+n+"%') or (date like '%"+n+"%') or (type like '%"+n+"%') or (id like '%"+n+"%') ");
               rs=ste.executeQuery("select id_seance, num_classe,nom_matier,nom_salle,bloc,nom,prenom,heure,date from "
                       + "seance , classe , user ,salle ,matiere  where"
-                      + " (seance.id_ens=user.id_user) && "
+                      + " (seance.id_ens=user.id) && "
                       + "(seance.id_classe=classe.id_classe)&&"
                       + "(seance.id_matiere=matiere.id_matiere) && "
                       + "(seance.id_salle=salle.id_salle) ||"

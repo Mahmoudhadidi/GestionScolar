@@ -5,8 +5,6 @@
  */
 package com.esprit.Entite;
 
-import javafx.scene.control.Button;
-
 /**
  *
  * @author House
@@ -16,12 +14,6 @@ public class Matiere {
     private String nom;
     private int coefficient;
     private int credit;
-<<<<<<< HEAD
-      private final Button btn = new Button("Supprimer");
-
-    public Button getBtn() {
-        return btn;
-=======
 
     public Matiere(int id, String nom) {
         this.id = id;
@@ -30,7 +22,6 @@ public class Matiere {
 
     public Matiere(String nom) {
         this.nom = nom;
->>>>>>> ffca43c373411410981efe44bdcefda06fb7f73f
     }
     
     public Matiere(int id, String nom, int coefficient, int credit) {

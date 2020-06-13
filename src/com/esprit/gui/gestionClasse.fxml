@@ -1,22 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.ToolBar?>
-=======
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
->>>>>>> 48323d35bd700a04d8ca0a424653d5b43a26a558
-=======
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
->>>>>>> ffca43c373411410981efe44bdcefda06fb7f73f
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -26,31 +14,6 @@
         <URL value="@gestionclasse.css" />
     </stylesheets>
    <children>
-<<<<<<< HEAD
-<<<<<<< HEAD
-      <TableView fx:id="tableClasse" layoutX="-4.0" layoutY="40.0" prefHeight="235.0" prefWidth="388.0">
-=======
-      <TableView fx:id="tableClasse" layoutX="-4.0" prefHeight="235.0" prefWidth="307.0">
->>>>>>> 48323d35bd700a04d8ca0a424653d5b43a26a558
-        <columns>
-          <TableColumn fx:id="classe" prefWidth="75.0" text="Classe" />
-          <TableColumn fx:id="capacite" prefWidth="75.0" text="Capacité" />
-            <TableColumn fx:id="spécialiste" prefWidth="75.0" text="Spécialiste" />
-<<<<<<< HEAD
-            <TableColumn fx:id="action" minWidth="15.0" prefWidth="90.0" text="Action" />
-        </columns>
-      </TableView>
-      <ToolBar prefHeight="40.0" prefWidth="200.0">
-        <items>
-          <Button mnemonicParsing="false" text="Button" />
-        </items>
-      </ToolBar>
-=======
-            <TableColumn fx:id="action" prefWidth="75.0" text="Action" />
-        </columns>
-      </TableView>
->>>>>>> 48323d35bd700a04d8ca0a424653d5b43a26a558
-=======
       <TableView fx:id="tableClasse" layoutX="1.0" layoutY="25.0" prefHeight="375.0" prefWidth="600.0">
         <columns>
           <TableColumn fx:id="classe" prefWidth="76.0" text="Classe" />
@@ -66,6 +29,5 @@
          </font></Text>
       <TextField fx:id="tcherche" layoutX="172.0" onKeyPressed="#ch" prefHeight="25.0" prefWidth="104.0" />
       <Button fx:id="afecter" layoutX="327.0" mnemonicParsing="false" onAction="#afecter" prefHeight="25.0" prefWidth="184.0" text="Affecter etudiant au classe" />
->>>>>>> ffca43c373411410981efe44bdcefda06fb7f73f
    </children>
 </AnchorPane>
